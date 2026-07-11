@@ -20,11 +20,6 @@ The simulator is intentionally **conservative**: it represents the
     by the Tool-Fault operator) return a canned error/malformed payload
     that the agent reports as a tool-call FAILURE.
 
-This is not a substitute for live LLM execution; it is a fast,
-deterministic baseline that exercises every kill criterion without
-network or cost. It detects every mutant whose intended behaviour
-diverges from the original spec, which is exactly the contract of
-K-Outcome and K-Safety against *idealised* execution.
 """
 
 from __future__ import annotations
