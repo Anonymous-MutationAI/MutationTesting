@@ -85,11 +85,36 @@ python3 reproduce.py --live        # or: bash reproduce.sh --live
 
 Configuration is fixed for parity with the paper: seed `20260605`,
 `MAX_PER_OP=50` (10 for `octagon_vc_agents`), `k=3` repeats with per-test
-majority vote, `gpt-4.1-mini` as both realizer and agent. The realized prompts
-in `suites/` are reused so runs are comparable; a full 10-benchmark sweep is
-~1,084 mutants and ~30k executions (hours; non-trivial API cost). Because agent
-execution is stochastic, a fresh run reproduces the paper up to the residual
-flaky-kill rate, not byte-for-byte — the offline tier is the exact-match check.
+majority vote, `gpt-4.1-mini` as the agent model. A full 10-benchmark sweep is
+~1,084 mutants and ~30k executions (hours; non-trivial API cost).
+
+**What `--live` regenerates, step by step** (all from `benchmarks/` — nothing in
+`results/` is read):
+
+1. normalize each manifest into a coordination graph and extract obligations
+   (`src/agentcov`);
+2. generate all first-order mutants and cap per operator (`src/agentmut` →
+   1,873 generated, 1,084 executed);
+3. build the four suites by obligation selection (`src/agentmut.build_suites`);
+4. execute every (spec, test) pair against the original and each mutant through
+   the OpenAI Agents SDK, `k=3` with per-test majority vote
+   (`src/agent_runtime`), and score K-Struct / K-Outcome / K-Safety;
+5. write fresh per-benchmark results to `results/live_rerun/`;
+6. `reproduce.py` then aggregates and checks them against the paper.
+
+Because agent execution is stochastic, a fresh run reproduces the paper up to
+the residual flaky-kill rate, not byte-for-byte — the offline tier is the
+exact-match check.
+
+**Prompt realization (reused, not regenerated).** Each obligation is turned into
+one natural-language user prompt by an LLM prompt-realizer. Those prompts are
+provided in `suites/*.suite.json` (realized once with `gpt-4.1-mini`) and the
+sweep reuses them, so a re-run tests the *same* prompts and stays comparable to
+the paper. Regenerating the prompts is intentionally **not** part of the re-run:
+new prompts would change the tests and the scores. The realized prompts, their
+`objective_id`, target agent, model, and seed hash are all recorded in
+`suites/`, so the realization is fully auditable. A standalone prompt-realizer
+for regenerating `suites/` from the manifests may be added in a later revision.
 
 ## Notes
 
