@@ -1,10 +1,5 @@
 """Baseline test suites for mutation testing.
 
-The paper compares four test-generation strategies. The implementation
-gives each strategy a *deterministic, no-LLM proxy* whose construction
-is documented and reproducible. The proxy NAMES carry a star (*) to
-distinguish them from the conceptual paper-level suites whose live
-realisation would require LLM calls.
 
   T-Dev*    — entry-path proxy for developer-shipped scenarios.
               The SDK examples we ingest are interactive demos with no
