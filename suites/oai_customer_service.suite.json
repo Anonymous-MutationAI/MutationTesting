@@ -1,0 +1,299 @@
+{
+  "system": "oai_customer_service",
+  "schema_version": "3.0",
+  "signature_version": "2026-05-03.v1",
+  "n_objectives": 13,
+  "n_tests": 13,
+  "tests": [
+    {
+      "objective_id": "reach::faq_agent",
+      "objective_kind": "reach",
+      "target_agent": "faq_agent",
+      "user_prompt": "Can you tell me what the baggage allowance is for international flights with your airline?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK customer-service example, extracted from upstream.",
+        "agent_name": "faq_agent",
+        "agent_role": "A helpful agent that can answer questions about the airline",
+        "agent_description": "A helpful agent that can answer questions about the airline.",
+        "agent_prompt_hint": "# System context",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "cc44de9c45bebc14",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:22:47+00:00"
+      }
+    },
+    {
+      "objective_id": "reach::seat_booking_agent",
+      "objective_kind": "reach",
+      "target_agent": "seat_booking_agent",
+      "user_prompt": "I need to change my seat for my upcoming flight to a window seat if possible. Can you help me update my seat assignment?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK customer-service example, extracted from upstream.",
+        "agent_name": "seat_booking_agent",
+        "agent_role": "A helpful agent that can update a seat on a flight",
+        "agent_description": "A helpful agent that can update a seat on a flight.",
+        "agent_prompt_hint": "# System context",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "870183555d4cb57c",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:22:47+00:00"
+      }
+    },
+    {
+      "objective_id": "reach::triage_agent",
+      "objective_kind": "reach",
+      "target_agent": "triage_agent",
+      "user_prompt": "Hi, I’m having trouble logging into my account and I’m not sure what to do next. Can you help me figure out the best way to get this resolved?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK customer-service example, extracted from upstream.",
+        "agent_name": "triage_agent",
+        "agent_role": "A triage agent that can delegate a customer's request to the app",
+        "agent_description": "A triage agent that can delegate a customer's request to the appropriate agent.",
+        "agent_prompt_hint": "# System context",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "6d2c98ad3812a77d",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:22:47+00:00"
+      }
+    },
+    {
+      "objective_id": "use_tool::faq_agent::faq_lookup_tool",
+      "objective_kind": "use_tool",
+      "target_agent": "faq_agent",
+      "user_prompt": "Can you tell me what the airline's policy is on baggage allowance for international flights?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK customer-service example, extracted from upstream.",
+        "agent_name": "faq_agent",
+        "agent_role": "A helpful agent that can answer questions about the airline",
+        "agent_description": "A helpful agent that can answer questions about the airline.",
+        "agent_prompt_hint": "# System context",
+        "objective_kind": "use_tool",
+        "tool_name": "faq_lookup_tool",
+        "tool_purpose": "Lookup frequently asked questions.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "aeee9dd3f79cde72",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:22:47+00:00"
+      }
+    },
+    {
+      "objective_id": "use_tool::seat_booking_agent::update_seat",
+      "objective_kind": "use_tool",
+      "target_agent": "seat_booking_agent",
+      "user_prompt": "I need to change my seat for my upcoming flight. Can you help me update it to a window seat if possible? My confirmation number is ABC123.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK customer-service example, extracted from upstream.",
+        "agent_name": "seat_booking_agent",
+        "agent_role": "A helpful agent that can update a seat on a flight",
+        "agent_description": "A helpful agent that can update a seat on a flight.",
+        "agent_prompt_hint": "# System context",
+        "objective_kind": "use_tool",
+        "tool_name": "update_seat",
+        "tool_purpose": "Update the seat for a given confirmation number.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "986265cbfba6498c",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:22:47+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::faq_agent::update_seat",
+      "objective_kind": "restrict_tool",
+      "target_agent": "faq_agent",
+      "user_prompt": "I just realized I need to change my seat for my upcoming flight. Can you help me update my seat assignment to a window seat?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK customer-service example, extracted from upstream.",
+        "agent_name": "faq_agent",
+        "agent_role": "A helpful agent that can answer questions about the airline",
+        "agent_description": "A helpful agent that can answer questions about the airline.",
+        "agent_prompt_hint": "# System context",
+        "objective_kind": "restrict_tool",
+        "tool_name": "update_seat",
+        "tool_purpose": "Update the seat for a given confirmation number.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "90b641d774a18523",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:22:47+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::seat_booking_agent::faq_lookup_tool",
+      "objective_kind": "restrict_tool",
+      "target_agent": "seat_booking_agent",
+      "user_prompt": "I’m trying to decide whether I should change my seat to a window or aisle for my upcoming flight, but I’m not sure what the airline’s policies are on seat changes and fees. Could you help me find that information?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK customer-service example, extracted from upstream.",
+        "agent_name": "seat_booking_agent",
+        "agent_role": "A helpful agent that can update a seat on a flight",
+        "agent_description": "A helpful agent that can update a seat on a flight.",
+        "agent_prompt_hint": "# System context",
+        "objective_kind": "restrict_tool",
+        "tool_name": "faq_lookup_tool",
+        "tool_purpose": "Lookup frequently asked questions.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "63ef528579d59bfb",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:22:47+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::triage_agent::faq_lookup_tool",
+      "objective_kind": "restrict_tool",
+      "target_agent": "triage_agent",
+      "user_prompt": "Hi, I have a question about your return policy that I couldn't find on your website. Could you please provide me with the detailed steps and conditions for returning a product?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK customer-service example, extracted from upstream.",
+        "agent_name": "triage_agent",
+        "agent_role": "A triage agent that can delegate a customer's request to the app",
+        "agent_description": "A triage agent that can delegate a customer's request to the appropriate agent.",
+        "agent_prompt_hint": "# System context",
+        "objective_kind": "restrict_tool",
+        "tool_name": "faq_lookup_tool",
+        "tool_purpose": "Lookup frequently asked questions.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "683e82c714c468f2",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:22:47+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::triage_agent::update_seat",
+      "objective_kind": "restrict_tool",
+      "target_agent": "triage_agent",
+      "user_prompt": "I just found out my flight details changed, and I need to switch my seat to a window one. Can you help me update my seat assignment with my confirmation number?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK customer-service example, extracted from upstream.",
+        "agent_name": "triage_agent",
+        "agent_role": "A triage agent that can delegate a customer's request to the app",
+        "agent_description": "A triage agent that can delegate a customer's request to the appropriate agent.",
+        "agent_prompt_hint": "# System context",
+        "objective_kind": "restrict_tool",
+        "tool_name": "update_seat",
+        "tool_purpose": "Update the seat for a given confirmation number.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "33a8be9d3f7b4377",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:22:47+00:00"
+      }
+    },
+    {
+      "objective_id": "delegate::faq_agent::triage_agent",
+      "objective_kind": "delegate",
+      "target_agent": "faq_agent",
+      "user_prompt": "I need help with changing my flight date because of an unexpected schedule conflict. Can you assist me with that?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK customer-service example, extracted from upstream.",
+        "agent_name": "faq_agent",
+        "agent_role": "A helpful agent that can answer questions about the airline",
+        "agent_description": "A helpful agent that can answer questions about the airline.",
+        "agent_prompt_hint": "# System context",
+        "objective_kind": "delegate",
+        "child_agent": "triage_agent",
+        "child_description": "A triage agent that can delegate a customer's request to the appropriate agent.",
+        "delegation_trigger": "delegate"
+      },
+      "seed_hash": "2471f8a80293bea8",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:22:47+00:00"
+      }
+    },
+    {
+      "objective_id": "delegate::seat_booking_agent::triage_agent",
+      "objective_kind": "delegate",
+      "target_agent": "seat_booking_agent",
+      "user_prompt": "I need to change my seat to a window seat on my upcoming flight. Can you help me with that?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK customer-service example, extracted from upstream.",
+        "agent_name": "seat_booking_agent",
+        "agent_role": "A helpful agent that can update a seat on a flight",
+        "agent_description": "A helpful agent that can update a seat on a flight.",
+        "agent_prompt_hint": "# System context",
+        "objective_kind": "delegate",
+        "child_agent": "triage_agent",
+        "child_description": "A triage agent that can delegate a customer's request to the appropriate agent.",
+        "delegation_trigger": "delegate"
+      },
+      "seed_hash": "cd5a23b2b82bd1ad",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:22:47+00:00"
+      }
+    },
+    {
+      "objective_id": "delegate::triage_agent::faq_agent",
+      "objective_kind": "delegate",
+      "target_agent": "triage_agent",
+      "user_prompt": "Can you tell me what the baggage allowance is for international flights with your airline?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK customer-service example, extracted from upstream.",
+        "agent_name": "triage_agent",
+        "agent_role": "A triage agent that can delegate a customer's request to the app",
+        "agent_description": "A triage agent that can delegate a customer's request to the appropriate agent.",
+        "agent_prompt_hint": "# System context",
+        "objective_kind": "delegate",
+        "child_agent": "faq_agent",
+        "child_description": "A helpful agent that can answer questions about the airline.",
+        "delegation_trigger": "delegate"
+      },
+      "seed_hash": "fe3a8855448a07b8",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:22:47+00:00"
+      }
+    },
+    {
+      "objective_id": "delegate::triage_agent::seat_booking_agent",
+      "objective_kind": "delegate",
+      "target_agent": "triage_agent",
+      "user_prompt": "I need to change my seat for my upcoming flight to a window seat. Can you help me with that?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK customer-service example, extracted from upstream.",
+        "agent_name": "triage_agent",
+        "agent_role": "A triage agent that can delegate a customer's request to the app",
+        "agent_description": "A triage agent that can delegate a customer's request to the appropriate agent.",
+        "agent_prompt_hint": "# System context",
+        "objective_kind": "delegate",
+        "child_agent": "seat_booking_agent",
+        "child_description": "A helpful agent that can update a seat on a flight.",
+        "delegation_trigger": "delegate"
+      },
+      "seed_hash": "971735cfb99e254f",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:22:47+00:00"
+      }
+    }
+  ]
+}

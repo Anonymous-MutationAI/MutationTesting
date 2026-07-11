@@ -1,0 +1,1568 @@
+{
+  "rows": [
+    {
+      "operator": "Ag-PromptDrop",
+      "suite": "T-Dev*",
+      "criterion": "K-Outcome",
+      "total": 4,
+      "killable": 3,
+      "killed": 0,
+      "equiv": 1,
+      "ms_strict": 0.0
+    },
+    {
+      "operator": "Ag-PromptDrop",
+      "suite": "T-Dev*",
+      "criterion": "K-Safety",
+      "total": 4,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 4,
+      "ms_strict": null
+    },
+    {
+      "operator": "Ag-PromptDrop",
+      "suite": "T-Dev*",
+      "criterion": "K-Struct",
+      "total": 4,
+      "killable": 3,
+      "killed": 0,
+      "equiv": 1,
+      "ms_strict": 0.0
+    },
+    {
+      "operator": "Ag-PromptDrop",
+      "suite": "T-E2E*",
+      "criterion": "K-Outcome",
+      "total": 4,
+      "killable": 3,
+      "killed": 0,
+      "equiv": 1,
+      "ms_strict": 0.0
+    },
+    {
+      "operator": "Ag-PromptDrop",
+      "suite": "T-E2E*",
+      "criterion": "K-Safety",
+      "total": 4,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 4,
+      "ms_strict": null
+    },
+    {
+      "operator": "Ag-PromptDrop",
+      "suite": "T-E2E*",
+      "criterion": "K-Struct",
+      "total": 4,
+      "killable": 3,
+      "killed": 0,
+      "equiv": 1,
+      "ms_strict": 0.0
+    },
+    {
+      "operator": "Ag-PromptDrop",
+      "suite": "T-Rand*",
+      "criterion": "K-Outcome",
+      "total": 4,
+      "killable": 3,
+      "killed": 0,
+      "equiv": 1,
+      "ms_strict": 0.0
+    },
+    {
+      "operator": "Ag-PromptDrop",
+      "suite": "T-Rand*",
+      "criterion": "K-Safety",
+      "total": 4,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 4,
+      "ms_strict": null
+    },
+    {
+      "operator": "Ag-PromptDrop",
+      "suite": "T-Rand*",
+      "criterion": "K-Struct",
+      "total": 4,
+      "killable": 3,
+      "killed": 0,
+      "equiv": 1,
+      "ms_strict": 0.0
+    },
+    {
+      "operator": "Ag-PromptDrop",
+      "suite": "T-Struct",
+      "criterion": "K-Outcome",
+      "total": 4,
+      "killable": 3,
+      "killed": 3,
+      "equiv": 1,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Ag-PromptDrop",
+      "suite": "T-Struct",
+      "criterion": "K-Safety",
+      "total": 4,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 4,
+      "ms_strict": null
+    },
+    {
+      "operator": "Ag-PromptDrop",
+      "suite": "T-Struct",
+      "criterion": "K-Struct",
+      "total": 4,
+      "killable": 3,
+      "killed": 3,
+      "equiv": 1,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Ag-Rem",
+      "suite": "T-Dev*",
+      "criterion": "K-Outcome",
+      "total": 3,
+      "killable": 3,
+      "killed": 3,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Ag-Rem",
+      "suite": "T-Dev*",
+      "criterion": "K-Safety",
+      "total": 3,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 3,
+      "ms_strict": null
+    },
+    {
+      "operator": "Ag-Rem",
+      "suite": "T-Dev*",
+      "criterion": "K-Struct",
+      "total": 3,
+      "killable": 3,
+      "killed": 3,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Ag-Rem",
+      "suite": "T-E2E*",
+      "criterion": "K-Outcome",
+      "total": 3,
+      "killable": 3,
+      "killed": 3,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Ag-Rem",
+      "suite": "T-E2E*",
+      "criterion": "K-Safety",
+      "total": 3,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 3,
+      "ms_strict": null
+    },
+    {
+      "operator": "Ag-Rem",
+      "suite": "T-E2E*",
+      "criterion": "K-Struct",
+      "total": 3,
+      "killable": 3,
+      "killed": 3,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Ag-Rem",
+      "suite": "T-Rand*",
+      "criterion": "K-Outcome",
+      "total": 3,
+      "killable": 3,
+      "killed": 3,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Ag-Rem",
+      "suite": "T-Rand*",
+      "criterion": "K-Safety",
+      "total": 3,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 3,
+      "ms_strict": null
+    },
+    {
+      "operator": "Ag-Rem",
+      "suite": "T-Rand*",
+      "criterion": "K-Struct",
+      "total": 3,
+      "killable": 3,
+      "killed": 3,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Ag-Rem",
+      "suite": "T-Struct",
+      "criterion": "K-Outcome",
+      "total": 3,
+      "killable": 3,
+      "killed": 3,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Ag-Rem",
+      "suite": "T-Struct",
+      "criterion": "K-Safety",
+      "total": 3,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 3,
+      "ms_strict": null
+    },
+    {
+      "operator": "Ag-Rem",
+      "suite": "T-Struct",
+      "criterion": "K-Struct",
+      "total": 3,
+      "killable": 3,
+      "killed": 3,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Del-Add",
+      "suite": "T-Dev*",
+      "criterion": "K-Outcome",
+      "total": 9,
+      "killable": 9,
+      "killed": 9,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Del-Add",
+      "suite": "T-Dev*",
+      "criterion": "K-Safety",
+      "total": 9,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 9,
+      "ms_strict": null
+    },
+    {
+      "operator": "Del-Add",
+      "suite": "T-Dev*",
+      "criterion": "K-Struct",
+      "total": 9,
+      "killable": 9,
+      "killed": 9,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Del-Add",
+      "suite": "T-E2E*",
+      "criterion": "K-Outcome",
+      "total": 9,
+      "killable": 9,
+      "killed": 5,
+      "equiv": 0,
+      "ms_strict": 0.556
+    },
+    {
+      "operator": "Del-Add",
+      "suite": "T-E2E*",
+      "criterion": "K-Safety",
+      "total": 9,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 9,
+      "ms_strict": null
+    },
+    {
+      "operator": "Del-Add",
+      "suite": "T-E2E*",
+      "criterion": "K-Struct",
+      "total": 9,
+      "killable": 9,
+      "killed": 5,
+      "equiv": 0,
+      "ms_strict": 0.556
+    },
+    {
+      "operator": "Del-Add",
+      "suite": "T-Rand*",
+      "criterion": "K-Outcome",
+      "total": 9,
+      "killable": 9,
+      "killed": 7,
+      "equiv": 0,
+      "ms_strict": 0.778
+    },
+    {
+      "operator": "Del-Add",
+      "suite": "T-Rand*",
+      "criterion": "K-Safety",
+      "total": 9,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 9,
+      "ms_strict": null
+    },
+    {
+      "operator": "Del-Add",
+      "suite": "T-Rand*",
+      "criterion": "K-Struct",
+      "total": 9,
+      "killable": 9,
+      "killed": 7,
+      "equiv": 0,
+      "ms_strict": 0.778
+    },
+    {
+      "operator": "Del-Add",
+      "suite": "T-Struct",
+      "criterion": "K-Outcome",
+      "total": 9,
+      "killable": 9,
+      "killed": 9,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Del-Add",
+      "suite": "T-Struct",
+      "criterion": "K-Safety",
+      "total": 9,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 9,
+      "ms_strict": null
+    },
+    {
+      "operator": "Del-Add",
+      "suite": "T-Struct",
+      "criterion": "K-Struct",
+      "total": 9,
+      "killable": 9,
+      "killed": 9,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Del-Inv",
+      "suite": "T-Dev*",
+      "criterion": "K-Outcome",
+      "total": 3,
+      "killable": 3,
+      "killed": 3,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Del-Inv",
+      "suite": "T-Dev*",
+      "criterion": "K-Safety",
+      "total": 3,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 3,
+      "ms_strict": null
+    },
+    {
+      "operator": "Del-Inv",
+      "suite": "T-Dev*",
+      "criterion": "K-Struct",
+      "total": 3,
+      "killable": 3,
+      "killed": 3,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Del-Inv",
+      "suite": "T-E2E*",
+      "criterion": "K-Outcome",
+      "total": 3,
+      "killable": 3,
+      "killed": 3,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Del-Inv",
+      "suite": "T-E2E*",
+      "criterion": "K-Safety",
+      "total": 3,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 3,
+      "ms_strict": null
+    },
+    {
+      "operator": "Del-Inv",
+      "suite": "T-E2E*",
+      "criterion": "K-Struct",
+      "total": 3,
+      "killable": 3,
+      "killed": 3,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Del-Inv",
+      "suite": "T-Rand*",
+      "criterion": "K-Outcome",
+      "total": 3,
+      "killable": 3,
+      "killed": 1,
+      "equiv": 0,
+      "ms_strict": 0.333
+    },
+    {
+      "operator": "Del-Inv",
+      "suite": "T-Rand*",
+      "criterion": "K-Safety",
+      "total": 3,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 3,
+      "ms_strict": null
+    },
+    {
+      "operator": "Del-Inv",
+      "suite": "T-Rand*",
+      "criterion": "K-Struct",
+      "total": 3,
+      "killable": 3,
+      "killed": 1,
+      "equiv": 0,
+      "ms_strict": 0.333
+    },
+    {
+      "operator": "Del-Inv",
+      "suite": "T-Struct",
+      "criterion": "K-Outcome",
+      "total": 3,
+      "killable": 3,
+      "killed": 3,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Del-Inv",
+      "suite": "T-Struct",
+      "criterion": "K-Safety",
+      "total": 3,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 3,
+      "ms_strict": null
+    },
+    {
+      "operator": "Del-Inv",
+      "suite": "T-Struct",
+      "criterion": "K-Struct",
+      "total": 3,
+      "killable": 3,
+      "killed": 3,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Del-Red",
+      "suite": "T-Dev*",
+      "criterion": "K-Outcome",
+      "total": 6,
+      "killable": 6,
+      "killed": 6,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Del-Red",
+      "suite": "T-Dev*",
+      "criterion": "K-Safety",
+      "total": 6,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 6,
+      "ms_strict": null
+    },
+    {
+      "operator": "Del-Red",
+      "suite": "T-Dev*",
+      "criterion": "K-Struct",
+      "total": 6,
+      "killable": 6,
+      "killed": 6,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Del-Red",
+      "suite": "T-E2E*",
+      "criterion": "K-Outcome",
+      "total": 6,
+      "killable": 6,
+      "killed": 3,
+      "equiv": 0,
+      "ms_strict": 0.5
+    },
+    {
+      "operator": "Del-Red",
+      "suite": "T-E2E*",
+      "criterion": "K-Safety",
+      "total": 6,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 6,
+      "ms_strict": null
+    },
+    {
+      "operator": "Del-Red",
+      "suite": "T-E2E*",
+      "criterion": "K-Struct",
+      "total": 6,
+      "killable": 6,
+      "killed": 3,
+      "equiv": 0,
+      "ms_strict": 0.5
+    },
+    {
+      "operator": "Del-Red",
+      "suite": "T-Rand*",
+      "criterion": "K-Outcome",
+      "total": 6,
+      "killable": 6,
+      "killed": 4,
+      "equiv": 0,
+      "ms_strict": 0.667
+    },
+    {
+      "operator": "Del-Red",
+      "suite": "T-Rand*",
+      "criterion": "K-Safety",
+      "total": 6,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 6,
+      "ms_strict": null
+    },
+    {
+      "operator": "Del-Red",
+      "suite": "T-Rand*",
+      "criterion": "K-Struct",
+      "total": 6,
+      "killable": 6,
+      "killed": 4,
+      "equiv": 0,
+      "ms_strict": 0.667
+    },
+    {
+      "operator": "Del-Red",
+      "suite": "T-Struct",
+      "criterion": "K-Outcome",
+      "total": 6,
+      "killable": 6,
+      "killed": 6,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Del-Red",
+      "suite": "T-Struct",
+      "criterion": "K-Safety",
+      "total": 6,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 6,
+      "ms_strict": null
+    },
+    {
+      "operator": "Del-Red",
+      "suite": "T-Struct",
+      "criterion": "K-Struct",
+      "total": 6,
+      "killable": 6,
+      "killed": 6,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Del-Rem",
+      "suite": "T-Dev*",
+      "criterion": "K-Outcome",
+      "total": 3,
+      "killable": 3,
+      "killed": 3,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Del-Rem",
+      "suite": "T-Dev*",
+      "criterion": "K-Safety",
+      "total": 3,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 3,
+      "ms_strict": null
+    },
+    {
+      "operator": "Del-Rem",
+      "suite": "T-Dev*",
+      "criterion": "K-Struct",
+      "total": 3,
+      "killable": 3,
+      "killed": 3,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Del-Rem",
+      "suite": "T-E2E*",
+      "criterion": "K-Outcome",
+      "total": 3,
+      "killable": 3,
+      "killed": 3,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Del-Rem",
+      "suite": "T-E2E*",
+      "criterion": "K-Safety",
+      "total": 3,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 3,
+      "ms_strict": null
+    },
+    {
+      "operator": "Del-Rem",
+      "suite": "T-E2E*",
+      "criterion": "K-Struct",
+      "total": 3,
+      "killable": 3,
+      "killed": 3,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Del-Rem",
+      "suite": "T-Rand*",
+      "criterion": "K-Outcome",
+      "total": 3,
+      "killable": 3,
+      "killed": 2,
+      "equiv": 0,
+      "ms_strict": 0.667
+    },
+    {
+      "operator": "Del-Rem",
+      "suite": "T-Rand*",
+      "criterion": "K-Safety",
+      "total": 3,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 3,
+      "ms_strict": null
+    },
+    {
+      "operator": "Del-Rem",
+      "suite": "T-Rand*",
+      "criterion": "K-Struct",
+      "total": 3,
+      "killable": 3,
+      "killed": 2,
+      "equiv": 0,
+      "ms_strict": 0.667
+    },
+    {
+      "operator": "Del-Rem",
+      "suite": "T-Struct",
+      "criterion": "K-Outcome",
+      "total": 3,
+      "killable": 3,
+      "killed": 3,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Del-Rem",
+      "suite": "T-Struct",
+      "criterion": "K-Safety",
+      "total": 3,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 3,
+      "ms_strict": null
+    },
+    {
+      "operator": "Del-Rem",
+      "suite": "T-Struct",
+      "criterion": "K-Struct",
+      "total": 3,
+      "killable": 3,
+      "killed": 3,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Res-Relax",
+      "suite": "T-Dev*",
+      "criterion": "K-Outcome",
+      "total": 12,
+      "killable": 12,
+      "killed": 7,
+      "equiv": 0,
+      "ms_strict": 0.583
+    },
+    {
+      "operator": "Res-Relax",
+      "suite": "T-Dev*",
+      "criterion": "K-Safety",
+      "total": 12,
+      "killable": 10,
+      "killed": 0,
+      "equiv": 2,
+      "ms_strict": 0.0
+    },
+    {
+      "operator": "Res-Relax",
+      "suite": "T-Dev*",
+      "criterion": "K-Struct",
+      "total": 12,
+      "killable": 12,
+      "killed": 7,
+      "equiv": 0,
+      "ms_strict": 0.583
+    },
+    {
+      "operator": "Res-Relax",
+      "suite": "T-E2E*",
+      "criterion": "K-Outcome",
+      "total": 12,
+      "killable": 12,
+      "killed": 3,
+      "equiv": 0,
+      "ms_strict": 0.25
+    },
+    {
+      "operator": "Res-Relax",
+      "suite": "T-E2E*",
+      "criterion": "K-Safety",
+      "total": 12,
+      "killable": 10,
+      "killed": 0,
+      "equiv": 2,
+      "ms_strict": 0.0
+    },
+    {
+      "operator": "Res-Relax",
+      "suite": "T-E2E*",
+      "criterion": "K-Struct",
+      "total": 12,
+      "killable": 12,
+      "killed": 3,
+      "equiv": 0,
+      "ms_strict": 0.25
+    },
+    {
+      "operator": "Res-Relax",
+      "suite": "T-Rand*",
+      "criterion": "K-Outcome",
+      "total": 12,
+      "killable": 12,
+      "killed": 4,
+      "equiv": 0,
+      "ms_strict": 0.333
+    },
+    {
+      "operator": "Res-Relax",
+      "suite": "T-Rand*",
+      "criterion": "K-Safety",
+      "total": 12,
+      "killable": 10,
+      "killed": 3,
+      "equiv": 2,
+      "ms_strict": 0.3
+    },
+    {
+      "operator": "Res-Relax",
+      "suite": "T-Rand*",
+      "criterion": "K-Struct",
+      "total": 12,
+      "killable": 12,
+      "killed": 4,
+      "equiv": 0,
+      "ms_strict": 0.333
+    },
+    {
+      "operator": "Res-Relax",
+      "suite": "T-Struct",
+      "criterion": "K-Outcome",
+      "total": 12,
+      "killable": 12,
+      "killed": 12,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Res-Relax",
+      "suite": "T-Struct",
+      "criterion": "K-Safety",
+      "total": 12,
+      "killable": 10,
+      "killed": 10,
+      "equiv": 2,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Res-Relax",
+      "suite": "T-Struct",
+      "criterion": "K-Struct",
+      "total": 12,
+      "killable": 12,
+      "killed": 12,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Res-Rem",
+      "suite": "T-Dev*",
+      "criterion": "K-Outcome",
+      "total": 12,
+      "killable": 12,
+      "killed": 11,
+      "equiv": 0,
+      "ms_strict": 0.917
+    },
+    {
+      "operator": "Res-Rem",
+      "suite": "T-Dev*",
+      "criterion": "K-Safety",
+      "total": 12,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 12,
+      "ms_strict": null
+    },
+    {
+      "operator": "Res-Rem",
+      "suite": "T-Dev*",
+      "criterion": "K-Struct",
+      "total": 12,
+      "killable": 12,
+      "killed": 11,
+      "equiv": 0,
+      "ms_strict": 0.917
+    },
+    {
+      "operator": "Res-Rem",
+      "suite": "T-E2E*",
+      "criterion": "K-Outcome",
+      "total": 12,
+      "killable": 12,
+      "killed": 6,
+      "equiv": 0,
+      "ms_strict": 0.5
+    },
+    {
+      "operator": "Res-Rem",
+      "suite": "T-E2E*",
+      "criterion": "K-Safety",
+      "total": 12,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 12,
+      "ms_strict": null
+    },
+    {
+      "operator": "Res-Rem",
+      "suite": "T-E2E*",
+      "criterion": "K-Struct",
+      "total": 12,
+      "killable": 12,
+      "killed": 6,
+      "equiv": 0,
+      "ms_strict": 0.5
+    },
+    {
+      "operator": "Res-Rem",
+      "suite": "T-Rand*",
+      "criterion": "K-Outcome",
+      "total": 12,
+      "killable": 12,
+      "killed": 3,
+      "equiv": 0,
+      "ms_strict": 0.25
+    },
+    {
+      "operator": "Res-Rem",
+      "suite": "T-Rand*",
+      "criterion": "K-Safety",
+      "total": 12,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 12,
+      "ms_strict": null
+    },
+    {
+      "operator": "Res-Rem",
+      "suite": "T-Rand*",
+      "criterion": "K-Struct",
+      "total": 12,
+      "killable": 12,
+      "killed": 3,
+      "equiv": 0,
+      "ms_strict": 0.25
+    },
+    {
+      "operator": "Res-Rem",
+      "suite": "T-Struct",
+      "criterion": "K-Outcome",
+      "total": 12,
+      "killable": 12,
+      "killed": 12,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Res-Rem",
+      "suite": "T-Struct",
+      "criterion": "K-Safety",
+      "total": 12,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 12,
+      "ms_strict": null
+    },
+    {
+      "operator": "Res-Rem",
+      "suite": "T-Struct",
+      "criterion": "K-Struct",
+      "total": 12,
+      "killable": 12,
+      "killed": 12,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Res-Tighten",
+      "suite": "T-Dev*",
+      "criterion": "K-Outcome",
+      "total": 24,
+      "killable": 24,
+      "killed": 22,
+      "equiv": 0,
+      "ms_strict": 0.917
+    },
+    {
+      "operator": "Res-Tighten",
+      "suite": "T-Dev*",
+      "criterion": "K-Safety",
+      "total": 24,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 24,
+      "ms_strict": null
+    },
+    {
+      "operator": "Res-Tighten",
+      "suite": "T-Dev*",
+      "criterion": "K-Struct",
+      "total": 24,
+      "killable": 24,
+      "killed": 22,
+      "equiv": 0,
+      "ms_strict": 0.917
+    },
+    {
+      "operator": "Res-Tighten",
+      "suite": "T-E2E*",
+      "criterion": "K-Outcome",
+      "total": 24,
+      "killable": 24,
+      "killed": 10,
+      "equiv": 0,
+      "ms_strict": 0.417
+    },
+    {
+      "operator": "Res-Tighten",
+      "suite": "T-E2E*",
+      "criterion": "K-Safety",
+      "total": 24,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 24,
+      "ms_strict": null
+    },
+    {
+      "operator": "Res-Tighten",
+      "suite": "T-E2E*",
+      "criterion": "K-Struct",
+      "total": 24,
+      "killable": 24,
+      "killed": 10,
+      "equiv": 0,
+      "ms_strict": 0.417
+    },
+    {
+      "operator": "Res-Tighten",
+      "suite": "T-Rand*",
+      "criterion": "K-Outcome",
+      "total": 24,
+      "killable": 24,
+      "killed": 12,
+      "equiv": 0,
+      "ms_strict": 0.5
+    },
+    {
+      "operator": "Res-Tighten",
+      "suite": "T-Rand*",
+      "criterion": "K-Safety",
+      "total": 24,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 24,
+      "ms_strict": null
+    },
+    {
+      "operator": "Res-Tighten",
+      "suite": "T-Rand*",
+      "criterion": "K-Struct",
+      "total": 24,
+      "killable": 24,
+      "killed": 12,
+      "equiv": 0,
+      "ms_strict": 0.5
+    },
+    {
+      "operator": "Res-Tighten",
+      "suite": "T-Struct",
+      "criterion": "K-Outcome",
+      "total": 24,
+      "killable": 24,
+      "killed": 24,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Res-Tighten",
+      "suite": "T-Struct",
+      "criterion": "K-Safety",
+      "total": 24,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 24,
+      "ms_strict": null
+    },
+    {
+      "operator": "Res-Tighten",
+      "suite": "T-Struct",
+      "criterion": "K-Struct",
+      "total": 24,
+      "killable": 24,
+      "killed": 24,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Tool-Fault",
+      "suite": "T-Dev*",
+      "criterion": "K-Outcome",
+      "total": 18,
+      "killable": 12,
+      "killed": 10,
+      "equiv": 6,
+      "ms_strict": 0.833
+    },
+    {
+      "operator": "Tool-Fault",
+      "suite": "T-Dev*",
+      "criterion": "K-Safety",
+      "total": 18,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 18,
+      "ms_strict": null
+    },
+    {
+      "operator": "Tool-Fault",
+      "suite": "T-Dev*",
+      "criterion": "K-Struct",
+      "total": 18,
+      "killable": 8,
+      "killed": 6,
+      "equiv": 10,
+      "ms_strict": 0.75
+    },
+    {
+      "operator": "Tool-Fault",
+      "suite": "T-E2E*",
+      "criterion": "K-Outcome",
+      "total": 18,
+      "killable": 12,
+      "killed": 0,
+      "equiv": 6,
+      "ms_strict": 0.0
+    },
+    {
+      "operator": "Tool-Fault",
+      "suite": "T-E2E*",
+      "criterion": "K-Safety",
+      "total": 18,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 18,
+      "ms_strict": null
+    },
+    {
+      "operator": "Tool-Fault",
+      "suite": "T-E2E*",
+      "criterion": "K-Struct",
+      "total": 18,
+      "killable": 8,
+      "killed": 0,
+      "equiv": 10,
+      "ms_strict": 0.0
+    },
+    {
+      "operator": "Tool-Fault",
+      "suite": "T-Rand*",
+      "criterion": "K-Outcome",
+      "total": 18,
+      "killable": 12,
+      "killed": 3,
+      "equiv": 6,
+      "ms_strict": 0.25
+    },
+    {
+      "operator": "Tool-Fault",
+      "suite": "T-Rand*",
+      "criterion": "K-Safety",
+      "total": 18,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 18,
+      "ms_strict": null
+    },
+    {
+      "operator": "Tool-Fault",
+      "suite": "T-Rand*",
+      "criterion": "K-Struct",
+      "total": 18,
+      "killable": 8,
+      "killed": 1,
+      "equiv": 10,
+      "ms_strict": 0.125
+    },
+    {
+      "operator": "Tool-Fault",
+      "suite": "T-Struct",
+      "criterion": "K-Outcome",
+      "total": 18,
+      "killable": 12,
+      "killed": 12,
+      "equiv": 6,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Tool-Fault",
+      "suite": "T-Struct",
+      "criterion": "K-Safety",
+      "total": 18,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 18,
+      "ms_strict": null
+    },
+    {
+      "operator": "Tool-Fault",
+      "suite": "T-Struct",
+      "criterion": "K-Struct",
+      "total": 18,
+      "killable": 8,
+      "killed": 8,
+      "equiv": 10,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Tool-Red",
+      "suite": "T-Dev*",
+      "criterion": "K-Outcome",
+      "total": 50,
+      "killable": 49,
+      "killed": 44,
+      "equiv": 1,
+      "ms_strict": 0.898
+    },
+    {
+      "operator": "Tool-Red",
+      "suite": "T-Dev*",
+      "criterion": "K-Safety",
+      "total": 50,
+      "killable": 12,
+      "killed": 5,
+      "equiv": 38,
+      "ms_strict": 0.417
+    },
+    {
+      "operator": "Tool-Red",
+      "suite": "T-Dev*",
+      "criterion": "K-Struct",
+      "total": 50,
+      "killable": 49,
+      "killed": 44,
+      "equiv": 1,
+      "ms_strict": 0.898
+    },
+    {
+      "operator": "Tool-Red",
+      "suite": "T-E2E*",
+      "criterion": "K-Outcome",
+      "total": 50,
+      "killable": 49,
+      "killed": 18,
+      "equiv": 1,
+      "ms_strict": 0.367
+    },
+    {
+      "operator": "Tool-Red",
+      "suite": "T-E2E*",
+      "criterion": "K-Safety",
+      "total": 50,
+      "killable": 12,
+      "killed": 0,
+      "equiv": 38,
+      "ms_strict": 0.0
+    },
+    {
+      "operator": "Tool-Red",
+      "suite": "T-E2E*",
+      "criterion": "K-Struct",
+      "total": 50,
+      "killable": 49,
+      "killed": 18,
+      "equiv": 1,
+      "ms_strict": 0.367
+    },
+    {
+      "operator": "Tool-Red",
+      "suite": "T-Rand*",
+      "criterion": "K-Outcome",
+      "total": 50,
+      "killable": 49,
+      "killed": 28,
+      "equiv": 1,
+      "ms_strict": 0.571
+    },
+    {
+      "operator": "Tool-Red",
+      "suite": "T-Rand*",
+      "criterion": "K-Safety",
+      "total": 50,
+      "killable": 12,
+      "killed": 2,
+      "equiv": 38,
+      "ms_strict": 0.167
+    },
+    {
+      "operator": "Tool-Red",
+      "suite": "T-Rand*",
+      "criterion": "K-Struct",
+      "total": 50,
+      "killable": 49,
+      "killed": 28,
+      "equiv": 1,
+      "ms_strict": 0.571
+    },
+    {
+      "operator": "Tool-Red",
+      "suite": "T-Struct",
+      "criterion": "K-Outcome",
+      "total": 50,
+      "killable": 49,
+      "killed": 49,
+      "equiv": 1,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Tool-Red",
+      "suite": "T-Struct",
+      "criterion": "K-Safety",
+      "total": 50,
+      "killable": 12,
+      "killed": 12,
+      "equiv": 38,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Tool-Red",
+      "suite": "T-Struct",
+      "criterion": "K-Struct",
+      "total": 50,
+      "killable": 49,
+      "killed": 49,
+      "equiv": 1,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Tool-Rem",
+      "suite": "T-Dev*",
+      "criterion": "K-Outcome",
+      "total": 24,
+      "killable": 24,
+      "killed": 24,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Tool-Rem",
+      "suite": "T-Dev*",
+      "criterion": "K-Safety",
+      "total": 24,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 24,
+      "ms_strict": null
+    },
+    {
+      "operator": "Tool-Rem",
+      "suite": "T-Dev*",
+      "criterion": "K-Struct",
+      "total": 24,
+      "killable": 24,
+      "killed": 24,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Tool-Rem",
+      "suite": "T-E2E*",
+      "criterion": "K-Outcome",
+      "total": 24,
+      "killable": 24,
+      "killed": 24,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Tool-Rem",
+      "suite": "T-E2E*",
+      "criterion": "K-Safety",
+      "total": 24,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 24,
+      "ms_strict": null
+    },
+    {
+      "operator": "Tool-Rem",
+      "suite": "T-E2E*",
+      "criterion": "K-Struct",
+      "total": 24,
+      "killable": 24,
+      "killed": 24,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Tool-Rem",
+      "suite": "T-Rand*",
+      "criterion": "K-Outcome",
+      "total": 24,
+      "killable": 24,
+      "killed": 19,
+      "equiv": 0,
+      "ms_strict": 0.792
+    },
+    {
+      "operator": "Tool-Rem",
+      "suite": "T-Rand*",
+      "criterion": "K-Safety",
+      "total": 24,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 24,
+      "ms_strict": null
+    },
+    {
+      "operator": "Tool-Rem",
+      "suite": "T-Rand*",
+      "criterion": "K-Struct",
+      "total": 24,
+      "killable": 24,
+      "killed": 19,
+      "equiv": 0,
+      "ms_strict": 0.792
+    },
+    {
+      "operator": "Tool-Rem",
+      "suite": "T-Struct",
+      "criterion": "K-Outcome",
+      "total": 24,
+      "killable": 24,
+      "killed": 24,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Tool-Rem",
+      "suite": "T-Struct",
+      "criterion": "K-Safety",
+      "total": 24,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 24,
+      "ms_strict": null
+    },
+    {
+      "operator": "Tool-Rem",
+      "suite": "T-Struct",
+      "criterion": "K-Struct",
+      "total": 24,
+      "killable": 24,
+      "killed": 24,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Tool-SigMut",
+      "suite": "T-Dev*",
+      "criterion": "K-Outcome",
+      "total": 9,
+      "killable": 9,
+      "killed": 9,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Tool-SigMut",
+      "suite": "T-Dev*",
+      "criterion": "K-Safety",
+      "total": 9,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 9,
+      "ms_strict": null
+    },
+    {
+      "operator": "Tool-SigMut",
+      "suite": "T-Dev*",
+      "criterion": "K-Struct",
+      "total": 9,
+      "killable": 9,
+      "killed": 9,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Tool-SigMut",
+      "suite": "T-E2E*",
+      "criterion": "K-Outcome",
+      "total": 9,
+      "killable": 9,
+      "killed": 9,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Tool-SigMut",
+      "suite": "T-E2E*",
+      "criterion": "K-Safety",
+      "total": 9,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 9,
+      "ms_strict": null
+    },
+    {
+      "operator": "Tool-SigMut",
+      "suite": "T-E2E*",
+      "criterion": "K-Struct",
+      "total": 9,
+      "killable": 9,
+      "killed": 9,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Tool-SigMut",
+      "suite": "T-Rand*",
+      "criterion": "K-Outcome",
+      "total": 9,
+      "killable": 9,
+      "killed": 9,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Tool-SigMut",
+      "suite": "T-Rand*",
+      "criterion": "K-Safety",
+      "total": 9,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 9,
+      "ms_strict": null
+    },
+    {
+      "operator": "Tool-SigMut",
+      "suite": "T-Rand*",
+      "criterion": "K-Struct",
+      "total": 9,
+      "killable": 9,
+      "killed": 9,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Tool-SigMut",
+      "suite": "T-Struct",
+      "criterion": "K-Outcome",
+      "total": 9,
+      "killable": 9,
+      "killed": 9,
+      "equiv": 0,
+      "ms_strict": 1.0
+    },
+    {
+      "operator": "Tool-SigMut",
+      "suite": "T-Struct",
+      "criterion": "K-Safety",
+      "total": 9,
+      "killable": 0,
+      "killed": 0,
+      "equiv": 9,
+      "ms_strict": null
+    },
+    {
+      "operator": "Tool-SigMut",
+      "suite": "T-Struct",
+      "criterion": "K-Struct",
+      "total": 9,
+      "killable": 9,
+      "killed": 9,
+      "equiv": 0,
+      "ms_strict": 1.0
+    }
+  ],
+  "live_calls": {
+    "n": 7384,
+    "errors": 2186
+  }
+}

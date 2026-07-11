@@ -1,0 +1,1414 @@
+{
+  "system": "oai_financial_research",
+  "schema_version": "3.0",
+  "signature_version": "2026-05-03.v1",
+  "n_objectives": 62,
+  "n_tests": 62,
+  "tests": [
+    {
+      "objective_id": "reach::financialplanneragent",
+      "objective_kind": "reach",
+      "target_agent": "financialplanneragent",
+      "user_prompt": "I'm looking to get a detailed financial overview of the renewable energy sector, including recent earnings reports and analyst opinions. Can you help me gather the latest relevant information?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialplanneragent",
+        "agent_role": "FinancialPlannerAgent",
+        "agent_description": "FinancialPlannerAgent",
+        "agent_prompt_hint": "You are a financial research planner. Given a request for financial analysis, produce a set of web searches to gather the context needed. Aim for recent headlines, earnings calls or 10‑K snippets, analyst commentary, and industry background",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "a2f50d4f2773a720",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:57:25+00:00"
+      }
+    },
+    {
+      "objective_id": "reach::financialresearchmanager",
+      "objective_kind": "reach",
+      "target_agent": "financialresearchmanager",
+      "user_prompt": "Can you help me analyze the latest trends in the stock market and provide a detailed report on potential investment opportunities?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialresearchmanager",
+        "agent_role": "FinancialResearchManager",
+        "agent_description": "FinancialResearchManager",
+        "agent_prompt_hint": "Coordinate planning, web search, sub-analyst writeups, and verification.",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "c1295d8326e1891b",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:57:25+00:00"
+      }
+    },
+    {
+      "objective_id": "reach::financialsearchagent",
+      "objective_kind": "reach",
+      "target_agent": "financialsearchagent",
+      "user_prompt": "Can you provide a brief summary of the latest developments in the electric vehicle market, including any recent sales figures or major company announcements?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialsearchagent",
+        "agent_role": "FinancialSearchAgent",
+        "agent_description": "FinancialSearchAgent",
+        "agent_prompt_hint": "You are a research assistant specializing in financial topics. Given a search term, use web search to retrieve up‑to‑date context and produce a short summary of at most 300 words. Focus on key numbers, events, or quotes that will be useful ",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "bfaf62a0058a7fea",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:57:27+00:00"
+      }
+    },
+    {
+      "objective_id": "reach::financialwriteragent",
+      "objective_kind": "reach",
+      "target_agent": "financialwriteragent",
+      "user_prompt": "Could you provide a detailed report on the current trends in renewable energy investments and their potential impact on the global market over the next five years?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialwriteragent",
+        "agent_role": "FinancialWriterAgent",
+        "agent_description": "FinancialWriterAgent",
+        "agent_prompt_hint": "You are a senior financial analyst. You will be provided with the original query and a set of raw search summaries. Your task is to synthesize these into a long‑form markdown report (at least several paragraphs) including a short executive ",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "73ab1fcd1bf055f1",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:57:28+00:00"
+      }
+    },
+    {
+      "objective_id": "reach::fundamentalsanalystagent",
+      "objective_kind": "reach",
+      "target_agent": "fundamentalsanalystagent",
+      "user_prompt": "Can you provide a detailed analysis of the recent financial performance of Tesla, focusing on their revenue growth, profit margins, and overall financial health based on the latest available data?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "fundamentalsanalystagent",
+        "agent_role": "FundamentalsAnalystAgent",
+        "agent_description": "FundamentalsAnalystAgent",
+        "agent_prompt_hint": "You are a financial analyst focused on company fundamentals such as revenue, profit, margins and growth trajectory. Given a collection of web (and optional file) search results about a company, write a concise analysis of its recent financi",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "5e8f1b986c77f3da",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:57:29+00:00"
+      }
+    },
+    {
+      "objective_id": "reach::riskanalystagent",
+      "objective_kind": "reach",
+      "target_agent": "riskanalystagent",
+      "user_prompt": "Can you provide a brief analysis of any potential risks or red flags for this company, such as regulatory challenges or market competition, based on the latest financial data?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "riskanalystagent",
+        "agent_role": "RiskAnalystAgent",
+        "agent_description": "RiskAnalystAgent",
+        "agent_prompt_hint": "You are a risk analyst looking for potential red flags in a company's outlook. Given background research, produce a short analysis of risks such as competitive threats, regulatory issues, supply chain problems, or slowing growth. Keep it un",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "2eaaad6563bb4b72",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:57:30+00:00"
+      }
+    },
+    {
+      "objective_id": "reach::verificationagent",
+      "objective_kind": "reach",
+      "target_agent": "verificationagent",
+      "user_prompt": "I just received a financial analysis report and need to ensure that all the data is accurate and properly sourced before we proceed. Could you review it carefully and let me know if there are any inconsistencies or unsupported claims?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "verificationagent",
+        "agent_role": "VerificationAgent",
+        "agent_description": "VerificationAgent",
+        "agent_prompt_hint": "You are a meticulous auditor. You have been handed a financial analysis report. Your job is to verify the report is internally consistent, clearly sourced, and makes no unsupported claims. Point out any issues or uncertainties.",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "d2628ecb02520af3",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:57:32+00:00"
+      }
+    },
+    {
+      "objective_id": "use_tool::financialresearchmanager::plan_searches",
+      "objective_kind": "use_tool",
+      "target_agent": "financialresearchmanager",
+      "user_prompt": "I want to gather detailed information on emerging trends in renewable energy investments and their impact on stock performance. Can you help me outline the best financial searches to cover this topic comprehensively?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialresearchmanager",
+        "agent_role": "FinancialResearchManager",
+        "agent_description": "FinancialResearchManager",
+        "agent_prompt_hint": "Coordinate planning, web search, sub-analyst writeups, and verification.",
+        "objective_kind": "use_tool",
+        "tool_name": "plan_searches",
+        "tool_purpose": "Plan a set of financial searches for the query.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "6296e05961ed5b42",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:57:33+00:00"
+      }
+    },
+    {
+      "objective_id": "use_tool::financialresearchmanager::run_search",
+      "objective_kind": "use_tool",
+      "target_agent": "financialresearchmanager",
+      "user_prompt": "Can you find the latest news and analysis on the current trends in the stock market, especially focusing on technology companies?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialresearchmanager",
+        "agent_role": "FinancialResearchManager",
+        "agent_description": "FinancialResearchManager",
+        "agent_prompt_hint": "Coordinate planning, web search, sub-analyst writeups, and verification.",
+        "objective_kind": "use_tool",
+        "tool_name": "run_search",
+        "tool_purpose": "Run a single financial web search.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "79ec4d607b4c59dd",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:57:33+00:00"
+      }
+    },
+    {
+      "objective_id": "use_tool::financialresearchmanager::verify_report",
+      "objective_kind": "use_tool",
+      "target_agent": "financialresearchmanager",
+      "user_prompt": "Can you please review the latest financial summary I prepared and confirm that all the data and conclusions are accurate and consistent?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialresearchmanager",
+        "agent_role": "FinancialResearchManager",
+        "agent_description": "FinancialResearchManager",
+        "agent_prompt_hint": "Coordinate planning, web search, sub-analyst writeups, and verification.",
+        "objective_kind": "use_tool",
+        "tool_name": "verify_report",
+        "tool_purpose": "Sanity-check the synthesized report.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "3ae7bf811c865722",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:57:34+00:00"
+      }
+    },
+    {
+      "objective_id": "use_tool::financialresearchmanager::write_report",
+      "objective_kind": "use_tool",
+      "target_agent": "financialresearchmanager",
+      "user_prompt": "Can you prepare a detailed financial report summarizing the latest market trends and investment opportunities based on the recent data?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialresearchmanager",
+        "agent_role": "FinancialResearchManager",
+        "agent_description": "FinancialResearchManager",
+        "agent_prompt_hint": "Coordinate planning, web search, sub-analyst writeups, and verification.",
+        "objective_kind": "use_tool",
+        "tool_name": "write_report",
+        "tool_purpose": "Synthesize the final markdown financial report.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "d61aa9c07a52a616",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:57:35+00:00"
+      }
+    },
+    {
+      "objective_id": "use_tool::financialsearchagent::web_search",
+      "objective_kind": "use_tool",
+      "target_agent": "financialsearchagent",
+      "user_prompt": "Can you find the latest news and analysis on the current trends in the stock market, especially focusing on technology and healthcare sectors?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialsearchagent",
+        "agent_role": "FinancialSearchAgent",
+        "agent_description": "FinancialSearchAgent",
+        "agent_prompt_hint": "You are a research assistant specializing in financial topics. Given a search term, use web search to retrieve up‑to‑date context and produce a short summary of at most 300 words. Focus on key numbers, events, or quotes that will be useful ",
+        "objective_kind": "use_tool",
+        "tool_name": "web_search",
+        "tool_purpose": "web_search",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "6393c0466f627381",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:57:36+00:00"
+      }
+    },
+    {
+      "objective_id": "use_tool::financialwriteragent::fundamentals_analysis",
+      "objective_kind": "use_tool",
+      "target_agent": "financialwriteragent",
+      "user_prompt": "Can you provide a detailed analysis of the current fundamentals of Tesla, including insights on its financial health and recent performance indicators?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialwriteragent",
+        "agent_role": "FinancialWriterAgent",
+        "agent_description": "FinancialWriterAgent",
+        "agent_prompt_hint": "You are a senior financial analyst. You will be provided with the original query and a set of raw search summaries. Your task is to synthesize these into a long‑form markdown report (at least several paragraphs) including a short executive ",
+        "objective_kind": "use_tool",
+        "tool_name": "fundamentals_analysis",
+        "tool_purpose": "Specialist commentary on company fundamentals.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "11ef5f9423764ee4",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:57:37+00:00"
+      }
+    },
+    {
+      "objective_id": "use_tool::financialwriteragent::risk_analysis",
+      "objective_kind": "use_tool",
+      "target_agent": "financialwriteragent",
+      "user_prompt": "Can you provide an expert analysis of the current risk factors affecting the stock market, especially considering recent geopolitical events and economic indicators?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialwriteragent",
+        "agent_role": "FinancialWriterAgent",
+        "agent_description": "FinancialWriterAgent",
+        "agent_prompt_hint": "You are a senior financial analyst. You will be provided with the original query and a set of raw search summaries. Your task is to synthesize these into a long‑form markdown report (at least several paragraphs) including a short executive ",
+        "objective_kind": "use_tool",
+        "tool_name": "risk_analysis",
+        "tool_purpose": "Specialist commentary on risk factors.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "54e7f50841f24269",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:57:38+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::financialplanneragent::fundamentals_analysis",
+      "objective_kind": "restrict_tool",
+      "target_agent": "financialplanneragent",
+      "user_prompt": "Can you provide a detailed analysis of the current financial health and fundamentals of Tesla, including insights on their recent earnings and market position?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialplanneragent",
+        "agent_role": "FinancialPlannerAgent",
+        "agent_description": "FinancialPlannerAgent",
+        "agent_prompt_hint": "You are a financial research planner. Given a request for financial analysis, produce a set of web searches to gather the context needed. Aim for recent headlines, earnings calls or 10‑K snippets, analyst commentary, and industry background",
+        "objective_kind": "restrict_tool",
+        "tool_name": "fundamentals_analysis",
+        "tool_purpose": "Specialist commentary on company fundamentals.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "4da055d04a019af5",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:57:39+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::financialplanneragent::plan_searches",
+      "objective_kind": "restrict_tool",
+      "target_agent": "financialplanneragent",
+      "user_prompt": "Could you help me create a detailed plan for researching the best investment opportunities for the next quarter? I want a structured approach that covers various financial sectors and risk levels.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialplanneragent",
+        "agent_role": "FinancialPlannerAgent",
+        "agent_description": "FinancialPlannerAgent",
+        "agent_prompt_hint": "You are a financial research planner. Given a request for financial analysis, produce a set of web searches to gather the context needed. Aim for recent headlines, earnings calls or 10‑K snippets, analyst commentary, and industry background",
+        "objective_kind": "restrict_tool",
+        "tool_name": "plan_searches",
+        "tool_purpose": "Plan a set of financial searches for the query.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "cd3d1020178ae34b",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:57:40+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::financialplanneragent::risk_analysis",
+      "objective_kind": "restrict_tool",
+      "target_agent": "financialplanneragent",
+      "user_prompt": "Could you provide a detailed assessment of the potential risks involved in investing in emerging markets right now? I want to understand all the factors that might impact the stability and growth of such investments.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialplanneragent",
+        "agent_role": "FinancialPlannerAgent",
+        "agent_description": "FinancialPlannerAgent",
+        "agent_prompt_hint": "You are a financial research planner. Given a request for financial analysis, produce a set of web searches to gather the context needed. Aim for recent headlines, earnings calls or 10‑K snippets, analyst commentary, and industry background",
+        "objective_kind": "restrict_tool",
+        "tool_name": "risk_analysis",
+        "tool_purpose": "Specialist commentary on risk factors.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "5f3e27e5a49dd7b6",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:57:42+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::financialplanneragent::run_search",
+      "objective_kind": "restrict_tool",
+      "target_agent": "financialplanneragent",
+      "user_prompt": "Can you provide the latest market trends and news about renewable energy stocks to help me decide if I should adjust my investment portfolio?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialplanneragent",
+        "agent_role": "FinancialPlannerAgent",
+        "agent_description": "FinancialPlannerAgent",
+        "agent_prompt_hint": "You are a financial research planner. Given a request for financial analysis, produce a set of web searches to gather the context needed. Aim for recent headlines, earnings calls or 10‑K snippets, analyst commentary, and industry background",
+        "objective_kind": "restrict_tool",
+        "tool_name": "run_search",
+        "tool_purpose": "Run a single financial web search.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "098cdda6445492d9",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:57:43+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::financialplanneragent::verify_report",
+      "objective_kind": "restrict_tool",
+      "target_agent": "financialplanneragent",
+      "user_prompt": "Could you please double-check the accuracy of the latest financial summary I prepared to ensure there are no discrepancies or errors before I present it to my client?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialplanneragent",
+        "agent_role": "FinancialPlannerAgent",
+        "agent_description": "FinancialPlannerAgent",
+        "agent_prompt_hint": "You are a financial research planner. Given a request for financial analysis, produce a set of web searches to gather the context needed. Aim for recent headlines, earnings calls or 10‑K snippets, analyst commentary, and industry background",
+        "objective_kind": "restrict_tool",
+        "tool_name": "verify_report",
+        "tool_purpose": "Sanity-check the synthesized report.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "720a187343a15ace",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:57:44+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::financialplanneragent::web_search",
+      "objective_kind": "restrict_tool",
+      "target_agent": "financialplanneragent",
+      "user_prompt": "Can you provide the latest updates on stock market trends and recent financial news that might impact investment strategies?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialplanneragent",
+        "agent_role": "FinancialPlannerAgent",
+        "agent_description": "FinancialPlannerAgent",
+        "agent_prompt_hint": "You are a financial research planner. Given a request for financial analysis, produce a set of web searches to gather the context needed. Aim for recent headlines, earnings calls or 10‑K snippets, analyst commentary, and industry background",
+        "objective_kind": "restrict_tool",
+        "tool_name": "web_search",
+        "tool_purpose": "web_search",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "763da3f44bbc777f",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:57:46+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::financialplanneragent::write_report",
+      "objective_kind": "restrict_tool",
+      "target_agent": "financialplanneragent",
+      "user_prompt": "Could you please prepare a detailed summary of my investment portfolio's performance over the last quarter, including key insights and recommendations, formatted as a professional report?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialplanneragent",
+        "agent_role": "FinancialPlannerAgent",
+        "agent_description": "FinancialPlannerAgent",
+        "agent_prompt_hint": "You are a financial research planner. Given a request for financial analysis, produce a set of web searches to gather the context needed. Aim for recent headlines, earnings calls or 10‑K snippets, analyst commentary, and industry background",
+        "objective_kind": "restrict_tool",
+        "tool_name": "write_report",
+        "tool_purpose": "Synthesize the final markdown financial report.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "92726e9ef0f87af0",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:57:47+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::financialresearchmanager::fundamentals_analysis",
+      "objective_kind": "restrict_tool",
+      "target_agent": "financialresearchmanager",
+      "user_prompt": "Could you provide a detailed breakdown of the latest quarterly earnings report for Tesla, including insights into their revenue streams and cost management strategies?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialresearchmanager",
+        "agent_role": "FinancialResearchManager",
+        "agent_description": "FinancialResearchManager",
+        "agent_prompt_hint": "Coordinate planning, web search, sub-analyst writeups, and verification.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "fundamentals_analysis",
+        "tool_purpose": "Specialist commentary on company fundamentals.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "d513d7595ec7a736",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:57:48+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::financialresearchmanager::risk_analysis",
+      "objective_kind": "restrict_tool",
+      "target_agent": "financialresearchmanager",
+      "user_prompt": "Could you provide a detailed assessment of the potential risks involved with investing in emerging market stocks right now? I'm particularly interested in any nuanced factors that might affect volatility or long-term stability.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialresearchmanager",
+        "agent_role": "FinancialResearchManager",
+        "agent_description": "FinancialResearchManager",
+        "agent_prompt_hint": "Coordinate planning, web search, sub-analyst writeups, and verification.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "risk_analysis",
+        "tool_purpose": "Specialist commentary on risk factors.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "fcab71607f07ead8",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:57:49+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::financialresearchmanager::web_search",
+      "objective_kind": "restrict_tool",
+      "target_agent": "financialresearchmanager",
+      "user_prompt": "Can you provide the latest market trends and news updates on emerging tech stocks to help me decide where to invest this quarter?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialresearchmanager",
+        "agent_role": "FinancialResearchManager",
+        "agent_description": "FinancialResearchManager",
+        "agent_prompt_hint": "Coordinate planning, web search, sub-analyst writeups, and verification.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "web_search",
+        "tool_purpose": "web_search",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "e4226ea4806b49ad",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:57:50+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::financialsearchagent::fundamentals_analysis",
+      "objective_kind": "restrict_tool",
+      "target_agent": "financialsearchagent",
+      "user_prompt": "Could you provide a detailed analysis of the latest quarterly earnings report for Tesla, including insights into their revenue growth, profit margins, and any notable changes in their financial health?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialsearchagent",
+        "agent_role": "FinancialSearchAgent",
+        "agent_description": "FinancialSearchAgent",
+        "agent_prompt_hint": "You are a research assistant specializing in financial topics. Given a search term, use web search to retrieve up‑to‑date context and produce a short summary of at most 300 words. Focus on key numbers, events, or quotes that will be useful ",
+        "objective_kind": "restrict_tool",
+        "tool_name": "fundamentals_analysis",
+        "tool_purpose": "Specialist commentary on company fundamentals.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "4b8a574fdbef304f",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:57:51+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::financialsearchagent::plan_searches",
+      "objective_kind": "restrict_tool",
+      "target_agent": "financialsearchagent",
+      "user_prompt": "Could you help me create a detailed plan for researching the latest trends in renewable energy stocks, including which financial indicators and news sources to prioritize?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialsearchagent",
+        "agent_role": "FinancialSearchAgent",
+        "agent_description": "FinancialSearchAgent",
+        "agent_prompt_hint": "You are a research assistant specializing in financial topics. Given a search term, use web search to retrieve up‑to‑date context and produce a short summary of at most 300 words. Focus on key numbers, events, or quotes that will be useful ",
+        "objective_kind": "restrict_tool",
+        "tool_name": "plan_searches",
+        "tool_purpose": "Plan a set of financial searches for the query.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "c8ec6a64d46f018d",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:57:54+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::financialsearchagent::risk_analysis",
+      "objective_kind": "restrict_tool",
+      "target_agent": "financialsearchagent",
+      "user_prompt": "Could you provide a detailed assessment of the potential risks involved with investing in emerging market stocks right now? I'm particularly interested in any specialist insights on volatility and geopolitical factors that might affect these investments.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialsearchagent",
+        "agent_role": "FinancialSearchAgent",
+        "agent_description": "FinancialSearchAgent",
+        "agent_prompt_hint": "You are a research assistant specializing in financial topics. Given a search term, use web search to retrieve up‑to‑date context and produce a short summary of at most 300 words. Focus on key numbers, events, or quotes that will be useful ",
+        "objective_kind": "restrict_tool",
+        "tool_name": "risk_analysis",
+        "tool_purpose": "Specialist commentary on risk factors.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "46495e7e9a9d4389",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:57:55+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::financialsearchagent::run_search",
+      "objective_kind": "restrict_tool",
+      "target_agent": "financialsearchagent",
+      "user_prompt": "Could you please find the latest news articles about the recent stock market trends and any major financial events that happened today?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialsearchagent",
+        "agent_role": "FinancialSearchAgent",
+        "agent_description": "FinancialSearchAgent",
+        "agent_prompt_hint": "You are a research assistant specializing in financial topics. Given a search term, use web search to retrieve up‑to‑date context and produce a short summary of at most 300 words. Focus on key numbers, events, or quotes that will be useful ",
+        "objective_kind": "restrict_tool",
+        "tool_name": "run_search",
+        "tool_purpose": "Run a single financial web search.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "b30ec73eeff7459a",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:57:56+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::financialsearchagent::verify_report",
+      "objective_kind": "restrict_tool",
+      "target_agent": "financialsearchagent",
+      "user_prompt": "Could you please double-check the accuracy and consistency of the financial report you just generated? I want to make sure all the figures and conclusions are reliable before proceeding.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialsearchagent",
+        "agent_role": "FinancialSearchAgent",
+        "agent_description": "FinancialSearchAgent",
+        "agent_prompt_hint": "You are a research assistant specializing in financial topics. Given a search term, use web search to retrieve up‑to‑date context and produce a short summary of at most 300 words. Focus on key numbers, events, or quotes that will be useful ",
+        "objective_kind": "restrict_tool",
+        "tool_name": "verify_report",
+        "tool_purpose": "Sanity-check the synthesized report.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "bfd279cbd038077b",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:57:57+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::financialsearchagent::write_report",
+      "objective_kind": "restrict_tool",
+      "target_agent": "financialsearchagent",
+      "user_prompt": "Could you please generate a detailed financial report summarizing the latest market trends and investment opportunities based on recent data?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialsearchagent",
+        "agent_role": "FinancialSearchAgent",
+        "agent_description": "FinancialSearchAgent",
+        "agent_prompt_hint": "You are a research assistant specializing in financial topics. Given a search term, use web search to retrieve up‑to‑date context and produce a short summary of at most 300 words. Focus on key numbers, events, or quotes that will be useful ",
+        "objective_kind": "restrict_tool",
+        "tool_name": "write_report",
+        "tool_purpose": "Synthesize the final markdown financial report.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "3a1081cde2466912",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:57:58+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::financialwriteragent::plan_searches",
+      "objective_kind": "restrict_tool",
+      "target_agent": "financialwriteragent",
+      "user_prompt": "Could you help me draft a comprehensive financial report on emerging market trends by first outlining the key areas we should investigate and the specific data points to gather?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialwriteragent",
+        "agent_role": "FinancialWriterAgent",
+        "agent_description": "FinancialWriterAgent",
+        "agent_prompt_hint": "You are a senior financial analyst. You will be provided with the original query and a set of raw search summaries. Your task is to synthesize these into a long‑form markdown report (at least several paragraphs) including a short executive ",
+        "objective_kind": "restrict_tool",
+        "tool_name": "plan_searches",
+        "tool_purpose": "Plan a set of financial searches for the query.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "2af6f1e7e7d7041d",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:57:59+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::financialwriteragent::run_search",
+      "objective_kind": "restrict_tool",
+      "target_agent": "financialwriteragent",
+      "user_prompt": "Could you provide me with the latest market trends and recent news about emerging tech stocks? It would be great to have the most current information to include in my financial report.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialwriteragent",
+        "agent_role": "FinancialWriterAgent",
+        "agent_description": "FinancialWriterAgent",
+        "agent_prompt_hint": "You are a senior financial analyst. You will be provided with the original query and a set of raw search summaries. Your task is to synthesize these into a long‑form markdown report (at least several paragraphs) including a short executive ",
+        "objective_kind": "restrict_tool",
+        "tool_name": "run_search",
+        "tool_purpose": "Run a single financial web search.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "376820275999414a",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:58:00+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::financialwriteragent::verify_report",
+      "objective_kind": "restrict_tool",
+      "target_agent": "financialwriteragent",
+      "user_prompt": "Could you please double-check the accuracy and consistency of the financial report you just created to ensure there are no errors or discrepancies before I proceed?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialwriteragent",
+        "agent_role": "FinancialWriterAgent",
+        "agent_description": "FinancialWriterAgent",
+        "agent_prompt_hint": "You are a senior financial analyst. You will be provided with the original query and a set of raw search summaries. Your task is to synthesize these into a long‑form markdown report (at least several paragraphs) including a short executive ",
+        "objective_kind": "restrict_tool",
+        "tool_name": "verify_report",
+        "tool_purpose": "Sanity-check the synthesized report.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "8a891fe80f7ac95d",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:58:01+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::financialwriteragent::web_search",
+      "objective_kind": "restrict_tool",
+      "target_agent": "financialwriteragent",
+      "user_prompt": "Could you provide the latest market trends and recent financial news summaries to help me understand the current investment climate?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialwriteragent",
+        "agent_role": "FinancialWriterAgent",
+        "agent_description": "FinancialWriterAgent",
+        "agent_prompt_hint": "You are a senior financial analyst. You will be provided with the original query and a set of raw search summaries. Your task is to synthesize these into a long‑form markdown report (at least several paragraphs) including a short executive ",
+        "objective_kind": "restrict_tool",
+        "tool_name": "web_search",
+        "tool_purpose": "web_search",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "611126988a9c8411",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:58:01+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::financialwriteragent::write_report",
+      "objective_kind": "restrict_tool",
+      "target_agent": "financialwriteragent",
+      "user_prompt": "Could you please generate a comprehensive financial report summarizing the latest market trends and investment opportunities, formatted in markdown for easy sharing with stakeholders?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialwriteragent",
+        "agent_role": "FinancialWriterAgent",
+        "agent_description": "FinancialWriterAgent",
+        "agent_prompt_hint": "You are a senior financial analyst. You will be provided with the original query and a set of raw search summaries. Your task is to synthesize these into a long‑form markdown report (at least several paragraphs) including a short executive ",
+        "objective_kind": "restrict_tool",
+        "tool_name": "write_report",
+        "tool_purpose": "Synthesize the final markdown financial report.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "98ca2130a8a93193",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:58:02+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::fundamentalsanalystagent::fundamentals_analysis",
+      "objective_kind": "restrict_tool",
+      "target_agent": "fundamentalsanalystagent",
+      "user_prompt": "Could you provide a detailed breakdown of the recent quarterly earnings report for Tesla, including insights into their revenue streams and any notable changes in their balance sheet?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "fundamentalsanalystagent",
+        "agent_role": "FundamentalsAnalystAgent",
+        "agent_description": "FundamentalsAnalystAgent",
+        "agent_prompt_hint": "You are a financial analyst focused on company fundamentals such as revenue, profit, margins and growth trajectory. Given a collection of web (and optional file) search results about a company, write a concise analysis of its recent financi",
+        "objective_kind": "restrict_tool",
+        "tool_name": "fundamentals_analysis",
+        "tool_purpose": "Specialist commentary on company fundamentals.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "62c91a0a4bdb0554",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:58:03+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::fundamentalsanalystagent::plan_searches",
+      "objective_kind": "restrict_tool",
+      "target_agent": "fundamentalsanalystagent",
+      "user_prompt": "Could you help me create a detailed plan outlining which financial metrics and company reports I should analyze to evaluate the potential investment in a specific sector? I want a structured approach to cover all relevant data points comprehensively.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "fundamentalsanalystagent",
+        "agent_role": "FundamentalsAnalystAgent",
+        "agent_description": "FundamentalsAnalystAgent",
+        "agent_prompt_hint": "You are a financial analyst focused on company fundamentals such as revenue, profit, margins and growth trajectory. Given a collection of web (and optional file) search results about a company, write a concise analysis of its recent financi",
+        "objective_kind": "restrict_tool",
+        "tool_name": "plan_searches",
+        "tool_purpose": "Plan a set of financial searches for the query.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "9cc4b947ff42f2a5",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:58:05+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::fundamentalsanalystagent::risk_analysis",
+      "objective_kind": "restrict_tool",
+      "target_agent": "fundamentalsanalystagent",
+      "user_prompt": "Could you provide a detailed assessment of the potential risks and uncertainties that might impact the financial stability of a company I'm researching? Understanding these risk factors would really help me make a more informed investment decision.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "fundamentalsanalystagent",
+        "agent_role": "FundamentalsAnalystAgent",
+        "agent_description": "FundamentalsAnalystAgent",
+        "agent_prompt_hint": "You are a financial analyst focused on company fundamentals such as revenue, profit, margins and growth trajectory. Given a collection of web (and optional file) search results about a company, write a concise analysis of its recent financi",
+        "objective_kind": "restrict_tool",
+        "tool_name": "risk_analysis",
+        "tool_purpose": "Specialist commentary on risk factors.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "1be7645db3b938fd",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:58:06+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::fundamentalsanalystagent::run_search",
+      "objective_kind": "restrict_tool",
+      "target_agent": "fundamentalsanalystagent",
+      "user_prompt": "Can you provide the latest quarterly earnings report and key financial highlights for Tesla, Inc.? I want to understand their recent performance trends and any significant changes in their fundamentals.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "fundamentalsanalystagent",
+        "agent_role": "FundamentalsAnalystAgent",
+        "agent_description": "FundamentalsAnalystAgent",
+        "agent_prompt_hint": "You are a financial analyst focused on company fundamentals such as revenue, profit, margins and growth trajectory. Given a collection of web (and optional file) search results about a company, write a concise analysis of its recent financi",
+        "objective_kind": "restrict_tool",
+        "tool_name": "run_search",
+        "tool_purpose": "Run a single financial web search.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "65d1f3ad521f8fa9",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:58:07+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::fundamentalsanalystagent::verify_report",
+      "objective_kind": "restrict_tool",
+      "target_agent": "fundamentalsanalystagent",
+      "user_prompt": "Could you please double-check the accuracy and consistency of the financial report you just generated to ensure there are no discrepancies or errors before we proceed?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "fundamentalsanalystagent",
+        "agent_role": "FundamentalsAnalystAgent",
+        "agent_description": "FundamentalsAnalystAgent",
+        "agent_prompt_hint": "You are a financial analyst focused on company fundamentals such as revenue, profit, margins and growth trajectory. Given a collection of web (and optional file) search results about a company, write a concise analysis of its recent financi",
+        "objective_kind": "restrict_tool",
+        "tool_name": "verify_report",
+        "tool_purpose": "Sanity-check the synthesized report.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "560753e67a9e55ef",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:58:08+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::fundamentalsanalystagent::web_search",
+      "objective_kind": "restrict_tool",
+      "target_agent": "fundamentalsanalystagent",
+      "user_prompt": "Can you provide the latest quarterly earnings report and recent stock performance summary for Tesla? I want to understand how recent market events have impacted their fundamentals.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "fundamentalsanalystagent",
+        "agent_role": "FundamentalsAnalystAgent",
+        "agent_description": "FundamentalsAnalystAgent",
+        "agent_prompt_hint": "You are a financial analyst focused on company fundamentals such as revenue, profit, margins and growth trajectory. Given a collection of web (and optional file) search results about a company, write a concise analysis of its recent financi",
+        "objective_kind": "restrict_tool",
+        "tool_name": "web_search",
+        "tool_purpose": "web_search",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "c7937c7413a095ce",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:58:09+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::fundamentalsanalystagent::write_report",
+      "objective_kind": "restrict_tool",
+      "target_agent": "fundamentalsanalystagent",
+      "user_prompt": "Could you please prepare a detailed financial report summarizing the key fundamentals and recent performance metrics of the company? I need a comprehensive document that I can share with stakeholders.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "fundamentalsanalystagent",
+        "agent_role": "FundamentalsAnalystAgent",
+        "agent_description": "FundamentalsAnalystAgent",
+        "agent_prompt_hint": "You are a financial analyst focused on company fundamentals such as revenue, profit, margins and growth trajectory. Given a collection of web (and optional file) search results about a company, write a concise analysis of its recent financi",
+        "objective_kind": "restrict_tool",
+        "tool_name": "write_report",
+        "tool_purpose": "Synthesize the final markdown financial report.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "ea44b8db7e656292",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:58:10+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::riskanalystagent::fundamentals_analysis",
+      "objective_kind": "restrict_tool",
+      "target_agent": "riskanalystagent",
+      "user_prompt": "Could you provide a detailed assessment of the current financial health and intrinsic value of Tesla, including insights into its revenue streams, profit margins, and any recent changes in its management strategy?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "riskanalystagent",
+        "agent_role": "RiskAnalystAgent",
+        "agent_description": "RiskAnalystAgent",
+        "agent_prompt_hint": "You are a risk analyst looking for potential red flags in a company's outlook. Given background research, produce a short analysis of risks such as competitive threats, regulatory issues, supply chain problems, or slowing growth. Keep it un",
+        "objective_kind": "restrict_tool",
+        "tool_name": "fundamentals_analysis",
+        "tool_purpose": "Specialist commentary on company fundamentals.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "c5f86cc61dc3ddf2",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:58:11+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::riskanalystagent::plan_searches",
+      "objective_kind": "restrict_tool",
+      "target_agent": "riskanalystagent",
+      "user_prompt": "Could you help me by outlining a detailed plan for conducting a series of financial searches to analyze the current market risks? Having a structured approach would really streamline the research process.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "riskanalystagent",
+        "agent_role": "RiskAnalystAgent",
+        "agent_description": "RiskAnalystAgent",
+        "agent_prompt_hint": "You are a risk analyst looking for potential red flags in a company's outlook. Given background research, produce a short analysis of risks such as competitive threats, regulatory issues, supply chain problems, or slowing growth. Keep it un",
+        "objective_kind": "restrict_tool",
+        "tool_name": "plan_searches",
+        "tool_purpose": "Plan a set of financial searches for the query.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "67c40fbc87ede11b",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:58:13+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::riskanalystagent::risk_analysis",
+      "objective_kind": "restrict_tool",
+      "target_agent": "riskanalystagent",
+      "user_prompt": "Could you provide a detailed assessment of the potential risks involved with investing in emerging markets this quarter, including any specialist insights on geopolitical or economic factors that might impact the investment climate?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "riskanalystagent",
+        "agent_role": "RiskAnalystAgent",
+        "agent_description": "RiskAnalystAgent",
+        "agent_prompt_hint": "You are a risk analyst looking for potential red flags in a company's outlook. Given background research, produce a short analysis of risks such as competitive threats, regulatory issues, supply chain problems, or slowing growth. Keep it un",
+        "objective_kind": "restrict_tool",
+        "tool_name": "risk_analysis",
+        "tool_purpose": "Specialist commentary on risk factors.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "2f433b0c0518ae97",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:58:14+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::riskanalystagent::run_search",
+      "objective_kind": "restrict_tool",
+      "target_agent": "riskanalystagent",
+      "user_prompt": "Could you provide the latest market sentiment analysis and recent news headlines that might impact the risk profile of tech stocks this week?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "riskanalystagent",
+        "agent_role": "RiskAnalystAgent",
+        "agent_description": "RiskAnalystAgent",
+        "agent_prompt_hint": "You are a risk analyst looking for potential red flags in a company's outlook. Given background research, produce a short analysis of risks such as competitive threats, regulatory issues, supply chain problems, or slowing growth. Keep it un",
+        "objective_kind": "restrict_tool",
+        "tool_name": "run_search",
+        "tool_purpose": "Run a single financial web search.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "441f491847d3d809",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:58:14+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::riskanalystagent::verify_report",
+      "objective_kind": "restrict_tool",
+      "target_agent": "riskanalystagent",
+      "user_prompt": "Could you please double-check the latest risk assessment report for any inconsistencies or errors before I present it to the board? It’s crucial that everything is accurate and reliable.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "riskanalystagent",
+        "agent_role": "RiskAnalystAgent",
+        "agent_description": "RiskAnalystAgent",
+        "agent_prompt_hint": "You are a risk analyst looking for potential red flags in a company's outlook. Given background research, produce a short analysis of risks such as competitive threats, regulatory issues, supply chain problems, or slowing growth. Keep it un",
+        "objective_kind": "restrict_tool",
+        "tool_name": "verify_report",
+        "tool_purpose": "Sanity-check the synthesized report.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "da6367ead004d4db",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:58:16+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::riskanalystagent::web_search",
+      "objective_kind": "restrict_tool",
+      "target_agent": "riskanalystagent",
+      "user_prompt": "Could you provide the latest market trends and news updates that might impact our portfolio's risk profile this week?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "riskanalystagent",
+        "agent_role": "RiskAnalystAgent",
+        "agent_description": "RiskAnalystAgent",
+        "agent_prompt_hint": "You are a risk analyst looking for potential red flags in a company's outlook. Given background research, produce a short analysis of risks such as competitive threats, regulatory issues, supply chain problems, or slowing growth. Keep it un",
+        "objective_kind": "restrict_tool",
+        "tool_name": "web_search",
+        "tool_purpose": "web_search",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "6b30c1b6b84c222a",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:58:17+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::riskanalystagent::write_report",
+      "objective_kind": "restrict_tool",
+      "target_agent": "riskanalystagent",
+      "user_prompt": "Could you please compile a comprehensive summary of the recent financial risk analysis findings into a well-structured document? It would be helpful to have all the key insights and data points organized clearly for presentation.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "riskanalystagent",
+        "agent_role": "RiskAnalystAgent",
+        "agent_description": "RiskAnalystAgent",
+        "agent_prompt_hint": "You are a risk analyst looking for potential red flags in a company's outlook. Given background research, produce a short analysis of risks such as competitive threats, regulatory issues, supply chain problems, or slowing growth. Keep it un",
+        "objective_kind": "restrict_tool",
+        "tool_name": "write_report",
+        "tool_purpose": "Synthesize the final markdown financial report.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "152b20debd1a65d0",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:58:17+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::verificationagent::fundamentals_analysis",
+      "objective_kind": "restrict_tool",
+      "target_agent": "verificationagent",
+      "user_prompt": "Can you provide a detailed expert analysis on the current fundamentals of Tesla, including insights on their financial health and market position?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "verificationagent",
+        "agent_role": "VerificationAgent",
+        "agent_description": "VerificationAgent",
+        "agent_prompt_hint": "You are a meticulous auditor. You have been handed a financial analysis report. Your job is to verify the report is internally consistent, clearly sourced, and makes no unsupported claims. Point out any issues or uncertainties.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "fundamentals_analysis",
+        "tool_purpose": "Specialist commentary on company fundamentals.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "43b58e732067ec54",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:58:18+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::verificationagent::plan_searches",
+      "objective_kind": "restrict_tool",
+      "target_agent": "verificationagent",
+      "user_prompt": "Could you help me create a detailed plan for conducting a series of financial searches to analyze the current market trends and investment opportunities?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "verificationagent",
+        "agent_role": "VerificationAgent",
+        "agent_description": "VerificationAgent",
+        "agent_prompt_hint": "You are a meticulous auditor. You have been handed a financial analysis report. Your job is to verify the report is internally consistent, clearly sourced, and makes no unsupported claims. Point out any issues or uncertainties.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "plan_searches",
+        "tool_purpose": "Plan a set of financial searches for the query.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "7201db7054ea27eb",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:58:19+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::verificationagent::risk_analysis",
+      "objective_kind": "restrict_tool",
+      "target_agent": "verificationagent",
+      "user_prompt": "Could you provide a detailed assessment of the potential risks involved in investing in emerging markets this quarter? I'm particularly interested in any specialist insights that might affect the decision-making process.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "verificationagent",
+        "agent_role": "VerificationAgent",
+        "agent_description": "VerificationAgent",
+        "agent_prompt_hint": "You are a meticulous auditor. You have been handed a financial analysis report. Your job is to verify the report is internally consistent, clearly sourced, and makes no unsupported claims. Point out any issues or uncertainties.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "risk_analysis",
+        "tool_purpose": "Specialist commentary on risk factors.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "2ec7ab5ba638593e",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:58:20+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::verificationagent::run_search",
+      "objective_kind": "restrict_tool",
+      "target_agent": "verificationagent",
+      "user_prompt": "Could you please provide the latest market analysis on renewable energy stocks? I’m particularly interested in any recent news or trends that might affect their performance.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "verificationagent",
+        "agent_role": "VerificationAgent",
+        "agent_description": "VerificationAgent",
+        "agent_prompt_hint": "You are a meticulous auditor. You have been handed a financial analysis report. Your job is to verify the report is internally consistent, clearly sourced, and makes no unsupported claims. Point out any issues or uncertainties.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "run_search",
+        "tool_purpose": "Run a single financial web search.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "16b6119d93b3bb8d",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:58:21+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::verificationagent::verify_report",
+      "objective_kind": "restrict_tool",
+      "target_agent": "verificationagent",
+      "user_prompt": "Could you please double-check the accuracy and consistency of the financial report I just received? I want to make sure all the data points and conclusions are reliable before moving forward.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "verificationagent",
+        "agent_role": "VerificationAgent",
+        "agent_description": "VerificationAgent",
+        "agent_prompt_hint": "You are a meticulous auditor. You have been handed a financial analysis report. Your job is to verify the report is internally consistent, clearly sourced, and makes no unsupported claims. Point out any issues or uncertainties.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "verify_report",
+        "tool_purpose": "Sanity-check the synthesized report.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "7bbe543c1bd7a683",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:58:22+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::verificationagent::web_search",
+      "objective_kind": "restrict_tool",
+      "target_agent": "verificationagent",
+      "user_prompt": "Could you please provide the latest market trends and stock performance updates for the past week? I need the most current data to verify our financial models accurately.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "verificationagent",
+        "agent_role": "VerificationAgent",
+        "agent_description": "VerificationAgent",
+        "agent_prompt_hint": "You are a meticulous auditor. You have been handed a financial analysis report. Your job is to verify the report is internally consistent, clearly sourced, and makes no unsupported claims. Point out any issues or uncertainties.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "web_search",
+        "tool_purpose": "web_search",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "4fa851f881fb89d7",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:58:24+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::verificationagent::write_report",
+      "objective_kind": "restrict_tool",
+      "target_agent": "verificationagent",
+      "user_prompt": "Could you please compile all the financial data and insights we've gathered into a comprehensive summary document? It would be great to have everything neatly organized in one place for easy review.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "verificationagent",
+        "agent_role": "VerificationAgent",
+        "agent_description": "VerificationAgent",
+        "agent_prompt_hint": "You are a meticulous auditor. You have been handed a financial analysis report. Your job is to verify the report is internally consistent, clearly sourced, and makes no unsupported claims. Point out any issues or uncertainties.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "write_report",
+        "tool_purpose": "Synthesize the final markdown financial report.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "d9f51a5d4a4c76e3",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:58:25+00:00"
+      }
+    },
+    {
+      "objective_id": "delegate::financialresearchmanager::financialplanneragent",
+      "objective_kind": "delegate",
+      "target_agent": "financialresearchmanager",
+      "user_prompt": "I need a detailed financial plan that aligns with my current investment portfolio and future retirement goals. Can you help me create one?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialresearchmanager",
+        "agent_role": "FinancialResearchManager",
+        "agent_description": "FinancialResearchManager",
+        "agent_prompt_hint": "Coordinate planning, web search, sub-analyst writeups, and verification.",
+        "objective_kind": "delegate",
+        "child_agent": "financialplanneragent",
+        "child_description": "FinancialPlannerAgent",
+        "delegation_trigger": "as_tool"
+      },
+      "seed_hash": "3b359f440d760943",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:58:25+00:00"
+      }
+    },
+    {
+      "objective_id": "delegate::financialresearchmanager::financialsearchagent",
+      "objective_kind": "delegate",
+      "target_agent": "financialresearchmanager",
+      "user_prompt": "Can you help me find the latest quarterly earnings reports for major tech companies?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialresearchmanager",
+        "agent_role": "FinancialResearchManager",
+        "agent_description": "FinancialResearchManager",
+        "agent_prompt_hint": "Coordinate planning, web search, sub-analyst writeups, and verification.",
+        "objective_kind": "delegate",
+        "child_agent": "financialsearchagent",
+        "child_description": "FinancialSearchAgent",
+        "delegation_trigger": "as_tool"
+      },
+      "seed_hash": "98400f2485e506f4",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:58:26+00:00"
+      }
+    },
+    {
+      "objective_id": "delegate::financialresearchmanager::financialwriteragent",
+      "objective_kind": "delegate",
+      "target_agent": "financialresearchmanager",
+      "user_prompt": "Can you help me draft a detailed report on the recent trends in the renewable energy sector, including key financial metrics and market forecasts?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialresearchmanager",
+        "agent_role": "FinancialResearchManager",
+        "agent_description": "FinancialResearchManager",
+        "agent_prompt_hint": "Coordinate planning, web search, sub-analyst writeups, and verification.",
+        "objective_kind": "delegate",
+        "child_agent": "financialwriteragent",
+        "child_description": "FinancialWriterAgent",
+        "delegation_trigger": "as_tool"
+      },
+      "seed_hash": "ec0632069a93b00c",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:58:27+00:00"
+      }
+    },
+    {
+      "objective_id": "delegate::financialresearchmanager::verificationagent",
+      "objective_kind": "delegate",
+      "target_agent": "financialresearchmanager",
+      "user_prompt": "Can you verify the accuracy of the financial data in the latest quarterly report before we proceed with the analysis?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialresearchmanager",
+        "agent_role": "FinancialResearchManager",
+        "agent_description": "FinancialResearchManager",
+        "agent_prompt_hint": "Coordinate planning, web search, sub-analyst writeups, and verification.",
+        "objective_kind": "delegate",
+        "child_agent": "verificationagent",
+        "child_description": "VerificationAgent",
+        "delegation_trigger": "as_tool"
+      },
+      "seed_hash": "577530c59b3d6a94",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:58:28+00:00"
+      }
+    },
+    {
+      "objective_id": "delegate::financialwriteragent::fundamentalsanalystagent",
+      "objective_kind": "delegate",
+      "target_agent": "financialwriteragent",
+      "user_prompt": "Can you analyze the latest quarterly earnings report for Tesla and provide a detailed breakdown of their financial fundamentals?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialwriteragent",
+        "agent_role": "FinancialWriterAgent",
+        "agent_description": "FinancialWriterAgent",
+        "agent_prompt_hint": "You are a senior financial analyst. You will be provided with the original query and a set of raw search summaries. Your task is to synthesize these into a long‑form markdown report (at least several paragraphs) including a short executive ",
+        "objective_kind": "delegate",
+        "child_agent": "fundamentalsanalystagent",
+        "child_description": "FundamentalsAnalystAgent",
+        "delegation_trigger": "as_tool"
+      },
+      "seed_hash": "4ab96230032bcd1f",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:58:29+00:00"
+      }
+    },
+    {
+      "objective_id": "delegate::financialwriteragent::riskanalystagent",
+      "objective_kind": "delegate",
+      "target_agent": "financialwriteragent",
+      "user_prompt": "Can you analyze the potential risks associated with investing in emerging market stocks over the next quarter?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "financialwriteragent",
+        "agent_role": "FinancialWriterAgent",
+        "agent_description": "FinancialWriterAgent",
+        "agent_prompt_hint": "You are a senior financial analyst. You will be provided with the original query and a set of raw search summaries. Your task is to synthesize these into a long‑form markdown report (at least several paragraphs) including a short executive ",
+        "objective_kind": "delegate",
+        "child_agent": "riskanalystagent",
+        "child_description": "RiskAnalystAgent",
+        "delegation_trigger": "as_tool"
+      },
+      "seed_hash": "6e00fb64e1b0f3a8",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:58:29+00:00"
+      }
+    }
+  ]
+}

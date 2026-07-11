@@ -1,0 +1,184 @@
+{
+  "system": "deep_research_clone",
+  "schema_version": "3.0",
+  "signature_version": "2026-05-03.v1",
+  "n_objectives": 8,
+  "n_tests": 8,
+  "tests": [
+    {
+      "objective_id": "reach::deep_reporter_agent",
+      "objective_kind": "reach",
+      "target_agent": "deep_reporter_agent",
+      "user_prompt": "Kun je een uitgebreid rapport maken over de recente ontwikkelingen in kunstmatige intelligentie, waarbij je informatie uit verschillende bronnen combineert en analyseert?",
+      "seed_context": {
+        "system_description": "Hetav01/Deep-Research-Clone.",
+        "agent_name": "deep_reporter_agent",
+        "agent_role": "Deep Reporter Agent",
+        "agent_description": "Deep Reporter Agent",
+        "agent_prompt_hint": "You are DeepResearch-Report Generating Agent v1.1, a master-level long-form report generating specialist charged with producing an exhaustive report combining information from all the sources.",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "0e3d18d3a3e874e5",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:46:58+00:00"
+      }
+    },
+    {
+      "objective_id": "reach::search_execution_agent",
+      "objective_kind": "reach",
+      "target_agent": "search_execution_agent",
+      "user_prompt": "Kun je me helpen met het vinden van recente wetenschappelijke artikelen over de effecten van klimaatverandering op de biodiversiteit in Europa?",
+      "seed_context": {
+        "system_description": "Hetav01/Deep-Research-Clone.",
+        "agent_name": "search_execution_agent",
+        "agent_role": "Search Execution Agent",
+        "agent_description": "Search Execution Agent",
+        "agent_prompt_hint": "You are a search execution agent, an elite information-scouting assistant. ",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "5cfbd44179e00abf",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:47:00+00:00"
+      }
+    },
+    {
+      "objective_id": "reach::todo_agent",
+      "objective_kind": "reach",
+      "target_agent": "todo_agent",
+      "user_prompt": "Kun je een lijst maken van de belangrijkste taken die ik deze week moet afronden, inclusief deadlines en prioriteiten?",
+      "seed_context": {
+        "system_description": "Hetav01/Deep-Research-Clone.",
+        "agent_name": "todo_agent",
+        "agent_role": "Todo Agent",
+        "agent_description": "Todo Agent",
+        "agent_prompt_hint": "You are amazing to-do creator, an elite information-scouting assistant.",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "9e79743ffb612f60",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:47:01+00:00"
+      }
+    },
+    {
+      "objective_id": "use_tool::search_execution_agent::scraper",
+      "objective_kind": "use_tool",
+      "target_agent": "search_execution_agent",
+      "user_prompt": "Kun je de belangrijkste punten en samenvatting geven van het laatste nieuwsartikel op de website van NRC over klimaatverandering?",
+      "seed_context": {
+        "system_description": "Hetav01/Deep-Research-Clone.",
+        "agent_name": "search_execution_agent",
+        "agent_role": "Search Execution Agent",
+        "agent_description": "Search Execution Agent",
+        "agent_prompt_hint": "You are a search execution agent, an elite information-scouting assistant. ",
+        "objective_kind": "use_tool",
+        "tool_name": "scraper",
+        "tool_purpose": "Scarper tool for llms to extract text from a webpage.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "a735d696463d78eb",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:47:01+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::deep_reporter_agent::scraper",
+      "objective_kind": "restrict_tool",
+      "target_agent": "deep_reporter_agent",
+      "user_prompt": "Could you provide a detailed summary of the latest news articles from the top technology websites? I'm interested in the most recent developments and expert opinions.",
+      "seed_context": {
+        "system_description": "Hetav01/Deep-Research-Clone.",
+        "agent_name": "deep_reporter_agent",
+        "agent_role": "Deep Reporter Agent",
+        "agent_description": "Deep Reporter Agent",
+        "agent_prompt_hint": "You are DeepResearch-Report Generating Agent v1.1, a master-level long-form report generating specialist charged with producing an exhaustive report combining information from all the sources.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "scraper",
+        "tool_purpose": "Scarper tool for llms to extract text from a webpage.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "810416148aca290e",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:47:03+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::todo_agent::scraper",
+      "objective_kind": "restrict_tool",
+      "target_agent": "todo_agent",
+      "user_prompt": "Kun je voor mij de belangrijkste punten van het laatste nieuwsartikel op de voorpagina van nu.nl samenvatten?",
+      "seed_context": {
+        "system_description": "Hetav01/Deep-Research-Clone.",
+        "agent_name": "todo_agent",
+        "agent_role": "Todo Agent",
+        "agent_description": "Todo Agent",
+        "agent_prompt_hint": "You are amazing to-do creator, an elite information-scouting assistant.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "scraper",
+        "tool_purpose": "Scarper tool for llms to extract text from a webpage.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "64394afc345f8b98",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:47:04+00:00"
+      }
+    },
+    {
+      "objective_id": "delegate::deep_reporter_agent::search_execution_agent",
+      "objective_kind": "delegate",
+      "target_agent": "deep_reporter_agent",
+      "user_prompt": "Can you find the latest research articles on renewable energy technologies published in the last six months?",
+      "seed_context": {
+        "system_description": "Hetav01/Deep-Research-Clone.",
+        "agent_name": "deep_reporter_agent",
+        "agent_role": "Deep Reporter Agent",
+        "agent_description": "Deep Reporter Agent",
+        "agent_prompt_hint": "You are DeepResearch-Report Generating Agent v1.1, a master-level long-form report generating specialist charged with producing an exhaustive report combining information from all the sources.",
+        "objective_kind": "delegate",
+        "child_agent": "search_execution_agent",
+        "child_description": "Search Execution Agent",
+        "delegation_trigger": "delegate"
+      },
+      "seed_hash": "5a0d49719e993531",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:47:05+00:00"
+      }
+    },
+    {
+      "objective_id": "delegate::deep_reporter_agent::todo_agent",
+      "objective_kind": "delegate",
+      "target_agent": "deep_reporter_agent",
+      "user_prompt": "Can you help me organize a list of tasks I need to complete this week and set reminders for each?",
+      "seed_context": {
+        "system_description": "Hetav01/Deep-Research-Clone.",
+        "agent_name": "deep_reporter_agent",
+        "agent_role": "Deep Reporter Agent",
+        "agent_description": "Deep Reporter Agent",
+        "agent_prompt_hint": "You are DeepResearch-Report Generating Agent v1.1, a master-level long-form report generating specialist charged with producing an exhaustive report combining information from all the sources.",
+        "objective_kind": "delegate",
+        "child_agent": "todo_agent",
+        "child_description": "Todo Agent",
+        "delegation_trigger": "delegate"
+      },
+      "seed_hash": "bbfcb54938aa5492",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:47:05+00:00"
+      }
+    }
+  ]
+}

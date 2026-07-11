@@ -1,0 +1,72 @@
+{
+  "schema_version": "3.0",
+  "system": {
+    "name": "oai_message_filter",
+    "entry_agent": "assistant",
+    "description": "OpenAI Agents SDK examples/handoffs/message_filter.py."
+  },
+  "agents": [
+    {
+      "name": "assistant",
+      "reachable": true,
+      "role": "Assistant",
+      "description": "Assistant",
+      "system_prompt_hint": "Be extremely concise."
+    },
+    {
+      "name": "assistant_2",
+      "reachable": true,
+      "role": "Assistant#2",
+      "description": "Assistant#2",
+      "system_prompt_hint": "Be a helpful assistant. If the user speaks Spanish, handoff to the Spanish assistant."
+    },
+    {
+      "name": "spanish_assistant",
+      "reachable": true,
+      "role": "A Spanish-speaking assistant",
+      "description": "A Spanish-speaking assistant.",
+      "system_prompt_hint": "You only speak Spanish and are extremely concise."
+    }
+  ],
+  "tools": [
+    {
+      "name": "random_number_tool",
+      "purpose": "Return a random integer between 0 and the given maximum.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    }
+  ],
+  "permissions": {
+    "allow": [
+      {
+        "agent": "assistant",
+        "tool": "random_number_tool"
+      }
+    ],
+    "restrict": [
+      {
+        "agent": "assistant_2",
+        "tool": "random_number_tool"
+      },
+      {
+        "agent": "spanish_assistant",
+        "tool": "random_number_tool"
+      }
+    ]
+  },
+  "delegations": [
+    {
+      "from": "assistant",
+      "to": "assistant_2",
+      "trigger": "delegate"
+    },
+    {
+      "from": "assistant_2",
+      "to": "spanish_assistant",
+      "trigger": "delegate"
+    }
+  ]
+}

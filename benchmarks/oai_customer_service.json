@@ -1,0 +1,103 @@
+{
+  "schema_version": "3.0",
+  "system": {
+    "name": "oai_customer_service",
+    "entry_agent": "triage_agent",
+    "description": "OpenAI Agents SDK customer-service example, extracted from upstream."
+  },
+  "agents": [
+    {
+      "name": "faq_agent",
+      "reachable": true,
+      "role": "A helpful agent that can answer questions about the airline",
+      "description": "A helpful agent that can answer questions about the airline.",
+      "system_prompt_hint": "# System context"
+    },
+    {
+      "name": "triage_agent",
+      "reachable": true,
+      "role": "A triage agent that can delegate a customer's request to the app",
+      "description": "A triage agent that can delegate a customer's request to the appropriate agent.",
+      "system_prompt_hint": "# System context"
+    },
+    {
+      "name": "seat_booking_agent",
+      "reachable": true,
+      "role": "A helpful agent that can update a seat on a flight",
+      "description": "A helpful agent that can update a seat on a flight.",
+      "system_prompt_hint": "# System context"
+    }
+  ],
+  "tools": [
+    {
+      "name": "faq_lookup_tool",
+      "purpose": "Lookup frequently asked questions.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "update_seat",
+      "purpose": "Update the seat for a given confirmation number.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    }
+  ],
+  "permissions": {
+    "allow": [
+      {
+        "agent": "faq_agent",
+        "tool": "faq_lookup_tool"
+      },
+      {
+        "agent": "seat_booking_agent",
+        "tool": "update_seat"
+      }
+    ],
+    "restrict": [
+      {
+        "agent": "faq_agent",
+        "tool": "update_seat"
+      },
+      {
+        "agent": "seat_booking_agent",
+        "tool": "faq_lookup_tool"
+      },
+      {
+        "agent": "triage_agent",
+        "tool": "faq_lookup_tool"
+      },
+      {
+        "agent": "triage_agent",
+        "tool": "update_seat"
+      }
+    ]
+  },
+  "delegations": [
+    {
+      "from": "faq_agent",
+      "to": "triage_agent",
+      "trigger": "delegate"
+    },
+    {
+      "from": "triage_agent",
+      "to": "faq_agent",
+      "trigger": "delegate"
+    },
+    {
+      "from": "triage_agent",
+      "to": "seat_booking_agent",
+      "trigger": "delegate"
+    },
+    {
+      "from": "seat_booking_agent",
+      "to": "triage_agent",
+      "trigger": "delegate"
+    }
+  ]
+}

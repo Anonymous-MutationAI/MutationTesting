@@ -1,0 +1,13 @@
+# Python bytecode cache (auto-generated; safe to delete anytime)
+__pycache__/
+*.py[cod]
+
+# Virtual environment for the live re-run
+.venv/
+
+# Output of a fresh live re-run (canonical results live in results/*.json)
+results/live_rerun/
+results/*.ckpt.json
+
+# CSV dumps from `python3 reproduce.py --csv out/`
+out/

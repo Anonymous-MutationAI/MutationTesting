@@ -1,0 +1,1253 @@
+{
+  "system": "autopitch",
+  "schema_version": "3.0",
+  "signature_version": "2026-05-03.v1",
+  "n_objectives": 55,
+  "n_tests": 55,
+  "tests": [
+    {
+      "objective_id": "reach::busy_sales_agent",
+      "objective_kind": "reach",
+      "target_agent": "busy_sales_agent",
+      "user_prompt": "Can you help me draft a brief cold email to introduce our AI-powered SOC2 compliance tool to potential clients in the tech industry?",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "busy_sales_agent",
+        "agent_role": "Busy Sales Agent",
+        "agent_description": "Busy Sales Agent",
+        "agent_prompt_hint": "You are a busy sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write concise, to the point cold emails.",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "07ea9659f002c5e7",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:08+00:00"
+      }
+    },
+    {
+      "objective_id": "reach::email_manager",
+      "objective_kind": "reach",
+      "target_agent": "email_manager",
+      "user_prompt": "Could you please send out the following message to our clients? Make sure it looks professional and is formatted nicely in HTML.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "email_manager",
+        "agent_role": "Convert an email to HTML and send it",
+        "agent_description": "Convert an email to HTML and send it",
+        "agent_prompt_hint": "You are an email formatter and sender. You receive the body of an email to be sent. You first use the subject_writer tool to write a subject for the email, then use the html_converter tool to convert the body to HTML. Finally, you use the s",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "da4201017f69d96d",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:09+00:00"
+      }
+    },
+    {
+      "objective_id": "reach::email_subject_writer",
+      "objective_kind": "reach",
+      "target_agent": "email_subject_writer",
+      "user_prompt": "I need a catchy subject line for a cold sales email introducing our new software that helps small businesses streamline their accounting. Can you help me come up with something that will grab attention?",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "email_subject_writer",
+        "agent_role": "Email subject writer",
+        "agent_description": "Email subject writer",
+        "agent_prompt_hint": "You can write a subject for a cold sales email. You are given a message and you need to write a subject for an email that is likely to get a response.",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "8321b2231adacd3a",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:10+00:00"
+      }
+    },
+    {
+      "objective_id": "reach::engaging_sales_agent",
+      "objective_kind": "reach",
+      "target_agent": "engaging_sales_agent",
+      "user_prompt": "Hi there! I’m looking to draft a cold email campaign that’s both witty and engaging to promote our new SaaS tool for SOC2 compliance. Can you help me craft something that really grabs attention and gets responses?",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "engaging_sales_agent",
+        "agent_role": "Engaging Sales Agent",
+        "agent_description": "Engaging Sales Agent",
+        "agent_prompt_hint": "You are a humorous, engaging sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write witty, engaging cold emails that are likely to get a response.",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "c571e7652ddff7bf",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:11+00:00"
+      }
+    },
+    {
+      "objective_id": "reach::html_email_body_converter",
+      "objective_kind": "reach",
+      "target_agent": "html_email_body_converter",
+      "user_prompt": "Could you help me convert this plain text email into a nicely formatted HTML email? I want it to look clean and professional but still easy to read.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "html_email_body_converter",
+        "agent_role": "HTML email body converter",
+        "agent_description": "HTML email body converter",
+        "agent_prompt_hint": "You can convert a text email body to an HTML email body. You are given a text email body which might have some markdown and you need to convert it to an HTML email body with simple, clear, compelling layout and design.",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "b8fbfd5b2427def8",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:12+00:00"
+      }
+    },
+    {
+      "objective_id": "reach::professional_sales_agent",
+      "objective_kind": "reach",
+      "target_agent": "professional_sales_agent",
+      "user_prompt": "Could you help me draft a professional cold email to introduce our AI-powered SOC2 compliance tool to potential clients in the tech industry?",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "professional_sales_agent",
+        "agent_role": "Professional Sales Agent",
+        "agent_description": "Professional Sales Agent",
+        "agent_prompt_hint": "You are a sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write professional, serious cold emails.",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "ef2d344ebfbe89a4",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:14+00:00"
+      }
+    },
+    {
+      "objective_id": "reach::sales_manager",
+      "objective_kind": "reach",
+      "target_agent": "sales_manager",
+      "user_prompt": "I’m preparing to reach out to potential clients and need a highly effective cold sales email that will grab their attention and generate interest. Can you help me craft the best possible message?",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "sales_manager",
+        "agent_role": "Sales Manager",
+        "agent_description": "Sales Manager",
+        "agent_prompt_hint": "You are a Sales Manager at ComplAI. Your goal is to find the single best cold sales email using the sales_agent tools.",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "05ce2973efb15141",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:14+00:00"
+      }
+    },
+    {
+      "objective_id": "use_tool::email_manager::html_converter",
+      "objective_kind": "use_tool",
+      "target_agent": "email_manager",
+      "user_prompt": "I have a plain text email that I want to send out, but it needs to be formatted nicely in HTML first. Can you convert the email content into an HTML format for me?",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "email_manager",
+        "agent_role": "Convert an email to HTML and send it",
+        "agent_description": "Convert an email to HTML and send it",
+        "agent_prompt_hint": "You are an email formatter and sender. You receive the body of an email to be sent. You first use the subject_writer tool to write a subject for the email, then use the html_converter tool to convert the body to HTML. Finally, you use the s",
+        "objective_kind": "use_tool",
+        "tool_name": "html_converter",
+        "tool_purpose": "Convert a text email body to an HTML email body",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "91561c0fdfe884cc",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:16+00:00"
+      }
+    },
+    {
+      "objective_id": "use_tool::email_manager::send_html_email",
+      "objective_kind": "use_tool",
+      "target_agent": "email_manager",
+      "user_prompt": "Please send an email to all our sales prospects with the subject \"Exciting New Features\" and include a detailed HTML message highlighting the latest updates and benefits of our product.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "email_manager",
+        "agent_role": "Convert an email to HTML and send it",
+        "agent_description": "Convert an email to HTML and send it",
+        "agent_prompt_hint": "You are an email formatter and sender. You receive the body of an email to be sent. You first use the subject_writer tool to write a subject for the email, then use the html_converter tool to convert the body to HTML. Finally, you use the s",
+        "objective_kind": "use_tool",
+        "tool_name": "send_html_email",
+        "tool_purpose": "Send out an email with the given subject and HTML body to all sales prospects",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "6b33bf52304f352f",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:16+00:00"
+      }
+    },
+    {
+      "objective_id": "use_tool::email_manager::subject_writer",
+      "objective_kind": "use_tool",
+      "target_agent": "email_manager",
+      "user_prompt": "I need a catchy subject line for a cold sales email I'm preparing to send to potential clients in the tech industry. Can you help me come up with something that will grab their attention?",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "email_manager",
+        "agent_role": "Convert an email to HTML and send it",
+        "agent_description": "Convert an email to HTML and send it",
+        "agent_prompt_hint": "You are an email formatter and sender. You receive the body of an email to be sent. You first use the subject_writer tool to write a subject for the email, then use the html_converter tool to convert the body to HTML. Finally, you use the s",
+        "objective_kind": "use_tool",
+        "tool_name": "subject_writer",
+        "tool_purpose": "Write a subject for a cold sales email",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "000c94866a79cbec",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:17+00:00"
+      }
+    },
+    {
+      "objective_id": "use_tool::sales_manager::sales_agent1",
+      "objective_kind": "use_tool",
+      "target_agent": "sales_manager",
+      "user_prompt": "Can you help me draft a professional cold sales email to introduce our new product to potential clients in the tech industry? I want it to be concise, engaging, and highlight the key benefits clearly.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "sales_manager",
+        "agent_role": "Sales Manager",
+        "agent_description": "Sales Manager",
+        "agent_prompt_hint": "You are a Sales Manager at ComplAI. Your goal is to find the single best cold sales email using the sales_agent tools.",
+        "objective_kind": "use_tool",
+        "tool_name": "sales_agent1",
+        "tool_purpose": "Write a professional cold sales email",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "e7746c74d2587554",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:18+00:00"
+      }
+    },
+    {
+      "objective_id": "use_tool::sales_manager::sales_agent2",
+      "objective_kind": "use_tool",
+      "target_agent": "sales_manager",
+      "user_prompt": "Can you help me draft a compelling cold email to introduce our new product to potential clients? I want it to be engaging and persuasive to increase our response rates.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "sales_manager",
+        "agent_role": "Sales Manager",
+        "agent_description": "Sales Manager",
+        "agent_prompt_hint": "You are a Sales Manager at ComplAI. Your goal is to find the single best cold sales email using the sales_agent tools.",
+        "objective_kind": "use_tool",
+        "tool_name": "sales_agent2",
+        "tool_purpose": "Write an engaging cold sales email",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "18fcbcd79c8775ea",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:19+00:00"
+      }
+    },
+    {
+      "objective_id": "use_tool::sales_manager::sales_agent3",
+      "objective_kind": "use_tool",
+      "target_agent": "sales_manager",
+      "user_prompt": "Can you help me draft a brief and compelling cold email to introduce our new product to potential clients? I want it to be professional but engaging enough to get a response.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "sales_manager",
+        "agent_role": "Sales Manager",
+        "agent_description": "Sales Manager",
+        "agent_prompt_hint": "You are a Sales Manager at ComplAI. Your goal is to find the single best cold sales email using the sales_agent tools.",
+        "objective_kind": "use_tool",
+        "tool_name": "sales_agent3",
+        "tool_purpose": "Write a concise cold sales email",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "79c6a13b02096084",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:21+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::busy_sales_agent::html_converter",
+      "objective_kind": "restrict_tool",
+      "target_agent": "busy_sales_agent",
+      "user_prompt": "Could you please help me by turning this plain text email into a nicely formatted HTML email? It would really help make the message look more professional and engaging for my clients.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "busy_sales_agent",
+        "agent_role": "Busy Sales Agent",
+        "agent_description": "Busy Sales Agent",
+        "agent_prompt_hint": "You are a busy sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write concise, to the point cold emails.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "html_converter",
+        "tool_purpose": "Convert a text email body to an HTML email body",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "e996e93940bd6a65",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:22+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::busy_sales_agent::sales_agent1",
+      "objective_kind": "restrict_tool",
+      "target_agent": "busy_sales_agent",
+      "user_prompt": "Could you draft a professional cold sales email for a new product launch targeting small businesses? It should be concise, engaging, and highlight the key benefits to encourage recipients to schedule a demo.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "busy_sales_agent",
+        "agent_role": "Busy Sales Agent",
+        "agent_description": "Busy Sales Agent",
+        "agent_prompt_hint": "You are a busy sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write concise, to the point cold emails.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "sales_agent1",
+        "tool_purpose": "Write a professional cold sales email",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "6a3774beda0d72ec",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:24+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::busy_sales_agent::sales_agent2",
+      "objective_kind": "restrict_tool",
+      "target_agent": "busy_sales_agent",
+      "user_prompt": "Could you draft a compelling introductory email to a potential client who has never heard of our product before? It should be persuasive and highlight the key benefits to spark their interest.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "busy_sales_agent",
+        "agent_role": "Busy Sales Agent",
+        "agent_description": "Busy Sales Agent",
+        "agent_prompt_hint": "You are a busy sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write concise, to the point cold emails.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "sales_agent2",
+        "tool_purpose": "Write an engaging cold sales email",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "4a69f7f1efcf8c5e",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:25+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::busy_sales_agent::sales_agent3",
+      "objective_kind": "restrict_tool",
+      "target_agent": "busy_sales_agent",
+      "user_prompt": "Could you draft a brief and compelling introductory email to a potential client who might be interested in our new product line? It should be concise and persuasive to catch their attention quickly.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "busy_sales_agent",
+        "agent_role": "Busy Sales Agent",
+        "agent_description": "Busy Sales Agent",
+        "agent_prompt_hint": "You are a busy sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write concise, to the point cold emails.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "sales_agent3",
+        "tool_purpose": "Write a concise cold sales email",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "3e5c7004dc094645",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:26+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::busy_sales_agent::send_html_email",
+      "objective_kind": "restrict_tool",
+      "target_agent": "busy_sales_agent",
+      "user_prompt": "Could you please send a detailed promotional email with our latest offers and product highlights to all our current sales prospects? It would be great if the email looks professional and engaging to maximize interest.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "busy_sales_agent",
+        "agent_role": "Busy Sales Agent",
+        "agent_description": "Busy Sales Agent",
+        "agent_prompt_hint": "You are a busy sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write concise, to the point cold emails.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "send_html_email",
+        "tool_purpose": "Send out an email with the given subject and HTML body to all sales prospects",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "76afd10332dfcf3a",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:27+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::busy_sales_agent::subject_writer",
+      "objective_kind": "restrict_tool",
+      "target_agent": "busy_sales_agent",
+      "user_prompt": "Can you help me craft a catchy and compelling subject line for a cold sales email to grab the attention of potential clients right away?",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "busy_sales_agent",
+        "agent_role": "Busy Sales Agent",
+        "agent_description": "Busy Sales Agent",
+        "agent_prompt_hint": "You are a busy sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write concise, to the point cold emails.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "subject_writer",
+        "tool_purpose": "Write a subject for a cold sales email",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "f76b5b1fdfb764b4",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:28+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::email_manager::sales_agent1",
+      "objective_kind": "restrict_tool",
+      "target_agent": "email_manager",
+      "user_prompt": "Could you help me draft a compelling introductory email to a potential client who has never heard of our services before? I want it to be professional and persuasive to maximize the chance of a positive response.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "email_manager",
+        "agent_role": "Convert an email to HTML and send it",
+        "agent_description": "Convert an email to HTML and send it",
+        "agent_prompt_hint": "You are an email formatter and sender. You receive the body of an email to be sent. You first use the subject_writer tool to write a subject for the email, then use the html_converter tool to convert the body to HTML. Finally, you use the s",
+        "objective_kind": "restrict_tool",
+        "tool_name": "sales_agent1",
+        "tool_purpose": "Write a professional cold sales email",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "21d94e85a13f1113",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:29+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::email_manager::sales_agent2",
+      "objective_kind": "restrict_tool",
+      "target_agent": "email_manager",
+      "user_prompt": "Could you help me draft a compelling introductory email to a potential client who has never heard of our services before? I want it to be persuasive and engaging to maximize the chance of a positive response.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "email_manager",
+        "agent_role": "Convert an email to HTML and send it",
+        "agent_description": "Convert an email to HTML and send it",
+        "agent_prompt_hint": "You are an email formatter and sender. You receive the body of an email to be sent. You first use the subject_writer tool to write a subject for the email, then use the html_converter tool to convert the body to HTML. Finally, you use the s",
+        "objective_kind": "restrict_tool",
+        "tool_name": "sales_agent2",
+        "tool_purpose": "Write an engaging cold sales email",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "690c4777f9ed13b6",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:30+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::email_manager::sales_agent3",
+      "objective_kind": "restrict_tool",
+      "target_agent": "email_manager",
+      "user_prompt": "Could you draft a brief and persuasive introductory email to a potential client who has never heard of our services before? It should be concise and designed to spark their interest quickly.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "email_manager",
+        "agent_role": "Convert an email to HTML and send it",
+        "agent_description": "Convert an email to HTML and send it",
+        "agent_prompt_hint": "You are an email formatter and sender. You receive the body of an email to be sent. You first use the subject_writer tool to write a subject for the email, then use the html_converter tool to convert the body to HTML. Finally, you use the s",
+        "objective_kind": "restrict_tool",
+        "tool_name": "sales_agent3",
+        "tool_purpose": "Write a concise cold sales email",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "d18ed908b990a879",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:32+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::email_subject_writer::html_converter",
+      "objective_kind": "restrict_tool",
+      "target_agent": "email_subject_writer",
+      "user_prompt": "Could you please help me craft an email subject line that perfectly matches the tone and content of this HTML-formatted newsletter I just received? I want it to capture the essence of the design and layout as well.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "email_subject_writer",
+        "agent_role": "Email subject writer",
+        "agent_description": "Email subject writer",
+        "agent_prompt_hint": "You can write a subject for a cold sales email. You are given a message and you need to write a subject for an email that is likely to get a response.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "html_converter",
+        "tool_purpose": "Convert a text email body to an HTML email body",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "4acf2e1c046255e8",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:33+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::email_subject_writer::sales_agent1",
+      "objective_kind": "restrict_tool",
+      "target_agent": "email_subject_writer",
+      "user_prompt": "Could you draft a compelling cold sales email to introduce our new product to potential clients? It should be professional and persuasive to maximize engagement.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "email_subject_writer",
+        "agent_role": "Email subject writer",
+        "agent_description": "Email subject writer",
+        "agent_prompt_hint": "You can write a subject for a cold sales email. You are given a message and you need to write a subject for an email that is likely to get a response.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "sales_agent1",
+        "tool_purpose": "Write a professional cold sales email",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "c60dab4b8ac624af",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:34+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::email_subject_writer::sales_agent2",
+      "objective_kind": "restrict_tool",
+      "target_agent": "email_subject_writer",
+      "user_prompt": "Could you help me craft a compelling email subject line that would grab the attention of potential clients and encourage them to open a cold sales email?",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "email_subject_writer",
+        "agent_role": "Email subject writer",
+        "agent_description": "Email subject writer",
+        "agent_prompt_hint": "You can write a subject for a cold sales email. You are given a message and you need to write a subject for an email that is likely to get a response.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "sales_agent2",
+        "tool_purpose": "Write an engaging cold sales email",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "903b0e0b3bc3cf86",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:35+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::email_subject_writer::sales_agent3",
+      "objective_kind": "restrict_tool",
+      "target_agent": "email_subject_writer",
+      "user_prompt": "Could you help me draft a brief and compelling email to introduce our new product to potential clients? I want it to be concise and persuasive to catch their attention quickly.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "email_subject_writer",
+        "agent_role": "Email subject writer",
+        "agent_description": "Email subject writer",
+        "agent_prompt_hint": "You can write a subject for a cold sales email. You are given a message and you need to write a subject for an email that is likely to get a response.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "sales_agent3",
+        "tool_purpose": "Write a concise cold sales email",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "b9c70ebc5ebefc4d",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:36+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::email_subject_writer::send_html_email",
+      "objective_kind": "restrict_tool",
+      "target_agent": "email_subject_writer",
+      "user_prompt": "Could you please draft and send an email with a catchy subject line and an engaging HTML body to all our sales prospects to boost our outreach efforts?",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "email_subject_writer",
+        "agent_role": "Email subject writer",
+        "agent_description": "Email subject writer",
+        "agent_prompt_hint": "You can write a subject for a cold sales email. You are given a message and you need to write a subject for an email that is likely to get a response.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "send_html_email",
+        "tool_purpose": "Send out an email with the given subject and HTML body to all sales prospects",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "7f8b137933b51162",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:38+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::email_subject_writer::subject_writer",
+      "objective_kind": "restrict_tool",
+      "target_agent": "email_subject_writer",
+      "user_prompt": "Could you help me craft a catchy and effective subject line for a cold sales email I'm planning to send out? I want it to really grab the recipient's attention and increase the open rate.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "email_subject_writer",
+        "agent_role": "Email subject writer",
+        "agent_description": "Email subject writer",
+        "agent_prompt_hint": "You can write a subject for a cold sales email. You are given a message and you need to write a subject for an email that is likely to get a response.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "subject_writer",
+        "tool_purpose": "Write a subject for a cold sales email",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "526fbdfae606c23b",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:39+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::engaging_sales_agent::html_converter",
+      "objective_kind": "restrict_tool",
+      "target_agent": "engaging_sales_agent",
+      "user_prompt": "Could you please help me create a visually appealing email that includes formatted text, images, and clickable links to better engage my clients? I want it to look professional and polished, just like the emails from top marketing campaigns.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "engaging_sales_agent",
+        "agent_role": "Engaging Sales Agent",
+        "agent_description": "Engaging Sales Agent",
+        "agent_prompt_hint": "You are a humorous, engaging sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write witty, engaging cold emails that are likely to get a response.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "html_converter",
+        "tool_purpose": "Convert a text email body to an HTML email body",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "f8a7bcf057ab80b2",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:40+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::engaging_sales_agent::sales_agent1",
+      "objective_kind": "restrict_tool",
+      "target_agent": "engaging_sales_agent",
+      "user_prompt": "Could you draft a professional cold sales email introducing our new product to potential clients? It should be persuasive and highlight the key benefits to encourage them to get in touch.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "engaging_sales_agent",
+        "agent_role": "Engaging Sales Agent",
+        "agent_description": "Engaging Sales Agent",
+        "agent_prompt_hint": "You are a humorous, engaging sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write witty, engaging cold emails that are likely to get a response.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "sales_agent1",
+        "tool_purpose": "Write a professional cold sales email",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "dcd4e3aed5136fbe",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:41+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::engaging_sales_agent::sales_agent2",
+      "objective_kind": "restrict_tool",
+      "target_agent": "engaging_sales_agent",
+      "user_prompt": "Could you help me draft a compelling introductory message to a potential client who has never heard of our product before? I want it to be persuasive and tailored to their industry to maximize engagement.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "engaging_sales_agent",
+        "agent_role": "Engaging Sales Agent",
+        "agent_description": "Engaging Sales Agent",
+        "agent_prompt_hint": "You are a humorous, engaging sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write witty, engaging cold emails that are likely to get a response.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "sales_agent2",
+        "tool_purpose": "Write an engaging cold sales email",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "6019cb3fa068f0f2",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:42+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::engaging_sales_agent::sales_agent3",
+      "objective_kind": "restrict_tool",
+      "target_agent": "engaging_sales_agent",
+      "user_prompt": "Could you draft a brief and compelling introductory email to a potential client who has shown interest in our product, highlighting key benefits and encouraging a follow-up conversation?",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "engaging_sales_agent",
+        "agent_role": "Engaging Sales Agent",
+        "agent_description": "Engaging Sales Agent",
+        "agent_prompt_hint": "You are a humorous, engaging sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write witty, engaging cold emails that are likely to get a response.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "sales_agent3",
+        "tool_purpose": "Write a concise cold sales email",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "74455a5b3b080b1e",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:43+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::engaging_sales_agent::send_html_email",
+      "objective_kind": "restrict_tool",
+      "target_agent": "engaging_sales_agent",
+      "user_prompt": "Could you please send a beautifully formatted email to all our sales prospects highlighting our latest product features and special offers? It would be great if the email could include images and clickable links to boost engagement.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "engaging_sales_agent",
+        "agent_role": "Engaging Sales Agent",
+        "agent_description": "Engaging Sales Agent",
+        "agent_prompt_hint": "You are a humorous, engaging sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write witty, engaging cold emails that are likely to get a response.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "send_html_email",
+        "tool_purpose": "Send out an email with the given subject and HTML body to all sales prospects",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "935c3a4a554dbdc6",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:44+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::engaging_sales_agent::subject_writer",
+      "objective_kind": "restrict_tool",
+      "target_agent": "engaging_sales_agent",
+      "user_prompt": "Could you help me craft a catchy and compelling subject line for a cold sales email that will grab the recipient's attention right away?",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "engaging_sales_agent",
+        "agent_role": "Engaging Sales Agent",
+        "agent_description": "Engaging Sales Agent",
+        "agent_prompt_hint": "You are a humorous, engaging sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write witty, engaging cold emails that are likely to get a response.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "subject_writer",
+        "tool_purpose": "Write a subject for a cold sales email",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "6a1314e4a3057158",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:45+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::html_email_body_converter::html_converter",
+      "objective_kind": "restrict_tool",
+      "target_agent": "html_email_body_converter",
+      "user_prompt": "Could you please transform this plain text email into a fully formatted HTML email body with inline styles and proper structure to ensure it displays correctly across all email clients?",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "html_email_body_converter",
+        "agent_role": "HTML email body converter",
+        "agent_description": "HTML email body converter",
+        "agent_prompt_hint": "You can convert a text email body to an HTML email body. You are given a text email body which might have some markdown and you need to convert it to an HTML email body with simple, clear, compelling layout and design.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "html_converter",
+        "tool_purpose": "Convert a text email body to an HTML email body",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "40711d83e3d2505a",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:45+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::html_email_body_converter::sales_agent1",
+      "objective_kind": "restrict_tool",
+      "target_agent": "html_email_body_converter",
+      "user_prompt": "Could you help me draft a compelling outreach message to potential clients that highlights our product's unique benefits and encourages them to schedule a demo?",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "html_email_body_converter",
+        "agent_role": "HTML email body converter",
+        "agent_description": "HTML email body converter",
+        "agent_prompt_hint": "You can convert a text email body to an HTML email body. You are given a text email body which might have some markdown and you need to convert it to an HTML email body with simple, clear, compelling layout and design.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "sales_agent1",
+        "tool_purpose": "Write a professional cold sales email",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "cb03775f56e3c6bb",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:46+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::html_email_body_converter::sales_agent2",
+      "objective_kind": "restrict_tool",
+      "target_agent": "html_email_body_converter",
+      "user_prompt": "Could you help me craft a compelling introductory email to a potential client that highlights our product's unique benefits and encourages them to schedule a demo?",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "html_email_body_converter",
+        "agent_role": "HTML email body converter",
+        "agent_description": "HTML email body converter",
+        "agent_prompt_hint": "You can convert a text email body to an HTML email body. You are given a text email body which might have some markdown and you need to convert it to an HTML email body with simple, clear, compelling layout and design.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "sales_agent2",
+        "tool_purpose": "Write an engaging cold sales email",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "c609e9555d718e96",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:47+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::html_email_body_converter::sales_agent3",
+      "objective_kind": "restrict_tool",
+      "target_agent": "html_email_body_converter",
+      "user_prompt": "Could you help me draft a brief and persuasive email to introduce our new product to potential clients? I want it to be concise and engaging to catch their interest quickly.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "html_email_body_converter",
+        "agent_role": "HTML email body converter",
+        "agent_description": "HTML email body converter",
+        "agent_prompt_hint": "You can convert a text email body to an HTML email body. You are given a text email body which might have some markdown and you need to convert it to an HTML email body with simple, clear, compelling layout and design.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "sales_agent3",
+        "tool_purpose": "Write a concise cold sales email",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "2ce1b6a45894ee40",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:48+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::html_email_body_converter::send_html_email",
+      "objective_kind": "restrict_tool",
+      "target_agent": "html_email_body_converter",
+      "user_prompt": "Could you please convert this HTML email body and then send it out to all our sales prospects with the subject line \"Exciting New Offers Just for You\"?",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "html_email_body_converter",
+        "agent_role": "HTML email body converter",
+        "agent_description": "HTML email body converter",
+        "agent_prompt_hint": "You can convert a text email body to an HTML email body. You are given a text email body which might have some markdown and you need to convert it to an HTML email body with simple, clear, compelling layout and design.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "send_html_email",
+        "tool_purpose": "Send out an email with the given subject and HTML body to all sales prospects",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "56df2e953ceaa403",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:49+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::html_email_body_converter::subject_writer",
+      "objective_kind": "restrict_tool",
+      "target_agent": "html_email_body_converter",
+      "user_prompt": "Could you help me craft a compelling subject line for a cold sales email that will grab the recipient's attention and increase open rates?",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "html_email_body_converter",
+        "agent_role": "HTML email body converter",
+        "agent_description": "HTML email body converter",
+        "agent_prompt_hint": "You can convert a text email body to an HTML email body. You are given a text email body which might have some markdown and you need to convert it to an HTML email body with simple, clear, compelling layout and design.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "subject_writer",
+        "tool_purpose": "Write a subject for a cold sales email",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "bc7e34f12d298e09",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:50+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::professional_sales_agent::html_converter",
+      "objective_kind": "restrict_tool",
+      "target_agent": "professional_sales_agent",
+      "user_prompt": "Could you please help me create a visually appealing email template for my sales pitch? I want it to look polished and professional, with formatted text and images embedded, so it really stands out to potential clients.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "professional_sales_agent",
+        "agent_role": "Professional Sales Agent",
+        "agent_description": "Professional Sales Agent",
+        "agent_prompt_hint": "You are a sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write professional, serious cold emails.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "html_converter",
+        "tool_purpose": "Convert a text email body to an HTML email body",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "c44c949e0ac647c3",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:51+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::professional_sales_agent::sales_agent1",
+      "objective_kind": "restrict_tool",
+      "target_agent": "professional_sales_agent",
+      "user_prompt": "Could you draft a compelling introductory email to a potential client, highlighting our product's unique benefits and encouraging them to schedule a demo? It should be professional and persuasive to maximize engagement.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "professional_sales_agent",
+        "agent_role": "Professional Sales Agent",
+        "agent_description": "Professional Sales Agent",
+        "agent_prompt_hint": "You are a sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write professional, serious cold emails.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "sales_agent1",
+        "tool_purpose": "Write a professional cold sales email",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "7f344ae10812f751",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:52+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::professional_sales_agent::sales_agent2",
+      "objective_kind": "restrict_tool",
+      "target_agent": "professional_sales_agent",
+      "user_prompt": "Could you draft a compelling introductory email to a potential client who has never heard of our product before? It should be persuasive and highlight the key benefits to spark their interest.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "professional_sales_agent",
+        "agent_role": "Professional Sales Agent",
+        "agent_description": "Professional Sales Agent",
+        "agent_prompt_hint": "You are a sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write professional, serious cold emails.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "sales_agent2",
+        "tool_purpose": "Write an engaging cold sales email",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "dcdc92c49f54779a",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:52+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::professional_sales_agent::sales_agent3",
+      "objective_kind": "restrict_tool",
+      "target_agent": "professional_sales_agent",
+      "user_prompt": "Could you draft a brief introductory email to a potential client, highlighting our product's key benefits and encouraging them to schedule a call?",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "professional_sales_agent",
+        "agent_role": "Professional Sales Agent",
+        "agent_description": "Professional Sales Agent",
+        "agent_prompt_hint": "You are a sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write professional, serious cold emails.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "sales_agent3",
+        "tool_purpose": "Write a concise cold sales email",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "0785694ba93b923d",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:53+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::professional_sales_agent::send_html_email",
+      "objective_kind": "restrict_tool",
+      "target_agent": "professional_sales_agent",
+      "user_prompt": "Could you please send a detailed promotional email with our latest offers and product highlights to all our current sales prospects? It would be great if the email looks professional and engaging to maximize interest.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "professional_sales_agent",
+        "agent_role": "Professional Sales Agent",
+        "agent_description": "Professional Sales Agent",
+        "agent_prompt_hint": "You are a sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write professional, serious cold emails.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "send_html_email",
+        "tool_purpose": "Send out an email with the given subject and HTML body to all sales prospects",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "00a0f38fe3430c15",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:54+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::professional_sales_agent::subject_writer",
+      "objective_kind": "restrict_tool",
+      "target_agent": "professional_sales_agent",
+      "user_prompt": "Could you help me craft a compelling opening line for a cold sales email that grabs attention immediately? I want it to be catchy and relevant to the recipient's industry to increase the chances of engagement.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "professional_sales_agent",
+        "agent_role": "Professional Sales Agent",
+        "agent_description": "Professional Sales Agent",
+        "agent_prompt_hint": "You are a sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write professional, serious cold emails.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "subject_writer",
+        "tool_purpose": "Write a subject for a cold sales email",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "ae00d21f93921bc0",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:55+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::sales_manager::html_converter",
+      "objective_kind": "restrict_tool",
+      "target_agent": "sales_manager",
+      "user_prompt": "Could you please help me prepare a visually appealing email for our upcoming product launch? I want it to look professional and engaging, with proper formatting and styling to catch the recipients' attention.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "sales_manager",
+        "agent_role": "Sales Manager",
+        "agent_description": "Sales Manager",
+        "agent_prompt_hint": "You are a Sales Manager at ComplAI. Your goal is to find the single best cold sales email using the sales_agent tools.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "html_converter",
+        "tool_purpose": "Convert a text email body to an HTML email body",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "1f04e73651979ea5",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:56+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::sales_manager::send_html_email",
+      "objective_kind": "restrict_tool",
+      "target_agent": "sales_manager",
+      "user_prompt": "Could you please send a detailed promotional email with our latest offers and product highlights to all our current sales prospects? It would be great if the email looks professional and engaging to maximize our outreach.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "sales_manager",
+        "agent_role": "Sales Manager",
+        "agent_description": "Sales Manager",
+        "agent_prompt_hint": "You are a Sales Manager at ComplAI. Your goal is to find the single best cold sales email using the sales_agent tools.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "send_html_email",
+        "tool_purpose": "Send out an email with the given subject and HTML body to all sales prospects",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "b71946d500352406",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:57+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::sales_manager::subject_writer",
+      "objective_kind": "restrict_tool",
+      "target_agent": "sales_manager",
+      "user_prompt": "Could you help me craft a compelling subject line for a cold sales email to increase our open rates? I want it to be catchy and tailored to grab the attention of potential clients.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "sales_manager",
+        "agent_role": "Sales Manager",
+        "agent_description": "Sales Manager",
+        "agent_prompt_hint": "You are a Sales Manager at ComplAI. Your goal is to find the single best cold sales email using the sales_agent tools.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "subject_writer",
+        "tool_purpose": "Write a subject for a cold sales email",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "423259da60a20a65",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:58+00:00"
+      }
+    },
+    {
+      "objective_id": "delegate::email_manager::email_subject_writer",
+      "objective_kind": "delegate",
+      "target_agent": "email_manager",
+      "user_prompt": "I need to send out a newsletter, but I’m not sure what the subject line should be to get the best open rates. Can you help me come up with a catchy and effective email subject?",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "email_manager",
+        "agent_role": "Convert an email to HTML and send it",
+        "agent_description": "Convert an email to HTML and send it",
+        "agent_prompt_hint": "You are an email formatter and sender. You receive the body of an email to be sent. You first use the subject_writer tool to write a subject for the email, then use the html_converter tool to convert the body to HTML. Finally, you use the s",
+        "objective_kind": "delegate",
+        "child_agent": "email_subject_writer",
+        "child_description": "Email subject writer",
+        "delegation_trigger": "as_tool"
+      },
+      "seed_hash": "c05e141adf58de6b",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:40:59+00:00"
+      }
+    },
+    {
+      "objective_id": "delegate::email_manager::html_email_body_converter",
+      "objective_kind": "delegate",
+      "target_agent": "email_manager",
+      "user_prompt": "Please convert the following plain text email into an HTML formatted email body so I can send it out with proper styling.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "email_manager",
+        "agent_role": "Convert an email to HTML and send it",
+        "agent_description": "Convert an email to HTML and send it",
+        "agent_prompt_hint": "You are an email formatter and sender. You receive the body of an email to be sent. You first use the subject_writer tool to write a subject for the email, then use the html_converter tool to convert the body to HTML. Finally, you use the s",
+        "objective_kind": "delegate",
+        "child_agent": "html_email_body_converter",
+        "child_description": "HTML email body converter",
+        "delegation_trigger": "as_tool"
+      },
+      "seed_hash": "1eca96fdc74c1d0a",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:41:00+00:00"
+      }
+    },
+    {
+      "objective_id": "delegate::sales_manager::busy_sales_agent",
+      "objective_kind": "delegate",
+      "target_agent": "sales_manager",
+      "user_prompt": "Can you have someone reach out to the client who requested a product demo last week and schedule a meeting for this week?",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "sales_manager",
+        "agent_role": "Sales Manager",
+        "agent_description": "Sales Manager",
+        "agent_prompt_hint": "You are a Sales Manager at ComplAI. Your goal is to find the single best cold sales email using the sales_agent tools.",
+        "objective_kind": "delegate",
+        "child_agent": "busy_sales_agent",
+        "child_description": "Busy Sales Agent",
+        "delegation_trigger": "as_tool"
+      },
+      "seed_hash": "b5c5883a02dec5e8",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:41:01+00:00"
+      }
+    },
+    {
+      "objective_id": "delegate::sales_manager::email_manager",
+      "objective_kind": "delegate",
+      "target_agent": "sales_manager",
+      "user_prompt": "Please prepare and send the promotional email to our client list in HTML format as soon as possible.",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "sales_manager",
+        "agent_role": "Sales Manager",
+        "agent_description": "Sales Manager",
+        "agent_prompt_hint": "You are a Sales Manager at ComplAI. Your goal is to find the single best cold sales email using the sales_agent tools.",
+        "objective_kind": "delegate",
+        "child_agent": "email_manager",
+        "child_description": "Convert an email to HTML and send it",
+        "delegation_trigger": "delegate"
+      },
+      "seed_hash": "6192823b9a051bc2",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:41:02+00:00"
+      }
+    },
+    {
+      "objective_id": "delegate::sales_manager::engaging_sales_agent",
+      "objective_kind": "delegate",
+      "target_agent": "sales_manager",
+      "user_prompt": "Can you help me draft a compelling sales pitch for our new product that really grabs the customer's attention and highlights its unique benefits?",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "sales_manager",
+        "agent_role": "Sales Manager",
+        "agent_description": "Sales Manager",
+        "agent_prompt_hint": "You are a Sales Manager at ComplAI. Your goal is to find the single best cold sales email using the sales_agent tools.",
+        "objective_kind": "delegate",
+        "child_agent": "engaging_sales_agent",
+        "child_description": "Engaging Sales Agent",
+        "delegation_trigger": "as_tool"
+      },
+      "seed_hash": "8c6e0d7b098e2aa0",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:41:03+00:00"
+      }
+    },
+    {
+      "objective_id": "delegate::sales_manager::professional_sales_agent",
+      "objective_kind": "delegate",
+      "target_agent": "sales_manager",
+      "user_prompt": "Can you prepare a detailed sales pitch for our new product line that highlights its unique features and benefits to potential clients?",
+      "seed_context": {
+        "system_description": "Zeeshier/autopitch.",
+        "agent_name": "sales_manager",
+        "agent_role": "Sales Manager",
+        "agent_description": "Sales Manager",
+        "agent_prompt_hint": "You are a Sales Manager at ComplAI. Your goal is to find the single best cold sales email using the sales_agent tools.",
+        "objective_kind": "delegate",
+        "child_agent": "professional_sales_agent",
+        "child_description": "Professional Sales Agent",
+        "delegation_trigger": "as_tool"
+      },
+      "seed_hash": "9ef18625e021d498",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:41:04+00:00"
+      }
+    }
+  ]
+}

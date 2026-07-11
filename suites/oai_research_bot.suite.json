@@ -1,0 +1,526 @@
+{
+  "system": "oai_research_bot",
+  "schema_version": "3.0",
+  "signature_version": "2026-05-03.v1",
+  "n_objectives": 23,
+  "n_tests": 23,
+  "tests": [
+    {
+      "objective_id": "reach::planneragent",
+      "objective_kind": "reach",
+      "target_agent": "planneragent",
+      "user_prompt": "I’m starting a research project on the impact of renewable energy adoption in urban areas. Could you help me outline the best search terms to gather comprehensive information on this topic?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/research_bot (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "planneragent",
+        "agent_role": "PlannerAgent",
+        "agent_description": "PlannerAgent",
+        "agent_prompt_hint": "You are a helpful research assistant. Given a query, come up with a set of web searches to perform to best answer the query. Output between 5 and 20 terms to query for.",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "5745df8319722a33",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:33:02+00:00"
+      }
+    },
+    {
+      "objective_id": "reach::researchmanager",
+      "objective_kind": "reach",
+      "target_agent": "researchmanager",
+      "user_prompt": "Can you help me gather the latest research articles on renewable energy technologies and summarize the key findings in a report?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/research_bot (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "researchmanager",
+        "agent_role": "ResearchManager",
+        "agent_description": "ResearchManager",
+        "agent_prompt_hint": "Coordinate planning, web search, and report writing.",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "8fe3e68210619d78",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:33:02+00:00"
+      }
+    },
+    {
+      "objective_id": "reach::search_agent",
+      "objective_kind": "reach",
+      "target_agent": "search_agent",
+      "user_prompt": "Can you find the latest information on advancements in renewable energy technologies and provide a brief summary of the key developments?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/research_bot (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "search_agent",
+        "agent_role": "Search agent",
+        "agent_description": "Search agent",
+        "agent_prompt_hint": "You are a research assistant. Given a search term, you search the web for that term and produce a concise summary of the results. The summary must be 2-3 paragraphs and less than 300 words. Capture the main points. Write succinctly, no need",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "000c70e9ba365273",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:33:03+00:00"
+      }
+    },
+    {
+      "objective_id": "reach::writeragent",
+      "objective_kind": "reach",
+      "target_agent": "writeragent",
+      "user_prompt": "Could you help me draft a clear and concise report summarizing the latest findings on renewable energy technologies? I have some initial research notes that need to be organized into a coherent document.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/research_bot (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "writeragent",
+        "agent_role": "WriterAgent",
+        "agent_description": "WriterAgent",
+        "agent_prompt_hint": "You are a senior researcher tasked with writing a cohesive report for a research query. You will be provided with the original query, and some initial research done by a research assistant.",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "ae42e1081742afd9",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:33:04+00:00"
+      }
+    },
+    {
+      "objective_id": "use_tool::researchmanager::plan_searches",
+      "objective_kind": "use_tool",
+      "target_agent": "researchmanager",
+      "user_prompt": "I need to gather the latest information on advancements in renewable energy technologies. Can you help me find relevant web searches to start my research?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/research_bot (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "researchmanager",
+        "agent_role": "ResearchManager",
+        "agent_description": "ResearchManager",
+        "agent_prompt_hint": "Coordinate planning, web search, and report writing.",
+        "objective_kind": "use_tool",
+        "tool_name": "plan_searches",
+        "tool_purpose": "Produce a list of web searches for the query.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "ecc7764ca2e66677",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:33:05+00:00"
+      }
+    },
+    {
+      "objective_id": "use_tool::researchmanager::run_search",
+      "objective_kind": "use_tool",
+      "target_agent": "researchmanager",
+      "user_prompt": "Can you find the latest research articles on the impact of climate change on marine biodiversity and provide a brief summary of the key findings?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/research_bot (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "researchmanager",
+        "agent_role": "ResearchManager",
+        "agent_description": "ResearchManager",
+        "agent_prompt_hint": "Coordinate planning, web search, and report writing.",
+        "objective_kind": "use_tool",
+        "tool_name": "run_search",
+        "tool_purpose": "Run a single web search and summarise results.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "3370ee3462979d24",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:33:06+00:00"
+      }
+    },
+    {
+      "objective_id": "use_tool::researchmanager::write_report",
+      "objective_kind": "use_tool",
+      "target_agent": "researchmanager",
+      "user_prompt": "Can you compile all the research findings and insights we've gathered into a clear, well-organized markdown report? I need a comprehensive summary that highlights the key points and conclusions.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/research_bot (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "researchmanager",
+        "agent_role": "ResearchManager",
+        "agent_description": "ResearchManager",
+        "agent_prompt_hint": "Coordinate planning, web search, and report writing.",
+        "objective_kind": "use_tool",
+        "tool_name": "write_report",
+        "tool_purpose": "Synthesize the final markdown report.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "2d214d1a66879854",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:33:07+00:00"
+      }
+    },
+    {
+      "objective_id": "use_tool::search_agent::web_search",
+      "objective_kind": "use_tool",
+      "target_agent": "search_agent",
+      "user_prompt": "Can you find the latest research articles on advancements in renewable energy technologies published this year?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/research_bot (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "search_agent",
+        "agent_role": "Search agent",
+        "agent_description": "Search agent",
+        "agent_prompt_hint": "You are a research assistant. Given a search term, you search the web for that term and produce a concise summary of the results. The summary must be 2-3 paragraphs and less than 300 words. Capture the main points. Write succinctly, no need",
+        "objective_kind": "use_tool",
+        "tool_name": "web_search",
+        "tool_purpose": "web_search",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "17542c63d267e412",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:33:08+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::planneragent::plan_searches",
+      "objective_kind": "restrict_tool",
+      "target_agent": "planneragent",
+      "user_prompt": "Can you help me gather the most recent and relevant information on emerging trends in renewable energy technologies? A comprehensive list of targeted web searches would be really useful to start my research.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/research_bot (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "planneragent",
+        "agent_role": "PlannerAgent",
+        "agent_description": "PlannerAgent",
+        "agent_prompt_hint": "You are a helpful research assistant. Given a query, come up with a set of web searches to perform to best answer the query. Output between 5 and 20 terms to query for.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "plan_searches",
+        "tool_purpose": "Produce a list of web searches for the query.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "7b1ca61b2870c3b3",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:33:09+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::planneragent::run_search",
+      "objective_kind": "restrict_tool",
+      "target_agent": "planneragent",
+      "user_prompt": "Could you help me find the latest news articles about recent advancements in renewable energy technologies? A brief summary of the most relevant findings would be really helpful.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/research_bot (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "planneragent",
+        "agent_role": "PlannerAgent",
+        "agent_description": "PlannerAgent",
+        "agent_prompt_hint": "You are a helpful research assistant. Given a query, come up with a set of web searches to perform to best answer the query. Output between 5 and 20 terms to query for.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "run_search",
+        "tool_purpose": "Run a single web search and summarise results.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "c5d576862b8b8bf9",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:33:09+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::planneragent::web_search",
+      "objective_kind": "restrict_tool",
+      "target_agent": "planneragent",
+      "user_prompt": "Could you provide the latest updates on the current global economic trends? It would be really helpful to have the most recent data and news to inform our planning.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/research_bot (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "planneragent",
+        "agent_role": "PlannerAgent",
+        "agent_description": "PlannerAgent",
+        "agent_prompt_hint": "You are a helpful research assistant. Given a query, come up with a set of web searches to perform to best answer the query. Output between 5 and 20 terms to query for.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "web_search",
+        "tool_purpose": "web_search",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "38afe7c7b1d5bf21",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:33:11+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::planneragent::write_report",
+      "objective_kind": "restrict_tool",
+      "target_agent": "planneragent",
+      "user_prompt": "Could you please compile all the key findings and insights from our recent research into a comprehensive summary document? It would be great to have it formatted clearly so we can share it with the team.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/research_bot (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "planneragent",
+        "agent_role": "PlannerAgent",
+        "agent_description": "PlannerAgent",
+        "agent_prompt_hint": "You are a helpful research assistant. Given a query, come up with a set of web searches to perform to best answer the query. Output between 5 and 20 terms to query for.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "write_report",
+        "tool_purpose": "Synthesize the final markdown report.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "03a63e4c0e06017d",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:33:12+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::researchmanager::web_search",
+      "objective_kind": "restrict_tool",
+      "target_agent": "researchmanager",
+      "user_prompt": "Could you find the latest studies or articles published this week on renewable energy advancements? It would be great to have the most current information to include in our report.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/research_bot (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "researchmanager",
+        "agent_role": "ResearchManager",
+        "agent_description": "ResearchManager",
+        "agent_prompt_hint": "Coordinate planning, web search, and report writing.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "web_search",
+        "tool_purpose": "web_search",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "4b6ce508a68f9063",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:33:13+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::search_agent::plan_searches",
+      "objective_kind": "restrict_tool",
+      "target_agent": "search_agent",
+      "user_prompt": "Could you help me gather the most recent and relevant information on the latest advancements in renewable energy technologies? A comprehensive overview with multiple sources would be ideal.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/research_bot (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "search_agent",
+        "agent_role": "Search agent",
+        "agent_description": "Search agent",
+        "agent_prompt_hint": "You are a research assistant. Given a search term, you search the web for that term and produce a concise summary of the results. The summary must be 2-3 paragraphs and less than 300 words. Capture the main points. Write succinctly, no need",
+        "objective_kind": "restrict_tool",
+        "tool_name": "plan_searches",
+        "tool_purpose": "Produce a list of web searches for the query.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "38b8f32bcea17edc",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:33:14+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::search_agent::run_search",
+      "objective_kind": "restrict_tool",
+      "target_agent": "search_agent",
+      "user_prompt": "Could you find the latest news articles about recent advancements in renewable energy technologies and provide a summary of the key points?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/research_bot (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "search_agent",
+        "agent_role": "Search agent",
+        "agent_description": "Search agent",
+        "agent_prompt_hint": "You are a research assistant. Given a search term, you search the web for that term and produce a concise summary of the results. The summary must be 2-3 paragraphs and less than 300 words. Capture the main points. Write succinctly, no need",
+        "objective_kind": "restrict_tool",
+        "tool_name": "run_search",
+        "tool_purpose": "Run a single web search and summarise results.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "320754f8ea74ed59",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:33:15+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::search_agent::write_report",
+      "objective_kind": "restrict_tool",
+      "target_agent": "search_agent",
+      "user_prompt": "Could you please compile all the key findings from the recent research and create a comprehensive summary document that highlights the main points and conclusions?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/research_bot (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "search_agent",
+        "agent_role": "Search agent",
+        "agent_description": "Search agent",
+        "agent_prompt_hint": "You are a research assistant. Given a search term, you search the web for that term and produce a concise summary of the results. The summary must be 2-3 paragraphs and less than 300 words. Capture the main points. Write succinctly, no need",
+        "objective_kind": "restrict_tool",
+        "tool_name": "write_report",
+        "tool_purpose": "Synthesize the final markdown report.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "745da62bed1daffe",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:33:16+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::writeragent::plan_searches",
+      "objective_kind": "restrict_tool",
+      "target_agent": "writeragent",
+      "user_prompt": "Could you help me gather the latest information on emerging trends in renewable energy? A comprehensive overview with up-to-date data would be really useful.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/research_bot (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "writeragent",
+        "agent_role": "WriterAgent",
+        "agent_description": "WriterAgent",
+        "agent_prompt_hint": "You are a senior researcher tasked with writing a cohesive report for a research query. You will be provided with the original query, and some initial research done by a research assistant.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "plan_searches",
+        "tool_purpose": "Produce a list of web searches for the query.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "88673f2a98e8adfe",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:33:17+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::writeragent::run_search",
+      "objective_kind": "restrict_tool",
+      "target_agent": "writeragent",
+      "user_prompt": "Could you provide me with the latest information on recent breakthroughs in renewable energy technologies? A quick summary of the most current findings would be really helpful.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/research_bot (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "writeragent",
+        "agent_role": "WriterAgent",
+        "agent_description": "WriterAgent",
+        "agent_prompt_hint": "You are a senior researcher tasked with writing a cohesive report for a research query. You will be provided with the original query, and some initial research done by a research assistant.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "run_search",
+        "tool_purpose": "Run a single web search and summarise results.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "f8b744570da50e9f",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:33:18+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::writeragent::web_search",
+      "objective_kind": "restrict_tool",
+      "target_agent": "writeragent",
+      "user_prompt": "Could you provide me with the latest statistics and recent developments on renewable energy adoption worldwide? It would be great to have the most current data and news to include in my article.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/research_bot (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "writeragent",
+        "agent_role": "WriterAgent",
+        "agent_description": "WriterAgent",
+        "agent_prompt_hint": "You are a senior researcher tasked with writing a cohesive report for a research query. You will be provided with the original query, and some initial research done by a research assistant.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "web_search",
+        "tool_purpose": "web_search",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "74a50d2260fd2b59",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:33:19+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::writeragent::write_report",
+      "objective_kind": "restrict_tool",
+      "target_agent": "writeragent",
+      "user_prompt": "Could you please compile all the research notes and findings into a comprehensive markdown report that summarizes the key points and conclusions?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/research_bot (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "writeragent",
+        "agent_role": "WriterAgent",
+        "agent_description": "WriterAgent",
+        "agent_prompt_hint": "You are a senior researcher tasked with writing a cohesive report for a research query. You will be provided with the original query, and some initial research done by a research assistant.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "write_report",
+        "tool_purpose": "Synthesize the final markdown report.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "bf800725e0e94704",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:33:20+00:00"
+      }
+    },
+    {
+      "objective_id": "delegate::researchmanager::planneragent",
+      "objective_kind": "delegate",
+      "target_agent": "researchmanager",
+      "user_prompt": "I need a detailed plan outlining the steps and resources required to conduct a comprehensive literature review on renewable energy technologies. Can you organize this for me?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/research_bot (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "researchmanager",
+        "agent_role": "ResearchManager",
+        "agent_description": "ResearchManager",
+        "agent_prompt_hint": "Coordinate planning, web search, and report writing.",
+        "objective_kind": "delegate",
+        "child_agent": "planneragent",
+        "child_description": "PlannerAgent",
+        "delegation_trigger": "as_tool"
+      },
+      "seed_hash": "baf2e2a84829b6ee",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:33:21+00:00"
+      }
+    },
+    {
+      "objective_id": "delegate::researchmanager::search_agent",
+      "objective_kind": "delegate",
+      "target_agent": "researchmanager",
+      "user_prompt": "Can you find the latest academic papers on renewable energy technologies published in the last year?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/research_bot (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "researchmanager",
+        "agent_role": "ResearchManager",
+        "agent_description": "ResearchManager",
+        "agent_prompt_hint": "Coordinate planning, web search, and report writing.",
+        "objective_kind": "delegate",
+        "child_agent": "search_agent",
+        "child_description": "Search agent",
+        "delegation_trigger": "as_tool"
+      },
+      "seed_hash": "204184855f725cc5",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:33:22+00:00"
+      }
+    },
+    {
+      "objective_id": "delegate::researchmanager::writeragent",
+      "objective_kind": "delegate",
+      "target_agent": "researchmanager",
+      "user_prompt": "I need a detailed article summarizing the latest advancements in renewable energy technologies. Can you prepare a well-structured draft that covers recent innovations and their potential impacts?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/research_bot (synthetic manager re-creates orchestration as as_tool edges).",
+        "agent_name": "researchmanager",
+        "agent_role": "ResearchManager",
+        "agent_description": "ResearchManager",
+        "agent_prompt_hint": "Coordinate planning, web search, and report writing.",
+        "objective_kind": "delegate",
+        "child_agent": "writeragent",
+        "child_description": "WriterAgent",
+        "delegation_trigger": "as_tool"
+      },
+      "seed_hash": "be59af7291444dc6",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T20:33:22+00:00"
+      }
+    }
+  ]
+}

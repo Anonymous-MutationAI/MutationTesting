@@ -1,0 +1,72 @@
+{
+  "schema_version": "3.0",
+  "system": {
+    "name": "deep_research_clone",
+    "entry_agent": "deep_reporter_agent",
+    "description": "Hetav01/Deep-Research-Clone."
+  },
+  "agents": [
+    {
+      "name": "deep_reporter_agent",
+      "reachable": true,
+      "role": "Deep Reporter Agent",
+      "description": "Deep Reporter Agent",
+      "system_prompt_hint": "You are DeepResearch-Report Generating Agent v1.1, a master-level long-form report generating specialist charged with producing an exhaustive report combining information from all the sources."
+    },
+    {
+      "name": "search_execution_agent",
+      "reachable": true,
+      "role": "Search Execution Agent",
+      "description": "Search Execution Agent",
+      "system_prompt_hint": "You are a search execution agent, an elite information-scouting assistant. "
+    },
+    {
+      "name": "todo_agent",
+      "reachable": true,
+      "role": "Todo Agent",
+      "description": "Todo Agent",
+      "system_prompt_hint": "You are amazing to-do creator, an elite information-scouting assistant."
+    }
+  ],
+  "tools": [
+    {
+      "name": "scraper",
+      "purpose": "Scarper tool for llms to extract text from a webpage.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    }
+  ],
+  "permissions": {
+    "allow": [
+      {
+        "agent": "search_execution_agent",
+        "tool": "scraper"
+      }
+    ],
+    "restrict": [
+      {
+        "agent": "deep_reporter_agent",
+        "tool": "scraper"
+      },
+      {
+        "agent": "todo_agent",
+        "tool": "scraper"
+      }
+    ]
+  },
+  "delegations": [
+    {
+      "from": "deep_reporter_agent",
+      "to": "search_execution_agent",
+      "trigger": "delegate"
+    },
+    {
+      "from": "deep_reporter_agent",
+      "to": "todo_agent",
+      "trigger": "delegate"
+    }
+  ]
+}
