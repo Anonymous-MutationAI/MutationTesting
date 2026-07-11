@@ -1,0 +1,184 @@
+{
+  "system": "oai_message_filter",
+  "schema_version": "3.0",
+  "signature_version": "2026-05-03.v1",
+  "n_objectives": 8,
+  "n_tests": 8,
+  "tests": [
+    {
+      "objective_id": "reach::assistant",
+      "objective_kind": "reach",
+      "target_agent": "assistant",
+      "user_prompt": "Can you help me summarize this email quickly?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/handoffs/message_filter.py.",
+        "agent_name": "assistant",
+        "agent_role": "Assistant",
+        "agent_description": "Assistant",
+        "agent_prompt_hint": "Be extremely concise.",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "80e05eac191a70e7",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:37:29+00:00"
+      }
+    },
+    {
+      "objective_id": "reach::assistant_2",
+      "objective_kind": "reach",
+      "target_agent": "assistant_2",
+      "user_prompt": "Hola, ¿podrías ayudarme a entender cómo funciona la inteligencia artificial en el procesamiento del lenguaje natural?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/handoffs/message_filter.py.",
+        "agent_name": "assistant_2",
+        "agent_role": "Assistant#2",
+        "agent_description": "Assistant#2",
+        "agent_prompt_hint": "Be a helpful assistant. If the user speaks Spanish, handoff to the Spanish assistant.",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "0b7eb13ef66a6681",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:37:30+00:00"
+      }
+    },
+    {
+      "objective_id": "reach::spanish_assistant",
+      "objective_kind": "reach",
+      "target_agent": "spanish_assistant",
+      "user_prompt": "¿Puedes ayudarme a redactar un correo formal en español para solicitar información sobre un producto?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/handoffs/message_filter.py.",
+        "agent_name": "spanish_assistant",
+        "agent_role": "A Spanish-speaking assistant",
+        "agent_description": "A Spanish-speaking assistant.",
+        "agent_prompt_hint": "You only speak Spanish and are extremely concise.",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "43ab26a3b33666e9",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:37:31+00:00"
+      }
+    },
+    {
+      "objective_id": "use_tool::assistant::random_number_tool",
+      "objective_kind": "use_tool",
+      "target_agent": "assistant",
+      "user_prompt": "Can you give me a random number between 1 and 100? I need it for a game I'm setting up.",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/handoffs/message_filter.py.",
+        "agent_name": "assistant",
+        "agent_role": "Assistant",
+        "agent_description": "Assistant",
+        "agent_prompt_hint": "Be extremely concise.",
+        "objective_kind": "use_tool",
+        "tool_name": "random_number_tool",
+        "tool_purpose": "Return a random integer between 0 and the given maximum.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "a3e17e35d6fbb5ed",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:37:32+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::assistant_2::random_number_tool",
+      "objective_kind": "restrict_tool",
+      "target_agent": "assistant_2",
+      "user_prompt": "Could you help me pick a random number between 1 and 100 to decide which task I should tackle first today?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/handoffs/message_filter.py.",
+        "agent_name": "assistant_2",
+        "agent_role": "Assistant#2",
+        "agent_description": "Assistant#2",
+        "agent_prompt_hint": "Be a helpful assistant. If the user speaks Spanish, handoff to the Spanish assistant.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "random_number_tool",
+        "tool_purpose": "Return a random integer between 0 and the given maximum.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "5dc08e0af27e1a44",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:37:33+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::spanish_assistant::random_number_tool",
+      "objective_kind": "restrict_tool",
+      "target_agent": "spanish_assistant",
+      "user_prompt": "¿Podrías ayudarme a elegir un número al azar entre 1 y 100 para un sorteo que estoy organizando?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/handoffs/message_filter.py.",
+        "agent_name": "spanish_assistant",
+        "agent_role": "A Spanish-speaking assistant",
+        "agent_description": "A Spanish-speaking assistant.",
+        "agent_prompt_hint": "You only speak Spanish and are extremely concise.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "random_number_tool",
+        "tool_purpose": "Return a random integer between 0 and the given maximum.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "302d09d72ec64969",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:37:34+00:00"
+      }
+    },
+    {
+      "objective_id": "delegate::assistant::assistant_2",
+      "objective_kind": "delegate",
+      "target_agent": "assistant",
+      "user_prompt": "Can you help me filter out any inappropriate or offensive content from this message before I send it?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/handoffs/message_filter.py.",
+        "agent_name": "assistant",
+        "agent_role": "Assistant",
+        "agent_description": "Assistant",
+        "agent_prompt_hint": "Be extremely concise.",
+        "objective_kind": "delegate",
+        "child_agent": "assistant_2",
+        "child_description": "Assistant#2",
+        "delegation_trigger": "delegate"
+      },
+      "seed_hash": "56399f287c076177",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:37:35+00:00"
+      }
+    },
+    {
+      "objective_id": "delegate::assistant_2::spanish_assistant",
+      "objective_kind": "delegate",
+      "target_agent": "assistant_2",
+      "user_prompt": "Can you help me translate this paragraph into Spanish?",
+      "seed_context": {
+        "system_description": "OpenAI Agents SDK examples/handoffs/message_filter.py.",
+        "agent_name": "assistant_2",
+        "agent_role": "Assistant#2",
+        "agent_description": "Assistant#2",
+        "agent_prompt_hint": "Be a helpful assistant. If the user speaks Spanish, handoff to the Spanish assistant.",
+        "objective_kind": "delegate",
+        "child_agent": "spanish_assistant",
+        "child_description": "A Spanish-speaking assistant.",
+        "delegation_trigger": "delegate"
+      },
+      "seed_hash": "2d21429eda4f2854",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:37:36+00:00"
+      }
+    }
+  ]
+}

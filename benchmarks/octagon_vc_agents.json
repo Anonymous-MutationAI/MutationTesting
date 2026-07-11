@@ -1,0 +1,843 @@
+{
+  "schema_version": "3.0",
+  "system": {
+    "name": "octagon_vc_agents",
+    "entry_agent": "alfred_lin",
+    "description": "OctagonAI/octagon-vc-agents (one investor coordinator built from first profile)."
+  },
+  "agents": [
+    {
+      "name": "alfred_lin",
+      "reachable": true,
+      "role": "Alfred Lin",
+      "description": "Alfred Lin",
+      "system_prompt_hint": "Today's date is 2026-05-03. "
+    },
+    {
+      "name": "octagon_sec_agent",
+      "reachable": true,
+      "role": "A helpful agent that can answer questions about the SEC for publ",
+      "description": "A helpful agent that can answer questions about the SEC for public companies.",
+      "system_prompt_hint": "You are a SEC agent that can get SEC data."
+    },
+    {
+      "name": "octagon_transcripts_agent",
+      "reachable": true,
+      "role": "A helpful agent that can answer questions about the transcripts ",
+      "description": "A helpful agent that can answer questions about the transcripts of public companies.",
+      "system_prompt_hint": "You are a transcripts agent that can get transcripts data."
+    },
+    {
+      "name": "octagon_stock_data_agent",
+      "reachable": true,
+      "role": "A helpful agent that can answer questions about the stock market",
+      "description": "A helpful agent that can answer questions about the stock market for public companies.",
+      "system_prompt_hint": "You are a stock agent that can get stock data."
+    },
+    {
+      "name": "octagon_financials_agent",
+      "reachable": true,
+      "role": "A helpful agent that can answer questions about the financials o",
+      "description": "A helpful agent that can answer questions about the financials of public companies.",
+      "system_prompt_hint": "You are a financials agent that can get financials data."
+    },
+    {
+      "name": "octagon_companies_agent",
+      "reachable": true,
+      "role": "A helpful agent that can answer questions about the private comp",
+      "description": "A helpful agent that can answer questions about the private companies in the Octagon database.",
+      "system_prompt_hint": "You are a company agent that can get company data."
+    },
+    {
+      "name": "octagon_funding_agent",
+      "reachable": true,
+      "role": "A helpful agent that can answer questions about the funding of p",
+      "description": "A helpful agent that can answer questions about the funding of public companies.",
+      "system_prompt_hint": "You are a funding agent that can get funding data."
+    },
+    {
+      "name": "octagon_deals_agent",
+      "reachable": true,
+      "role": "A helpful agent that can answer questions about the deals of pub",
+      "description": "A helpful agent that can answer questions about the deals of public companies.",
+      "system_prompt_hint": "You are a deals agent that can get deals data."
+    },
+    {
+      "name": "octagon_investors_agent",
+      "reachable": true,
+      "role": "A helpful agent that can answer questions about the investors of",
+      "description": "A helpful agent that can answer questions about the investors of public companies.",
+      "system_prompt_hint": "You are a investors agent that can get investors data."
+    },
+    {
+      "name": "octagon_debts_agent",
+      "reachable": true,
+      "role": "A helpful agent that can answer questions about the debts of pub",
+      "description": "A helpful agent that can answer questions about the debts of public companies.",
+      "system_prompt_hint": "You are a debts agent that can get debts data."
+    },
+    {
+      "name": "octagon_scraper_agent",
+      "reachable": true,
+      "role": " A helpful agent that can scrape the website for information abo",
+      "description": " A helpful agent that can scrape the website for information about a company.",
+      "system_prompt_hint": "Always return the markdown of a website URL"
+    },
+    {
+      "name": "web_search_agent",
+      "reachable": true,
+      "role": "A helpful agent that can answer questions about the companies, s",
+      "description": "A helpful agent that can answer questions about the companies, such as news, articles, and social media.",
+      "system_prompt_hint": "You are a web search agent that can get web search data. Focus on reliable sources, such as news articles, SEC filings, and company press releases and most recent information. Today's date is 2026-05-03."
+    }
+  ],
+  "tools": [
+    {
+      "name": "octagon_sec_agent",
+      "purpose": "Get the latest SEC data for a company.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "octagon_transcripts_agent",
+      "purpose": "Get the latest transcripts data for a company.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "octagon_stock_data_agent",
+      "purpose": "Get the latest stock data for a company.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "octagon_financials_agent",
+      "purpose": "Get the latest financial data for a company.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "octagon_companies_agent",
+      "purpose": "Get private company data profiles.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "octagon_funding_agent",
+      "purpose": "Get the latest funding data for a company.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "octagon_deals_agent",
+      "purpose": "Get the latest deals data for a company.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "octagon_investors_agent",
+      "purpose": "Get the latest investors data for a company.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "octagon_debts_agent",
+      "purpose": "Get the latest debts data for a company.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "octagon_scraper_agent",
+      "purpose": "Get the latest information about a company from the web.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "web_search_agent",
+      "purpose": "Always use this tool to complement your knowledge with web search data.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "web_search",
+      "purpose": "web_search",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    }
+  ],
+  "permissions": {
+    "allow": [
+      {
+        "agent": "alfred_lin",
+        "tool": "octagon_companies_agent"
+      },
+      {
+        "agent": "alfred_lin",
+        "tool": "octagon_deals_agent"
+      },
+      {
+        "agent": "alfred_lin",
+        "tool": "octagon_debts_agent"
+      },
+      {
+        "agent": "alfred_lin",
+        "tool": "octagon_financials_agent"
+      },
+      {
+        "agent": "alfred_lin",
+        "tool": "octagon_funding_agent"
+      },
+      {
+        "agent": "alfred_lin",
+        "tool": "octagon_investors_agent"
+      },
+      {
+        "agent": "alfred_lin",
+        "tool": "octagon_scraper_agent"
+      },
+      {
+        "agent": "alfred_lin",
+        "tool": "octagon_sec_agent"
+      },
+      {
+        "agent": "alfred_lin",
+        "tool": "octagon_stock_data_agent"
+      },
+      {
+        "agent": "alfred_lin",
+        "tool": "octagon_transcripts_agent"
+      },
+      {
+        "agent": "alfred_lin",
+        "tool": "web_search_agent"
+      },
+      {
+        "agent": "web_search_agent",
+        "tool": "web_search"
+      }
+    ],
+    "restrict": [
+      {
+        "agent": "alfred_lin",
+        "tool": "web_search"
+      },
+      {
+        "agent": "octagon_companies_agent",
+        "tool": "octagon_companies_agent"
+      },
+      {
+        "agent": "octagon_companies_agent",
+        "tool": "octagon_deals_agent"
+      },
+      {
+        "agent": "octagon_companies_agent",
+        "tool": "octagon_debts_agent"
+      },
+      {
+        "agent": "octagon_companies_agent",
+        "tool": "octagon_financials_agent"
+      },
+      {
+        "agent": "octagon_companies_agent",
+        "tool": "octagon_funding_agent"
+      },
+      {
+        "agent": "octagon_companies_agent",
+        "tool": "octagon_investors_agent"
+      },
+      {
+        "agent": "octagon_companies_agent",
+        "tool": "octagon_scraper_agent"
+      },
+      {
+        "agent": "octagon_companies_agent",
+        "tool": "octagon_sec_agent"
+      },
+      {
+        "agent": "octagon_companies_agent",
+        "tool": "octagon_stock_data_agent"
+      },
+      {
+        "agent": "octagon_companies_agent",
+        "tool": "octagon_transcripts_agent"
+      },
+      {
+        "agent": "octagon_companies_agent",
+        "tool": "web_search"
+      },
+      {
+        "agent": "octagon_companies_agent",
+        "tool": "web_search_agent"
+      },
+      {
+        "agent": "octagon_deals_agent",
+        "tool": "octagon_companies_agent"
+      },
+      {
+        "agent": "octagon_deals_agent",
+        "tool": "octagon_deals_agent"
+      },
+      {
+        "agent": "octagon_deals_agent",
+        "tool": "octagon_debts_agent"
+      },
+      {
+        "agent": "octagon_deals_agent",
+        "tool": "octagon_financials_agent"
+      },
+      {
+        "agent": "octagon_deals_agent",
+        "tool": "octagon_funding_agent"
+      },
+      {
+        "agent": "octagon_deals_agent",
+        "tool": "octagon_investors_agent"
+      },
+      {
+        "agent": "octagon_deals_agent",
+        "tool": "octagon_scraper_agent"
+      },
+      {
+        "agent": "octagon_deals_agent",
+        "tool": "octagon_sec_agent"
+      },
+      {
+        "agent": "octagon_deals_agent",
+        "tool": "octagon_stock_data_agent"
+      },
+      {
+        "agent": "octagon_deals_agent",
+        "tool": "octagon_transcripts_agent"
+      },
+      {
+        "agent": "octagon_deals_agent",
+        "tool": "web_search"
+      },
+      {
+        "agent": "octagon_deals_agent",
+        "tool": "web_search_agent"
+      },
+      {
+        "agent": "octagon_debts_agent",
+        "tool": "octagon_companies_agent"
+      },
+      {
+        "agent": "octagon_debts_agent",
+        "tool": "octagon_deals_agent"
+      },
+      {
+        "agent": "octagon_debts_agent",
+        "tool": "octagon_debts_agent"
+      },
+      {
+        "agent": "octagon_debts_agent",
+        "tool": "octagon_financials_agent"
+      },
+      {
+        "agent": "octagon_debts_agent",
+        "tool": "octagon_funding_agent"
+      },
+      {
+        "agent": "octagon_debts_agent",
+        "tool": "octagon_investors_agent"
+      },
+      {
+        "agent": "octagon_debts_agent",
+        "tool": "octagon_scraper_agent"
+      },
+      {
+        "agent": "octagon_debts_agent",
+        "tool": "octagon_sec_agent"
+      },
+      {
+        "agent": "octagon_debts_agent",
+        "tool": "octagon_stock_data_agent"
+      },
+      {
+        "agent": "octagon_debts_agent",
+        "tool": "octagon_transcripts_agent"
+      },
+      {
+        "agent": "octagon_debts_agent",
+        "tool": "web_search"
+      },
+      {
+        "agent": "octagon_debts_agent",
+        "tool": "web_search_agent"
+      },
+      {
+        "agent": "octagon_financials_agent",
+        "tool": "octagon_companies_agent"
+      },
+      {
+        "agent": "octagon_financials_agent",
+        "tool": "octagon_deals_agent"
+      },
+      {
+        "agent": "octagon_financials_agent",
+        "tool": "octagon_debts_agent"
+      },
+      {
+        "agent": "octagon_financials_agent",
+        "tool": "octagon_financials_agent"
+      },
+      {
+        "agent": "octagon_financials_agent",
+        "tool": "octagon_funding_agent"
+      },
+      {
+        "agent": "octagon_financials_agent",
+        "tool": "octagon_investors_agent"
+      },
+      {
+        "agent": "octagon_financials_agent",
+        "tool": "octagon_scraper_agent"
+      },
+      {
+        "agent": "octagon_financials_agent",
+        "tool": "octagon_sec_agent"
+      },
+      {
+        "agent": "octagon_financials_agent",
+        "tool": "octagon_stock_data_agent"
+      },
+      {
+        "agent": "octagon_financials_agent",
+        "tool": "octagon_transcripts_agent"
+      },
+      {
+        "agent": "octagon_financials_agent",
+        "tool": "web_search"
+      },
+      {
+        "agent": "octagon_financials_agent",
+        "tool": "web_search_agent"
+      },
+      {
+        "agent": "octagon_funding_agent",
+        "tool": "octagon_companies_agent"
+      },
+      {
+        "agent": "octagon_funding_agent",
+        "tool": "octagon_deals_agent"
+      },
+      {
+        "agent": "octagon_funding_agent",
+        "tool": "octagon_debts_agent"
+      },
+      {
+        "agent": "octagon_funding_agent",
+        "tool": "octagon_financials_agent"
+      },
+      {
+        "agent": "octagon_funding_agent",
+        "tool": "octagon_funding_agent"
+      },
+      {
+        "agent": "octagon_funding_agent",
+        "tool": "octagon_investors_agent"
+      },
+      {
+        "agent": "octagon_funding_agent",
+        "tool": "octagon_scraper_agent"
+      },
+      {
+        "agent": "octagon_funding_agent",
+        "tool": "octagon_sec_agent"
+      },
+      {
+        "agent": "octagon_funding_agent",
+        "tool": "octagon_stock_data_agent"
+      },
+      {
+        "agent": "octagon_funding_agent",
+        "tool": "octagon_transcripts_agent"
+      },
+      {
+        "agent": "octagon_funding_agent",
+        "tool": "web_search"
+      },
+      {
+        "agent": "octagon_funding_agent",
+        "tool": "web_search_agent"
+      },
+      {
+        "agent": "octagon_investors_agent",
+        "tool": "octagon_companies_agent"
+      },
+      {
+        "agent": "octagon_investors_agent",
+        "tool": "octagon_deals_agent"
+      },
+      {
+        "agent": "octagon_investors_agent",
+        "tool": "octagon_debts_agent"
+      },
+      {
+        "agent": "octagon_investors_agent",
+        "tool": "octagon_financials_agent"
+      },
+      {
+        "agent": "octagon_investors_agent",
+        "tool": "octagon_funding_agent"
+      },
+      {
+        "agent": "octagon_investors_agent",
+        "tool": "octagon_investors_agent"
+      },
+      {
+        "agent": "octagon_investors_agent",
+        "tool": "octagon_scraper_agent"
+      },
+      {
+        "agent": "octagon_investors_agent",
+        "tool": "octagon_sec_agent"
+      },
+      {
+        "agent": "octagon_investors_agent",
+        "tool": "octagon_stock_data_agent"
+      },
+      {
+        "agent": "octagon_investors_agent",
+        "tool": "octagon_transcripts_agent"
+      },
+      {
+        "agent": "octagon_investors_agent",
+        "tool": "web_search"
+      },
+      {
+        "agent": "octagon_investors_agent",
+        "tool": "web_search_agent"
+      },
+      {
+        "agent": "octagon_scraper_agent",
+        "tool": "octagon_companies_agent"
+      },
+      {
+        "agent": "octagon_scraper_agent",
+        "tool": "octagon_deals_agent"
+      },
+      {
+        "agent": "octagon_scraper_agent",
+        "tool": "octagon_debts_agent"
+      },
+      {
+        "agent": "octagon_scraper_agent",
+        "tool": "octagon_financials_agent"
+      },
+      {
+        "agent": "octagon_scraper_agent",
+        "tool": "octagon_funding_agent"
+      },
+      {
+        "agent": "octagon_scraper_agent",
+        "tool": "octagon_investors_agent"
+      },
+      {
+        "agent": "octagon_scraper_agent",
+        "tool": "octagon_scraper_agent"
+      },
+      {
+        "agent": "octagon_scraper_agent",
+        "tool": "octagon_sec_agent"
+      },
+      {
+        "agent": "octagon_scraper_agent",
+        "tool": "octagon_stock_data_agent"
+      },
+      {
+        "agent": "octagon_scraper_agent",
+        "tool": "octagon_transcripts_agent"
+      },
+      {
+        "agent": "octagon_scraper_agent",
+        "tool": "web_search"
+      },
+      {
+        "agent": "octagon_scraper_agent",
+        "tool": "web_search_agent"
+      },
+      {
+        "agent": "octagon_sec_agent",
+        "tool": "octagon_companies_agent"
+      },
+      {
+        "agent": "octagon_sec_agent",
+        "tool": "octagon_deals_agent"
+      },
+      {
+        "agent": "octagon_sec_agent",
+        "tool": "octagon_debts_agent"
+      },
+      {
+        "agent": "octagon_sec_agent",
+        "tool": "octagon_financials_agent"
+      },
+      {
+        "agent": "octagon_sec_agent",
+        "tool": "octagon_funding_agent"
+      },
+      {
+        "agent": "octagon_sec_agent",
+        "tool": "octagon_investors_agent"
+      },
+      {
+        "agent": "octagon_sec_agent",
+        "tool": "octagon_scraper_agent"
+      },
+      {
+        "agent": "octagon_sec_agent",
+        "tool": "octagon_sec_agent"
+      },
+      {
+        "agent": "octagon_sec_agent",
+        "tool": "octagon_stock_data_agent"
+      },
+      {
+        "agent": "octagon_sec_agent",
+        "tool": "octagon_transcripts_agent"
+      },
+      {
+        "agent": "octagon_sec_agent",
+        "tool": "web_search"
+      },
+      {
+        "agent": "octagon_sec_agent",
+        "tool": "web_search_agent"
+      },
+      {
+        "agent": "octagon_stock_data_agent",
+        "tool": "octagon_companies_agent"
+      },
+      {
+        "agent": "octagon_stock_data_agent",
+        "tool": "octagon_deals_agent"
+      },
+      {
+        "agent": "octagon_stock_data_agent",
+        "tool": "octagon_debts_agent"
+      },
+      {
+        "agent": "octagon_stock_data_agent",
+        "tool": "octagon_financials_agent"
+      },
+      {
+        "agent": "octagon_stock_data_agent",
+        "tool": "octagon_funding_agent"
+      },
+      {
+        "agent": "octagon_stock_data_agent",
+        "tool": "octagon_investors_agent"
+      },
+      {
+        "agent": "octagon_stock_data_agent",
+        "tool": "octagon_scraper_agent"
+      },
+      {
+        "agent": "octagon_stock_data_agent",
+        "tool": "octagon_sec_agent"
+      },
+      {
+        "agent": "octagon_stock_data_agent",
+        "tool": "octagon_stock_data_agent"
+      },
+      {
+        "agent": "octagon_stock_data_agent",
+        "tool": "octagon_transcripts_agent"
+      },
+      {
+        "agent": "octagon_stock_data_agent",
+        "tool": "web_search"
+      },
+      {
+        "agent": "octagon_stock_data_agent",
+        "tool": "web_search_agent"
+      },
+      {
+        "agent": "octagon_transcripts_agent",
+        "tool": "octagon_companies_agent"
+      },
+      {
+        "agent": "octagon_transcripts_agent",
+        "tool": "octagon_deals_agent"
+      },
+      {
+        "agent": "octagon_transcripts_agent",
+        "tool": "octagon_debts_agent"
+      },
+      {
+        "agent": "octagon_transcripts_agent",
+        "tool": "octagon_financials_agent"
+      },
+      {
+        "agent": "octagon_transcripts_agent",
+        "tool": "octagon_funding_agent"
+      },
+      {
+        "agent": "octagon_transcripts_agent",
+        "tool": "octagon_investors_agent"
+      },
+      {
+        "agent": "octagon_transcripts_agent",
+        "tool": "octagon_scraper_agent"
+      },
+      {
+        "agent": "octagon_transcripts_agent",
+        "tool": "octagon_sec_agent"
+      },
+      {
+        "agent": "octagon_transcripts_agent",
+        "tool": "octagon_stock_data_agent"
+      },
+      {
+        "agent": "octagon_transcripts_agent",
+        "tool": "octagon_transcripts_agent"
+      },
+      {
+        "agent": "octagon_transcripts_agent",
+        "tool": "web_search"
+      },
+      {
+        "agent": "octagon_transcripts_agent",
+        "tool": "web_search_agent"
+      },
+      {
+        "agent": "web_search_agent",
+        "tool": "octagon_companies_agent"
+      },
+      {
+        "agent": "web_search_agent",
+        "tool": "octagon_deals_agent"
+      },
+      {
+        "agent": "web_search_agent",
+        "tool": "octagon_debts_agent"
+      },
+      {
+        "agent": "web_search_agent",
+        "tool": "octagon_financials_agent"
+      },
+      {
+        "agent": "web_search_agent",
+        "tool": "octagon_funding_agent"
+      },
+      {
+        "agent": "web_search_agent",
+        "tool": "octagon_investors_agent"
+      },
+      {
+        "agent": "web_search_agent",
+        "tool": "octagon_scraper_agent"
+      },
+      {
+        "agent": "web_search_agent",
+        "tool": "octagon_sec_agent"
+      },
+      {
+        "agent": "web_search_agent",
+        "tool": "octagon_stock_data_agent"
+      },
+      {
+        "agent": "web_search_agent",
+        "tool": "octagon_transcripts_agent"
+      },
+      {
+        "agent": "web_search_agent",
+        "tool": "web_search_agent"
+      }
+    ]
+  },
+  "delegations": [
+    {
+      "from": "alfred_lin",
+      "to": "octagon_sec_agent",
+      "trigger": "as_tool"
+    },
+    {
+      "from": "alfred_lin",
+      "to": "octagon_transcripts_agent",
+      "trigger": "as_tool"
+    },
+    {
+      "from": "alfred_lin",
+      "to": "octagon_stock_data_agent",
+      "trigger": "as_tool"
+    },
+    {
+      "from": "alfred_lin",
+      "to": "octagon_financials_agent",
+      "trigger": "as_tool"
+    },
+    {
+      "from": "alfred_lin",
+      "to": "octagon_companies_agent",
+      "trigger": "as_tool"
+    },
+    {
+      "from": "alfred_lin",
+      "to": "octagon_funding_agent",
+      "trigger": "as_tool"
+    },
+    {
+      "from": "alfred_lin",
+      "to": "octagon_deals_agent",
+      "trigger": "as_tool"
+    },
+    {
+      "from": "alfred_lin",
+      "to": "octagon_investors_agent",
+      "trigger": "as_tool"
+    },
+    {
+      "from": "alfred_lin",
+      "to": "octagon_debts_agent",
+      "trigger": "as_tool"
+    },
+    {
+      "from": "alfred_lin",
+      "to": "octagon_scraper_agent",
+      "trigger": "as_tool"
+    },
+    {
+      "from": "alfred_lin",
+      "to": "web_search_agent",
+      "trigger": "as_tool"
+    }
+  ]
+}

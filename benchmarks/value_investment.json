@@ -1,0 +1,288 @@
+{
+  "schema_version": "3.0",
+  "system": {
+    "name": "value_investment",
+    "entry_agent": "valueinvestmentcoordinator",
+    "description": "alfredang/value-investment (handoff() objects placed in tools=)."
+  },
+  "agents": [
+    {
+      "name": "valueinvestmentcoordinator",
+      "reachable": true,
+      "role": "ValueInvestmentCoordinator",
+      "description": "ValueInvestmentCoordinator",
+      "system_prompt_hint": "# System context"
+    },
+    {
+      "name": "screeningagent",
+      "reachable": true,
+      "role": "ScreeningAgent",
+      "description": "ScreeningAgent",
+      "system_prompt_hint": "# System context"
+    },
+    {
+      "name": "anomalyagent",
+      "reachable": true,
+      "role": "AnomalyAgent",
+      "description": "AnomalyAgent",
+      "system_prompt_hint": "# System context"
+    },
+    {
+      "name": "researchagent",
+      "reachable": true,
+      "role": "ResearchAgent",
+      "description": "ResearchAgent",
+      "system_prompt_hint": "# System context"
+    }
+  ],
+  "tools": [
+    {
+      "name": "screen_stocks",
+      "purpose": "Screen stocks based on fundamental criteria.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "analyze_valuation",
+      "purpose": "Analyze stock valuation using EPV vs Market Cap.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "detect_anomalies",
+      "purpose": "Detect financial anomalies in a company's financials using M-Score, Z-Score, F-Score.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "get_stock_fundamentals",
+      "purpose": "Get fundamental financial data for a specific stock.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "compare_stocks",
+      "purpose": "Compare multiple stocks side by side on key metrics.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "web_search",
+      "purpose": "Search the web for real-time information about stocks, companies, or market news.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "get_market_news",
+      "purpose": "Get latest market news and financial headlines.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "get_realtime_price",
+      "purpose": "Get real-time stock price and quote data from Twelve Data.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "get_price_history",
+      "purpose": "Get historical price data for a stock.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    }
+  ],
+  "permissions": {
+    "allow": [
+      {
+        "agent": "anomalyagent",
+        "tool": "analyze_valuation"
+      },
+      {
+        "agent": "anomalyagent",
+        "tool": "compare_stocks"
+      },
+      {
+        "agent": "anomalyagent",
+        "tool": "detect_anomalies"
+      },
+      {
+        "agent": "anomalyagent",
+        "tool": "get_stock_fundamentals"
+      },
+      {
+        "agent": "anomalyagent",
+        "tool": "screen_stocks"
+      },
+      {
+        "agent": "researchagent",
+        "tool": "analyze_valuation"
+      },
+      {
+        "agent": "researchagent",
+        "tool": "compare_stocks"
+      },
+      {
+        "agent": "researchagent",
+        "tool": "detect_anomalies"
+      },
+      {
+        "agent": "researchagent",
+        "tool": "get_market_news"
+      },
+      {
+        "agent": "researchagent",
+        "tool": "get_price_history"
+      },
+      {
+        "agent": "researchagent",
+        "tool": "get_realtime_price"
+      },
+      {
+        "agent": "researchagent",
+        "tool": "get_stock_fundamentals"
+      },
+      {
+        "agent": "researchagent",
+        "tool": "screen_stocks"
+      },
+      {
+        "agent": "researchagent",
+        "tool": "web_search"
+      },
+      {
+        "agent": "screeningagent",
+        "tool": "analyze_valuation"
+      },
+      {
+        "agent": "screeningagent",
+        "tool": "compare_stocks"
+      },
+      {
+        "agent": "screeningagent",
+        "tool": "detect_anomalies"
+      },
+      {
+        "agent": "screeningagent",
+        "tool": "get_stock_fundamentals"
+      },
+      {
+        "agent": "screeningagent",
+        "tool": "screen_stocks"
+      },
+      {
+        "agent": "valueinvestmentcoordinator",
+        "tool": "analyze_valuation"
+      },
+      {
+        "agent": "valueinvestmentcoordinator",
+        "tool": "compare_stocks"
+      },
+      {
+        "agent": "valueinvestmentcoordinator",
+        "tool": "detect_anomalies"
+      },
+      {
+        "agent": "valueinvestmentcoordinator",
+        "tool": "get_stock_fundamentals"
+      },
+      {
+        "agent": "valueinvestmentcoordinator",
+        "tool": "screen_stocks"
+      }
+    ],
+    "restrict": [
+      {
+        "agent": "anomalyagent",
+        "tool": "get_market_news"
+      },
+      {
+        "agent": "anomalyagent",
+        "tool": "get_price_history"
+      },
+      {
+        "agent": "anomalyagent",
+        "tool": "get_realtime_price"
+      },
+      {
+        "agent": "anomalyagent",
+        "tool": "web_search"
+      },
+      {
+        "agent": "screeningagent",
+        "tool": "get_market_news"
+      },
+      {
+        "agent": "screeningagent",
+        "tool": "get_price_history"
+      },
+      {
+        "agent": "screeningagent",
+        "tool": "get_realtime_price"
+      },
+      {
+        "agent": "screeningagent",
+        "tool": "web_search"
+      },
+      {
+        "agent": "valueinvestmentcoordinator",
+        "tool": "get_market_news"
+      },
+      {
+        "agent": "valueinvestmentcoordinator",
+        "tool": "get_price_history"
+      },
+      {
+        "agent": "valueinvestmentcoordinator",
+        "tool": "get_realtime_price"
+      },
+      {
+        "agent": "valueinvestmentcoordinator",
+        "tool": "web_search"
+      }
+    ]
+  },
+  "delegations": [
+    {
+      "from": "valueinvestmentcoordinator",
+      "to": "screeningagent",
+      "trigger": "delegate"
+    },
+    {
+      "from": "valueinvestmentcoordinator",
+      "to": "anomalyagent",
+      "trigger": "delegate"
+    },
+    {
+      "from": "valueinvestmentcoordinator",
+      "to": "researchagent",
+      "trigger": "delegate"
+    }
+  ]
+}

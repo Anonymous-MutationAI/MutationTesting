@@ -1,0 +1,321 @@
+{
+  "schema_version": "3.0",
+  "system": {
+    "name": "autopitch",
+    "entry_agent": "sales_manager",
+    "description": "Zeeshier/autopitch."
+  },
+  "agents": [
+    {
+      "name": "email_manager",
+      "reachable": true,
+      "role": "Convert an email to HTML and send it",
+      "description": "Convert an email to HTML and send it",
+      "system_prompt_hint": "You are an email formatter and sender. You receive the body of an email to be sent. You first use the subject_writer tool to write a subject for the email, then use the html_converter tool to convert the body to HTML. Finally, you use the s"
+    },
+    {
+      "name": "email_subject_writer",
+      "reachable": true,
+      "role": "Email subject writer",
+      "description": "Email subject writer",
+      "system_prompt_hint": "You can write a subject for a cold sales email. You are given a message and you need to write a subject for an email that is likely to get a response."
+    },
+    {
+      "name": "html_email_body_converter",
+      "reachable": true,
+      "role": "HTML email body converter",
+      "description": "HTML email body converter",
+      "system_prompt_hint": "You can convert a text email body to an HTML email body. You are given a text email body which might have some markdown and you need to convert it to an HTML email body with simple, clear, compelling layout and design."
+    },
+    {
+      "name": "sales_manager",
+      "reachable": true,
+      "role": "Sales Manager",
+      "description": "Sales Manager",
+      "system_prompt_hint": "You are a Sales Manager at ComplAI. Your goal is to find the single best cold sales email using the sales_agent tools."
+    },
+    {
+      "name": "professional_sales_agent",
+      "reachable": true,
+      "role": "Professional Sales Agent",
+      "description": "Professional Sales Agent",
+      "system_prompt_hint": "You are a sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write professional, serious cold emails."
+    },
+    {
+      "name": "engaging_sales_agent",
+      "reachable": true,
+      "role": "Engaging Sales Agent",
+      "description": "Engaging Sales Agent",
+      "system_prompt_hint": "You are a humorous, engaging sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write witty, engaging cold emails that are likely to get a response."
+    },
+    {
+      "name": "busy_sales_agent",
+      "reachable": true,
+      "role": "Busy Sales Agent",
+      "description": "Busy Sales Agent",
+      "system_prompt_hint": "You are a busy sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write concise, to the point cold emails."
+    }
+  ],
+  "tools": [
+    {
+      "name": "subject_writer",
+      "purpose": "Write a subject for a cold sales email",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "html_converter",
+      "purpose": "Convert a text email body to an HTML email body",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "send_html_email",
+      "purpose": "Send out an email with the given subject and HTML body to all sales prospects",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "sales_agent1",
+      "purpose": "Write a professional cold sales email",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "sales_agent2",
+      "purpose": "Write an engaging cold sales email",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "sales_agent3",
+      "purpose": "Write a concise cold sales email",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    }
+  ],
+  "permissions": {
+    "allow": [
+      {
+        "agent": "email_manager",
+        "tool": "html_converter"
+      },
+      {
+        "agent": "email_manager",
+        "tool": "send_html_email"
+      },
+      {
+        "agent": "email_manager",
+        "tool": "subject_writer"
+      },
+      {
+        "agent": "sales_manager",
+        "tool": "sales_agent1"
+      },
+      {
+        "agent": "sales_manager",
+        "tool": "sales_agent2"
+      },
+      {
+        "agent": "sales_manager",
+        "tool": "sales_agent3"
+      }
+    ],
+    "restrict": [
+      {
+        "agent": "busy_sales_agent",
+        "tool": "html_converter"
+      },
+      {
+        "agent": "busy_sales_agent",
+        "tool": "sales_agent1"
+      },
+      {
+        "agent": "busy_sales_agent",
+        "tool": "sales_agent2"
+      },
+      {
+        "agent": "busy_sales_agent",
+        "tool": "sales_agent3"
+      },
+      {
+        "agent": "busy_sales_agent",
+        "tool": "send_html_email"
+      },
+      {
+        "agent": "busy_sales_agent",
+        "tool": "subject_writer"
+      },
+      {
+        "agent": "email_manager",
+        "tool": "sales_agent1"
+      },
+      {
+        "agent": "email_manager",
+        "tool": "sales_agent2"
+      },
+      {
+        "agent": "email_manager",
+        "tool": "sales_agent3"
+      },
+      {
+        "agent": "email_subject_writer",
+        "tool": "html_converter"
+      },
+      {
+        "agent": "email_subject_writer",
+        "tool": "sales_agent1"
+      },
+      {
+        "agent": "email_subject_writer",
+        "tool": "sales_agent2"
+      },
+      {
+        "agent": "email_subject_writer",
+        "tool": "sales_agent3"
+      },
+      {
+        "agent": "email_subject_writer",
+        "tool": "send_html_email"
+      },
+      {
+        "agent": "email_subject_writer",
+        "tool": "subject_writer"
+      },
+      {
+        "agent": "engaging_sales_agent",
+        "tool": "html_converter"
+      },
+      {
+        "agent": "engaging_sales_agent",
+        "tool": "sales_agent1"
+      },
+      {
+        "agent": "engaging_sales_agent",
+        "tool": "sales_agent2"
+      },
+      {
+        "agent": "engaging_sales_agent",
+        "tool": "sales_agent3"
+      },
+      {
+        "agent": "engaging_sales_agent",
+        "tool": "send_html_email"
+      },
+      {
+        "agent": "engaging_sales_agent",
+        "tool": "subject_writer"
+      },
+      {
+        "agent": "html_email_body_converter",
+        "tool": "html_converter"
+      },
+      {
+        "agent": "html_email_body_converter",
+        "tool": "sales_agent1"
+      },
+      {
+        "agent": "html_email_body_converter",
+        "tool": "sales_agent2"
+      },
+      {
+        "agent": "html_email_body_converter",
+        "tool": "sales_agent3"
+      },
+      {
+        "agent": "html_email_body_converter",
+        "tool": "send_html_email"
+      },
+      {
+        "agent": "html_email_body_converter",
+        "tool": "subject_writer"
+      },
+      {
+        "agent": "professional_sales_agent",
+        "tool": "html_converter"
+      },
+      {
+        "agent": "professional_sales_agent",
+        "tool": "sales_agent1"
+      },
+      {
+        "agent": "professional_sales_agent",
+        "tool": "sales_agent2"
+      },
+      {
+        "agent": "professional_sales_agent",
+        "tool": "sales_agent3"
+      },
+      {
+        "agent": "professional_sales_agent",
+        "tool": "send_html_email"
+      },
+      {
+        "agent": "professional_sales_agent",
+        "tool": "subject_writer"
+      },
+      {
+        "agent": "sales_manager",
+        "tool": "html_converter"
+      },
+      {
+        "agent": "sales_manager",
+        "tool": "send_html_email"
+      },
+      {
+        "agent": "sales_manager",
+        "tool": "subject_writer"
+      }
+    ]
+  },
+  "delegations": [
+    {
+      "from": "email_manager",
+      "to": "email_subject_writer",
+      "trigger": "as_tool"
+    },
+    {
+      "from": "email_manager",
+      "to": "html_email_body_converter",
+      "trigger": "as_tool"
+    },
+    {
+      "from": "sales_manager",
+      "to": "email_manager",
+      "trigger": "delegate"
+    },
+    {
+      "from": "sales_manager",
+      "to": "professional_sales_agent",
+      "trigger": "as_tool"
+    },
+    {
+      "from": "sales_manager",
+      "to": "engaging_sales_agent",
+      "trigger": "as_tool"
+    },
+    {
+      "from": "sales_manager",
+      "to": "busy_sales_agent",
+      "trigger": "as_tool"
+    }
+  ]
+}

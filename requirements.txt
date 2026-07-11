@@ -1,0 +1,7 @@
+# Dependencies for the LIVE re-run only (reproduce.sh --live).
+# The offline verification (reproduce.sh --verify / reproduce_tables.py) needs
+# NOTHING beyond the Python standard library.
+openai-agents>=0.0.13
+eval-type-backport>=0.2.0
+dspy-ai>=2.5.0
+python-dotenv>=1.0.0

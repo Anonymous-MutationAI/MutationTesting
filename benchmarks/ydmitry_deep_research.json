@@ -1,0 +1,113 @@
+{
+  "schema_version": "3.0",
+  "system": {
+    "name": "ydmitry_deep_research",
+    "entry_agent": "research_orchestrator",
+    "description": "ydmitry/openai-agents-sdk-deep-research."
+  },
+  "agents": [
+    {
+      "name": "research_orchestrator",
+      "reachable": true,
+      "role": "Research Orchestrator",
+      "description": "Research Orchestrator",
+      "system_prompt_hint": "You are a research orchestrator. Your primary role is to analyze the user's request and delegate the task to the most appropriate specialized agent."
+    },
+    {
+      "name": "clarification_agent_with_handoff",
+      "reachable": true,
+      "role": "Clarification Agent with Handoff",
+      "description": "Clarification Agent with Handoff",
+      "system_prompt_hint": "# System context"
+    },
+    {
+      "name": "sequential_search_research_agent",
+      "reachable": true,
+      "role": "Sequential Search & Research Agent",
+      "description": "Sequential Search & Research Agent",
+      "system_prompt_hint": "You are an intelligent sequential search and research agent. Your role is to perform comprehensive research by conducting multiple strategic web searches when needed."
+    },
+    {
+      "name": "sequential_search_research_agent_2",
+      "reachable": true,
+      "role": "Sequential Search & Research Agent#2",
+      "description": "Sequential Search & Research Agent#2",
+      "system_prompt_hint": "You are an intelligent sequential search and research agent. Your role is to perform comprehensive research by conducting multiple strategic web searches when needed."
+    }
+  ],
+  "tools": [
+    {
+      "name": "get_sources",
+      "purpose": "Get all unique sources (URLs) from previously stored search results.\nUse this when users ask for sources, citations, references, or URLs from the research.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "websearch",
+      "purpose": "Perform web searches using an intelligent search agent. Use this to gather information from the internet on any topic.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    }
+  ],
+  "permissions": {
+    "allow": [
+      {
+        "agent": "clarification_agent_with_handoff",
+        "tool": "get_sources"
+      },
+      {
+        "agent": "sequential_search_research_agent",
+        "tool": "get_sources"
+      },
+      {
+        "agent": "sequential_search_research_agent",
+        "tool": "websearch"
+      },
+      {
+        "agent": "sequential_search_research_agent_2",
+        "tool": "get_sources"
+      },
+      {
+        "agent": "sequential_search_research_agent_2",
+        "tool": "websearch"
+      }
+    ],
+    "restrict": [
+      {
+        "agent": "clarification_agent_with_handoff",
+        "tool": "websearch"
+      },
+      {
+        "agent": "research_orchestrator",
+        "tool": "get_sources"
+      },
+      {
+        "agent": "research_orchestrator",
+        "tool": "websearch"
+      }
+    ]
+  },
+  "delegations": [
+    {
+      "from": "research_orchestrator",
+      "to": "clarification_agent_with_handoff",
+      "trigger": "delegate"
+    },
+    {
+      "from": "research_orchestrator",
+      "to": "sequential_search_research_agent_2",
+      "trigger": "delegate"
+    },
+    {
+      "from": "clarification_agent_with_handoff",
+      "to": "sequential_search_research_agent",
+      "trigger": "delegate"
+    }
+  ]
+}

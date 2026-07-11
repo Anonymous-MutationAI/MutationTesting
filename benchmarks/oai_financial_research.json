@@ -1,0 +1,358 @@
+{
+  "schema_version": "3.0",
+  "system": {
+    "name": "oai_financial_research",
+    "entry_agent": "financialresearchmanager",
+    "description": "OpenAI Agents SDK examples/financial_research_agent (synthetic manager re-creates orchestration as as_tool edges)."
+  },
+  "agents": [
+    {
+      "name": "financialresearchmanager",
+      "reachable": true,
+      "role": "FinancialResearchManager",
+      "description": "FinancialResearchManager",
+      "system_prompt_hint": "Coordinate planning, web search, sub-analyst writeups, and verification."
+    },
+    {
+      "name": "financialplanneragent",
+      "reachable": true,
+      "role": "FinancialPlannerAgent",
+      "description": "FinancialPlannerAgent",
+      "system_prompt_hint": "You are a financial research planner. Given a request for financial analysis, produce a set of web searches to gather the context needed. Aim for recent headlines, earnings calls or 10\u2011K snippets, analyst commentary, and industry background"
+    },
+    {
+      "name": "financialsearchagent",
+      "reachable": true,
+      "role": "FinancialSearchAgent",
+      "description": "FinancialSearchAgent",
+      "system_prompt_hint": "You are a research assistant specializing in financial topics. Given a search term, use web search to retrieve up\u2011to\u2011date context and produce a short summary of at most 300 words. Focus on key numbers, events, or quotes that will be useful "
+    },
+    {
+      "name": "financialwriteragent",
+      "reachable": true,
+      "role": "FinancialWriterAgent",
+      "description": "FinancialWriterAgent",
+      "system_prompt_hint": "You are a senior financial analyst. You will be provided with the original query and a set of raw search summaries. Your task is to synthesize these into a long\u2011form markdown report (at least several paragraphs) including a short executive "
+    },
+    {
+      "name": "fundamentalsanalystagent",
+      "reachable": true,
+      "role": "FundamentalsAnalystAgent",
+      "description": "FundamentalsAnalystAgent",
+      "system_prompt_hint": "You are a financial analyst focused on company fundamentals such as revenue, profit, margins and growth trajectory. Given a collection of web (and optional file) search results about a company, write a concise analysis of its recent financi"
+    },
+    {
+      "name": "riskanalystagent",
+      "reachable": true,
+      "role": "RiskAnalystAgent",
+      "description": "RiskAnalystAgent",
+      "system_prompt_hint": "You are a risk analyst looking for potential red flags in a company's outlook. Given background research, produce a short analysis of risks such as competitive threats, regulatory issues, supply chain problems, or slowing growth. Keep it un"
+    },
+    {
+      "name": "verificationagent",
+      "reachable": true,
+      "role": "VerificationAgent",
+      "description": "VerificationAgent",
+      "system_prompt_hint": "You are a meticulous auditor. You have been handed a financial analysis report. Your job is to verify the report is internally consistent, clearly sourced, and makes no unsupported claims. Point out any issues or uncertainties."
+    }
+  ],
+  "tools": [
+    {
+      "name": "plan_searches",
+      "purpose": "Plan a set of financial searches for the query.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "run_search",
+      "purpose": "Run a single financial web search.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "write_report",
+      "purpose": "Synthesize the final markdown financial report.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "verify_report",
+      "purpose": "Sanity-check the synthesized report.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "web_search",
+      "purpose": "web_search",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "fundamentals_analysis",
+      "purpose": "Specialist commentary on company fundamentals.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "risk_analysis",
+      "purpose": "Specialist commentary on risk factors.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    }
+  ],
+  "permissions": {
+    "allow": [
+      {
+        "agent": "financialresearchmanager",
+        "tool": "plan_searches"
+      },
+      {
+        "agent": "financialresearchmanager",
+        "tool": "run_search"
+      },
+      {
+        "agent": "financialresearchmanager",
+        "tool": "verify_report"
+      },
+      {
+        "agent": "financialresearchmanager",
+        "tool": "write_report"
+      },
+      {
+        "agent": "financialsearchagent",
+        "tool": "web_search"
+      },
+      {
+        "agent": "financialwriteragent",
+        "tool": "fundamentals_analysis"
+      },
+      {
+        "agent": "financialwriteragent",
+        "tool": "risk_analysis"
+      }
+    ],
+    "restrict": [
+      {
+        "agent": "financialplanneragent",
+        "tool": "fundamentals_analysis"
+      },
+      {
+        "agent": "financialplanneragent",
+        "tool": "plan_searches"
+      },
+      {
+        "agent": "financialplanneragent",
+        "tool": "risk_analysis"
+      },
+      {
+        "agent": "financialplanneragent",
+        "tool": "run_search"
+      },
+      {
+        "agent": "financialplanneragent",
+        "tool": "verify_report"
+      },
+      {
+        "agent": "financialplanneragent",
+        "tool": "web_search"
+      },
+      {
+        "agent": "financialplanneragent",
+        "tool": "write_report"
+      },
+      {
+        "agent": "financialresearchmanager",
+        "tool": "fundamentals_analysis"
+      },
+      {
+        "agent": "financialresearchmanager",
+        "tool": "risk_analysis"
+      },
+      {
+        "agent": "financialresearchmanager",
+        "tool": "web_search"
+      },
+      {
+        "agent": "financialsearchagent",
+        "tool": "fundamentals_analysis"
+      },
+      {
+        "agent": "financialsearchagent",
+        "tool": "plan_searches"
+      },
+      {
+        "agent": "financialsearchagent",
+        "tool": "risk_analysis"
+      },
+      {
+        "agent": "financialsearchagent",
+        "tool": "run_search"
+      },
+      {
+        "agent": "financialsearchagent",
+        "tool": "verify_report"
+      },
+      {
+        "agent": "financialsearchagent",
+        "tool": "write_report"
+      },
+      {
+        "agent": "financialwriteragent",
+        "tool": "plan_searches"
+      },
+      {
+        "agent": "financialwriteragent",
+        "tool": "run_search"
+      },
+      {
+        "agent": "financialwriteragent",
+        "tool": "verify_report"
+      },
+      {
+        "agent": "financialwriteragent",
+        "tool": "web_search"
+      },
+      {
+        "agent": "financialwriteragent",
+        "tool": "write_report"
+      },
+      {
+        "agent": "fundamentalsanalystagent",
+        "tool": "fundamentals_analysis"
+      },
+      {
+        "agent": "fundamentalsanalystagent",
+        "tool": "plan_searches"
+      },
+      {
+        "agent": "fundamentalsanalystagent",
+        "tool": "risk_analysis"
+      },
+      {
+        "agent": "fundamentalsanalystagent",
+        "tool": "run_search"
+      },
+      {
+        "agent": "fundamentalsanalystagent",
+        "tool": "verify_report"
+      },
+      {
+        "agent": "fundamentalsanalystagent",
+        "tool": "web_search"
+      },
+      {
+        "agent": "fundamentalsanalystagent",
+        "tool": "write_report"
+      },
+      {
+        "agent": "riskanalystagent",
+        "tool": "fundamentals_analysis"
+      },
+      {
+        "agent": "riskanalystagent",
+        "tool": "plan_searches"
+      },
+      {
+        "agent": "riskanalystagent",
+        "tool": "risk_analysis"
+      },
+      {
+        "agent": "riskanalystagent",
+        "tool": "run_search"
+      },
+      {
+        "agent": "riskanalystagent",
+        "tool": "verify_report"
+      },
+      {
+        "agent": "riskanalystagent",
+        "tool": "web_search"
+      },
+      {
+        "agent": "riskanalystagent",
+        "tool": "write_report"
+      },
+      {
+        "agent": "verificationagent",
+        "tool": "fundamentals_analysis"
+      },
+      {
+        "agent": "verificationagent",
+        "tool": "plan_searches"
+      },
+      {
+        "agent": "verificationagent",
+        "tool": "risk_analysis"
+      },
+      {
+        "agent": "verificationagent",
+        "tool": "run_search"
+      },
+      {
+        "agent": "verificationagent",
+        "tool": "verify_report"
+      },
+      {
+        "agent": "verificationagent",
+        "tool": "web_search"
+      },
+      {
+        "agent": "verificationagent",
+        "tool": "write_report"
+      }
+    ]
+  },
+  "delegations": [
+    {
+      "from": "financialresearchmanager",
+      "to": "financialplanneragent",
+      "trigger": "as_tool"
+    },
+    {
+      "from": "financialresearchmanager",
+      "to": "financialsearchagent",
+      "trigger": "as_tool"
+    },
+    {
+      "from": "financialresearchmanager",
+      "to": "financialwriteragent",
+      "trigger": "as_tool"
+    },
+    {
+      "from": "financialresearchmanager",
+      "to": "verificationagent",
+      "trigger": "as_tool"
+    },
+    {
+      "from": "financialwriteragent",
+      "to": "fundamentalsanalystagent",
+      "trigger": "as_tool"
+    },
+    {
+      "from": "financialwriteragent",
+      "to": "riskanalystagent",
+      "trigger": "as_tool"
+    }
+  ]
+}

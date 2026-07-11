@@ -1,0 +1,163 @@
+{
+  "schema_version": "3.0",
+  "system": {
+    "name": "oai_research_bot",
+    "entry_agent": "researchmanager",
+    "description": "OpenAI Agents SDK examples/research_bot (synthetic manager re-creates orchestration as as_tool edges)."
+  },
+  "agents": [
+    {
+      "name": "planneragent",
+      "reachable": true,
+      "role": "PlannerAgent",
+      "description": "PlannerAgent",
+      "system_prompt_hint": "You are a helpful research assistant. Given a query, come up with a set of web searches to perform to best answer the query. Output between 5 and 20 terms to query for."
+    },
+    {
+      "name": "researchmanager",
+      "reachable": true,
+      "role": "ResearchManager",
+      "description": "ResearchManager",
+      "system_prompt_hint": "Coordinate planning, web search, and report writing."
+    },
+    {
+      "name": "search_agent",
+      "reachable": true,
+      "role": "Search agent",
+      "description": "Search agent",
+      "system_prompt_hint": "You are a research assistant. Given a search term, you search the web for that term and produce a concise summary of the results. The summary must be 2-3 paragraphs and less than 300 words. Capture the main points. Write succinctly, no need"
+    },
+    {
+      "name": "writeragent",
+      "reachable": true,
+      "role": "WriterAgent",
+      "description": "WriterAgent",
+      "system_prompt_hint": "You are a senior researcher tasked with writing a cohesive report for a research query. You will be provided with the original query, and some initial research done by a research assistant."
+    }
+  ],
+  "tools": [
+    {
+      "name": "plan_searches",
+      "purpose": "Produce a list of web searches for the query.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "run_search",
+      "purpose": "Run a single web search and summarise results.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "write_report",
+      "purpose": "Synthesize the final markdown report.",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "web_search",
+      "purpose": "web_search",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    }
+  ],
+  "permissions": {
+    "allow": [
+      {
+        "agent": "researchmanager",
+        "tool": "plan_searches"
+      },
+      {
+        "agent": "researchmanager",
+        "tool": "run_search"
+      },
+      {
+        "agent": "researchmanager",
+        "tool": "write_report"
+      },
+      {
+        "agent": "search_agent",
+        "tool": "web_search"
+      }
+    ],
+    "restrict": [
+      {
+        "agent": "planneragent",
+        "tool": "plan_searches"
+      },
+      {
+        "agent": "planneragent",
+        "tool": "run_search"
+      },
+      {
+        "agent": "planneragent",
+        "tool": "web_search"
+      },
+      {
+        "agent": "planneragent",
+        "tool": "write_report"
+      },
+      {
+        "agent": "researchmanager",
+        "tool": "web_search"
+      },
+      {
+        "agent": "search_agent",
+        "tool": "plan_searches"
+      },
+      {
+        "agent": "search_agent",
+        "tool": "run_search"
+      },
+      {
+        "agent": "search_agent",
+        "tool": "write_report"
+      },
+      {
+        "agent": "writeragent",
+        "tool": "plan_searches"
+      },
+      {
+        "agent": "writeragent",
+        "tool": "run_search"
+      },
+      {
+        "agent": "writeragent",
+        "tool": "web_search"
+      },
+      {
+        "agent": "writeragent",
+        "tool": "write_report"
+      }
+    ]
+  },
+  "delegations": [
+    {
+      "from": "researchmanager",
+      "to": "planneragent",
+      "trigger": "as_tool"
+    },
+    {
+      "from": "researchmanager",
+      "to": "search_agent",
+      "trigger": "as_tool"
+    },
+    {
+      "from": "researchmanager",
+      "to": "writeragent",
+      "trigger": "as_tool"
+    }
+  ]
+}

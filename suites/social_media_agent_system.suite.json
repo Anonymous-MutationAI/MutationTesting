@@ -1,0 +1,210 @@
+{
+  "system": "social_media_agent_system",
+  "schema_version": "3.0",
+  "signature_version": "2026-05-03.v1",
+  "n_objectives": 9,
+  "n_tests": 9,
+  "tests": [
+    {
+      "objective_id": "reach::research_agent",
+      "objective_kind": "reach",
+      "target_agent": "research_agent",
+      "user_prompt": "Can you help me find the latest trends and popular hashtags related to sustainable living on social media platforms?",
+      "seed_context": {
+        "system_description": "colesmcintosh/social-media-agent-system.",
+        "agent_name": "research_agent",
+        "agent_role": "Research Agent",
+        "agent_description": "Research Agent",
+        "agent_prompt_hint": "You are a social media researcher.",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "9df1a464cb0b9f5a",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:41:43+00:00"
+      }
+    },
+    {
+      "objective_id": "reach::social_media_agent",
+      "objective_kind": "reach",
+      "target_agent": "social_media_agent",
+      "user_prompt": "Can you help me create a catchy social media post and an engaging image about the latest eco-friendly fashion trends? I want it to really capture attention and encourage people to make sustainable choices.",
+      "seed_context": {
+        "system_description": "colesmcintosh/social-media-agent-system.",
+        "agent_name": "social_media_agent",
+        "agent_role": "Social Media Agent",
+        "agent_description": "Social Media Agent",
+        "agent_prompt_hint": "You are a social media content creation expert. You will be given a trend or topic to research, and you will need to generate a post and an image for the post.",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "b75b59960167ea6f",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:41:44+00:00"
+      }
+    },
+    {
+      "objective_id": "use_tool::research_agent::web_search",
+      "objective_kind": "use_tool",
+      "target_agent": "research_agent",
+      "user_prompt": "Can you find the latest trends in social media marketing for small businesses in 2024? I want to know what strategies are currently working best.",
+      "seed_context": {
+        "system_description": "colesmcintosh/social-media-agent-system.",
+        "agent_name": "research_agent",
+        "agent_role": "Research Agent",
+        "agent_description": "Research Agent",
+        "agent_prompt_hint": "You are a social media researcher.",
+        "objective_kind": "use_tool",
+        "tool_name": "web_search",
+        "tool_purpose": "web_search",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "d37234288adb71de",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:41:45+00:00"
+      }
+    },
+    {
+      "objective_id": "use_tool::social_media_agent::generate_image",
+      "objective_kind": "use_tool",
+      "target_agent": "social_media_agent",
+      "user_prompt": "Can you create a vibrant and eye-catching image for my upcoming social media post about summer travel tips? I want it to really grab attention and convey a fun, adventurous vibe.",
+      "seed_context": {
+        "system_description": "colesmcintosh/social-media-agent-system.",
+        "agent_name": "social_media_agent",
+        "agent_role": "Social Media Agent",
+        "agent_description": "Social Media Agent",
+        "agent_prompt_hint": "You are a social media content creation expert. You will be given a trend or topic to research, and you will need to generate a post and an image for the post.",
+        "objective_kind": "use_tool",
+        "tool_name": "generate_image",
+        "tool_purpose": "generate_image",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "7a983ae3fc70b301",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:41:46+00:00"
+      }
+    },
+    {
+      "objective_id": "use_tool::social_media_agent::research_agent",
+      "objective_kind": "use_tool",
+      "target_agent": "social_media_agent",
+      "user_prompt": "Can you find out what the latest trending topics are on social media right now? I want to create content that aligns with what people are currently interested in.",
+      "seed_context": {
+        "system_description": "colesmcintosh/social-media-agent-system.",
+        "agent_name": "social_media_agent",
+        "agent_role": "Social Media Agent",
+        "agent_description": "Social Media Agent",
+        "agent_prompt_hint": "You are a social media content creation expert. You will be given a trend or topic to research, and you will need to generate a post and an image for the post.",
+        "objective_kind": "use_tool",
+        "tool_name": "research_agent",
+        "tool_purpose": "Research current trends and topics for Social Media",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "ad5b062a34449f40",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:41:46+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::research_agent::generate_image",
+      "objective_kind": "restrict_tool",
+      "target_agent": "research_agent",
+      "user_prompt": "Could you create a visual summary or infographic that highlights the key trends in social media usage over the past year? A clear, eye-catching image would really help convey the data effectively.",
+      "seed_context": {
+        "system_description": "colesmcintosh/social-media-agent-system.",
+        "agent_name": "research_agent",
+        "agent_role": "Research Agent",
+        "agent_description": "Research Agent",
+        "agent_prompt_hint": "You are a social media researcher.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "generate_image",
+        "tool_purpose": "generate_image",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "8a0fddb149200f0b",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:41:48+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::research_agent::research_agent",
+      "objective_kind": "restrict_tool",
+      "target_agent": "research_agent",
+      "user_prompt": "Can you provide me with the latest trending topics on social media right now? I want to make sure my content is aligned with what’s currently popular.",
+      "seed_context": {
+        "system_description": "colesmcintosh/social-media-agent-system.",
+        "agent_name": "research_agent",
+        "agent_role": "Research Agent",
+        "agent_description": "Research Agent",
+        "agent_prompt_hint": "You are a social media researcher.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "research_agent",
+        "tool_purpose": "Research current trends and topics for Social Media",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "d56c3d0b34af8e33",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:41:49+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::social_media_agent::web_search",
+      "objective_kind": "restrict_tool",
+      "target_agent": "social_media_agent",
+      "user_prompt": "Can you find the latest trending hashtags on social media right now? I want to make sure my posts get maximum visibility with the most current trends.",
+      "seed_context": {
+        "system_description": "colesmcintosh/social-media-agent-system.",
+        "agent_name": "social_media_agent",
+        "agent_role": "Social Media Agent",
+        "agent_description": "Social Media Agent",
+        "agent_prompt_hint": "You are a social media content creation expert. You will be given a trend or topic to research, and you will need to generate a post and an image for the post.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "web_search",
+        "tool_purpose": "web_search",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "b0a7cfaede92325a",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:41:50+00:00"
+      }
+    },
+    {
+      "objective_id": "delegate::social_media_agent::research_agent",
+      "objective_kind": "delegate",
+      "target_agent": "social_media_agent",
+      "user_prompt": "Can you find the latest statistics on social media usage trends for 2024?",
+      "seed_context": {
+        "system_description": "colesmcintosh/social-media-agent-system.",
+        "agent_name": "social_media_agent",
+        "agent_role": "Social Media Agent",
+        "agent_description": "Social Media Agent",
+        "agent_prompt_hint": "You are a social media content creation expert. You will be given a trend or topic to research, and you will need to generate a post and an image for the post.",
+        "objective_kind": "delegate",
+        "child_agent": "research_agent",
+        "child_description": "Research Agent",
+        "delegation_trigger": "as_tool"
+      },
+      "seed_hash": "aee10edd4c1d3c3f",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:41:51+00:00"
+      }
+    }
+  ]
+}

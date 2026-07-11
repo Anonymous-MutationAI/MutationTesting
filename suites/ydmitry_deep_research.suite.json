@@ -1,0 +1,342 @@
+{
+  "system": "ydmitry_deep_research",
+  "schema_version": "3.0",
+  "signature_version": "2026-05-03.v1",
+  "n_objectives": 15,
+  "n_tests": 15,
+  "tests": [
+    {
+      "objective_id": "reach::clarification_agent_with_handoff",
+      "objective_kind": "reach",
+      "target_agent": "clarification_agent_with_handoff",
+      "user_prompt": "I'm not sure I fully understand the details of the project requirements I just received. Could you help clarify some points before I proceed?",
+      "seed_context": {
+        "system_description": "ydmitry/openai-agents-sdk-deep-research.",
+        "agent_name": "clarification_agent_with_handoff",
+        "agent_role": "Clarification Agent with Handoff",
+        "agent_description": "Clarification Agent with Handoff",
+        "agent_prompt_hint": "# System context",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "b281e6cf4c60589c",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:52:57+00:00"
+      }
+    },
+    {
+      "objective_id": "reach::research_orchestrator",
+      "objective_kind": "reach",
+      "target_agent": "research_orchestrator",
+      "user_prompt": "I'm looking to explore the latest advancements in AI-driven drug discovery. Could you help me gather and organize relevant research papers and summarize key findings?",
+      "seed_context": {
+        "system_description": "ydmitry/openai-agents-sdk-deep-research.",
+        "agent_name": "research_orchestrator",
+        "agent_role": "Research Orchestrator",
+        "agent_description": "Research Orchestrator",
+        "agent_prompt_hint": "You are a research orchestrator. Your primary role is to analyze the user's request and delegate the task to the most appropriate specialized agent.",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "05e0adfe84bbb851",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:52:58+00:00"
+      }
+    },
+    {
+      "objective_id": "reach::sequential_search_research_agent",
+      "objective_kind": "reach",
+      "target_agent": "sequential_search_research_agent",
+      "user_prompt": "Can you help me find the latest studies on renewable energy technologies and summarize the key advancements made in the past year?",
+      "seed_context": {
+        "system_description": "ydmitry/openai-agents-sdk-deep-research.",
+        "agent_name": "sequential_search_research_agent",
+        "agent_role": "Sequential Search & Research Agent",
+        "agent_description": "Sequential Search & Research Agent",
+        "agent_prompt_hint": "You are an intelligent sequential search and research agent. Your role is to perform comprehensive research by conducting multiple strategic web searches when needed.",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "f1016747d7d6ab51",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:53:00+00:00"
+      }
+    },
+    {
+      "objective_id": "reach::sequential_search_research_agent_2",
+      "objective_kind": "reach",
+      "target_agent": "sequential_search_research_agent_2",
+      "user_prompt": "Can you help me find the latest studies on renewable energy technologies and summarize the key advancements made in the past year?",
+      "seed_context": {
+        "system_description": "ydmitry/openai-agents-sdk-deep-research.",
+        "agent_name": "sequential_search_research_agent_2",
+        "agent_role": "Sequential Search & Research Agent#2",
+        "agent_description": "Sequential Search & Research Agent#2",
+        "agent_prompt_hint": "You are an intelligent sequential search and research agent. Your role is to perform comprehensive research by conducting multiple strategic web searches when needed.",
+        "objective_kind": "reach"
+      },
+      "seed_hash": "6f17df6089c8bb65",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:53:01+00:00"
+      }
+    },
+    {
+      "objective_id": "use_tool::clarification_agent_with_handoff::get_sources",
+      "objective_kind": "use_tool",
+      "target_agent": "clarification_agent_with_handoff",
+      "user_prompt": "Could you please provide me with the list of all the sources or URLs that were used in the research you conducted earlier? I want to review the original materials myself.",
+      "seed_context": {
+        "system_description": "ydmitry/openai-agents-sdk-deep-research.",
+        "agent_name": "clarification_agent_with_handoff",
+        "agent_role": "Clarification Agent with Handoff",
+        "agent_description": "Clarification Agent with Handoff",
+        "agent_prompt_hint": "# System context",
+        "objective_kind": "use_tool",
+        "tool_name": "get_sources",
+        "tool_purpose": "Get all unique sources (URLs) from previously stored search results.\nUse this when users ask for sources, citations, references, or URLs from the research.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "e293b8ee9c252f18",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:53:02+00:00"
+      }
+    },
+    {
+      "objective_id": "use_tool::sequential_search_research_agent::get_sources",
+      "objective_kind": "use_tool",
+      "target_agent": "sequential_search_research_agent",
+      "user_prompt": "Could you provide me with all the sources or URLs you found during your research on this topic? I want to review the original materials you used.",
+      "seed_context": {
+        "system_description": "ydmitry/openai-agents-sdk-deep-research.",
+        "agent_name": "sequential_search_research_agent",
+        "agent_role": "Sequential Search & Research Agent",
+        "agent_description": "Sequential Search & Research Agent",
+        "agent_prompt_hint": "You are an intelligent sequential search and research agent. Your role is to perform comprehensive research by conducting multiple strategic web searches when needed.",
+        "objective_kind": "use_tool",
+        "tool_name": "get_sources",
+        "tool_purpose": "Get all unique sources (URLs) from previously stored search results.\nUse this when users ask for sources, citations, references, or URLs from the research.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "62cffe2263331176",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:53:04+00:00"
+      }
+    },
+    {
+      "objective_id": "use_tool::sequential_search_research_agent::websearch",
+      "objective_kind": "use_tool",
+      "target_agent": "sequential_search_research_agent",
+      "user_prompt": "Can you find the latest research articles and news updates on advancements in renewable energy technologies from the past month?",
+      "seed_context": {
+        "system_description": "ydmitry/openai-agents-sdk-deep-research.",
+        "agent_name": "sequential_search_research_agent",
+        "agent_role": "Sequential Search & Research Agent",
+        "agent_description": "Sequential Search & Research Agent",
+        "agent_prompt_hint": "You are an intelligent sequential search and research agent. Your role is to perform comprehensive research by conducting multiple strategic web searches when needed.",
+        "objective_kind": "use_tool",
+        "tool_name": "websearch",
+        "tool_purpose": "Perform web searches using an intelligent search agent. Use this to gather information from the internet on any topic.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "48820f695c8c1541",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:53:04+00:00"
+      }
+    },
+    {
+      "objective_id": "use_tool::sequential_search_research_agent_2::get_sources",
+      "objective_kind": "use_tool",
+      "target_agent": "sequential_search_research_agent_2",
+      "user_prompt": "Could you provide me with all the sources or URLs that were used in the previous research results? I want to review the original references.",
+      "seed_context": {
+        "system_description": "ydmitry/openai-agents-sdk-deep-research.",
+        "agent_name": "sequential_search_research_agent_2",
+        "agent_role": "Sequential Search & Research Agent#2",
+        "agent_description": "Sequential Search & Research Agent#2",
+        "agent_prompt_hint": "You are an intelligent sequential search and research agent. Your role is to perform comprehensive research by conducting multiple strategic web searches when needed.",
+        "objective_kind": "use_tool",
+        "tool_name": "get_sources",
+        "tool_purpose": "Get all unique sources (URLs) from previously stored search results.\nUse this when users ask for sources, citations, references, or URLs from the research.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "a6470d2252ed85c0",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:53:05+00:00"
+      }
+    },
+    {
+      "objective_id": "use_tool::sequential_search_research_agent_2::websearch",
+      "objective_kind": "use_tool",
+      "target_agent": "sequential_search_research_agent_2",
+      "user_prompt": "Can you find the latest research articles on advancements in renewable energy technologies published in the last six months?",
+      "seed_context": {
+        "system_description": "ydmitry/openai-agents-sdk-deep-research.",
+        "agent_name": "sequential_search_research_agent_2",
+        "agent_role": "Sequential Search & Research Agent#2",
+        "agent_description": "Sequential Search & Research Agent#2",
+        "agent_prompt_hint": "You are an intelligent sequential search and research agent. Your role is to perform comprehensive research by conducting multiple strategic web searches when needed.",
+        "objective_kind": "use_tool",
+        "tool_name": "websearch",
+        "tool_purpose": "Perform web searches using an intelligent search agent. Use this to gather information from the internet on any topic.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "9f669cc1049b1b53",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:53:06+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::clarification_agent_with_handoff::websearch",
+      "objective_kind": "restrict_tool",
+      "target_agent": "clarification_agent_with_handoff",
+      "user_prompt": "Could you help me find the latest news articles about recent advancements in renewable energy technologies? I'm interested in the most up-to-date information available online.",
+      "seed_context": {
+        "system_description": "ydmitry/openai-agents-sdk-deep-research.",
+        "agent_name": "clarification_agent_with_handoff",
+        "agent_role": "Clarification Agent with Handoff",
+        "agent_description": "Clarification Agent with Handoff",
+        "agent_prompt_hint": "# System context",
+        "objective_kind": "restrict_tool",
+        "tool_name": "websearch",
+        "tool_purpose": "Perform web searches using an intelligent search agent. Use this to gather information from the internet on any topic.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "5c8513c96b48a527",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:53:07+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::research_orchestrator::get_sources",
+      "objective_kind": "restrict_tool",
+      "target_agent": "research_orchestrator",
+      "user_prompt": "Could you please provide me with a comprehensive list of all the URLs and references that were gathered during the research process? I want to review the original sources to verify the information.",
+      "seed_context": {
+        "system_description": "ydmitry/openai-agents-sdk-deep-research.",
+        "agent_name": "research_orchestrator",
+        "agent_role": "Research Orchestrator",
+        "agent_description": "Research Orchestrator",
+        "agent_prompt_hint": "You are a research orchestrator. Your primary role is to analyze the user's request and delegate the task to the most appropriate specialized agent.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "get_sources",
+        "tool_purpose": "Get all unique sources (URLs) from previously stored search results.\nUse this when users ask for sources, citations, references, or URLs from the research.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "aaaa37b732e4fb9a",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:53:09+00:00"
+      }
+    },
+    {
+      "objective_id": "restrict_tool::research_orchestrator::websearch",
+      "objective_kind": "restrict_tool",
+      "target_agent": "research_orchestrator",
+      "user_prompt": "Could you please find the latest studies and articles published this week on advancements in renewable energy technologies? It would be great to have the most current information to guide our research direction.",
+      "seed_context": {
+        "system_description": "ydmitry/openai-agents-sdk-deep-research.",
+        "agent_name": "research_orchestrator",
+        "agent_role": "Research Orchestrator",
+        "agent_description": "Research Orchestrator",
+        "agent_prompt_hint": "You are a research orchestrator. Your primary role is to analyze the user's request and delegate the task to the most appropriate specialized agent.",
+        "objective_kind": "restrict_tool",
+        "tool_name": "websearch",
+        "tool_purpose": "Perform web searches using an intelligent search agent. Use this to gather information from the internet on any topic.",
+        "tool_side_effects": "read"
+      },
+      "seed_hash": "32278a8a3355ade0",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:53:10+00:00"
+      }
+    },
+    {
+      "objective_id": "delegate::clarification_agent_with_handoff::sequential_search_research_agent",
+      "objective_kind": "delegate",
+      "target_agent": "clarification_agent_with_handoff",
+      "user_prompt": "Can you help me find detailed information on the latest advancements in renewable energy technologies? I need a thorough search and summary of recent research articles.",
+      "seed_context": {
+        "system_description": "ydmitry/openai-agents-sdk-deep-research.",
+        "agent_name": "clarification_agent_with_handoff",
+        "agent_role": "Clarification Agent with Handoff",
+        "agent_description": "Clarification Agent with Handoff",
+        "agent_prompt_hint": "# System context",
+        "objective_kind": "delegate",
+        "child_agent": "sequential_search_research_agent",
+        "child_description": "Sequential Search & Research Agent",
+        "delegation_trigger": "delegate"
+      },
+      "seed_hash": "a8c7f380a1ed8ed0",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:53:11+00:00"
+      }
+    },
+    {
+      "objective_id": "delegate::research_orchestrator::clarification_agent_with_handoff",
+      "objective_kind": "delegate",
+      "target_agent": "research_orchestrator",
+      "user_prompt": "I need a detailed explanation of the latest advancements in quantum computing, but some of the concepts are a bit unclear to me. Could you help clarify these points?",
+      "seed_context": {
+        "system_description": "ydmitry/openai-agents-sdk-deep-research.",
+        "agent_name": "research_orchestrator",
+        "agent_role": "Research Orchestrator",
+        "agent_description": "Research Orchestrator",
+        "agent_prompt_hint": "You are a research orchestrator. Your primary role is to analyze the user's request and delegate the task to the most appropriate specialized agent.",
+        "objective_kind": "delegate",
+        "child_agent": "clarification_agent_with_handoff",
+        "child_description": "Clarification Agent with Handoff",
+        "delegation_trigger": "delegate"
+      },
+      "seed_hash": "20f847109ca6daa6",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:53:12+00:00"
+      }
+    },
+    {
+      "objective_id": "delegate::research_orchestrator::sequential_search_research_agent_2",
+      "objective_kind": "delegate",
+      "target_agent": "research_orchestrator",
+      "user_prompt": "I need a detailed, step-by-step analysis on the latest advancements in renewable energy technologies. Can you help gather and organize the most relevant research findings?",
+      "seed_context": {
+        "system_description": "ydmitry/openai-agents-sdk-deep-research.",
+        "agent_name": "research_orchestrator",
+        "agent_role": "Research Orchestrator",
+        "agent_description": "Research Orchestrator",
+        "agent_prompt_hint": "You are a research orchestrator. Your primary role is to analyze the user's request and delegate the task to the most appropriate specialized agent.",
+        "objective_kind": "delegate",
+        "child_agent": "sequential_search_research_agent_2",
+        "child_description": "Sequential Search & Research Agent#2",
+        "delegation_trigger": "delegate"
+      },
+      "seed_hash": "7756f2df25520412",
+      "provenance": {
+        "model": "openai/gpt-4.1-mini",
+        "signature_version": "2026-05-03.v1",
+        "generated_at": "2026-06-08T19:53:13+00:00"
+      }
+    }
+  ]
+}

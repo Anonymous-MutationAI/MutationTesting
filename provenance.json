@@ -1,0 +1,46 @@
+{
+  "seed": 20260605,
+  "max_per_op": 50,
+  "criteria": [
+    "K-Struct",
+    "K-Outcome",
+    "K-Safety"
+  ],
+  "suites": [
+    "T-Dev*",
+    "T-Rand*",
+    "T-E2E*",
+    "T-Struct"
+  ],
+  "operators": [
+    "Del-Rem",
+    "Del-Red",
+    "Del-Inv",
+    "Del-Add",
+    "Tool-Rem",
+    "Tool-Red",
+    "Tool-Fault",
+    "Tool-SigMut",
+    "Res-Relax",
+    "Res-Tighten",
+    "Res-Rem",
+    "Ag-Rem",
+    "Ag-Swap",
+    "Ag-PromptDrop"
+  ],
+  "python": "3.9.6 (default, Nov 11 2024, 03:15:38) \n[Clang 16.0.0 (clang-1600.0.26.6)]",
+  "platform": "macOS-14.6.1-arm64-arm-64bit",
+  "git_commit": "d91bd8f11141bfbebb373c2a2c1720fb2b6cf624",
+  "benchmark_sha": {
+    "autopitch": "ee941bebf7d95682",
+    "deep_research_clone": "161c1e3c20e00241",
+    "oai_customer_service": "8d89aecbe805ffdd",
+    "oai_financial_research": "0c6509aef32a5946",
+    "oai_message_filter": "0fe5ee6d7e85096a",
+    "oai_research_bot": "f5b3acf651d36dfb",
+    "octagon_vc_agents": "b88502d908a472b1",
+    "social_media_agent_system": "cc1e09fb79194448",
+    "value_investment": "7d5e3d8ae514b4f6",
+    "ydmitry_deep_research": "e545e2f03a2214c0"
+  }
+}

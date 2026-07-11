@@ -1,0 +1,90 @@
+{
+  "schema_version": "3.0",
+  "system": {
+    "name": "social_media_agent_system",
+    "entry_agent": "social_media_agent",
+    "description": "colesmcintosh/social-media-agent-system."
+  },
+  "agents": [
+    {
+      "name": "research_agent",
+      "reachable": true,
+      "role": "Research Agent",
+      "description": "Research Agent",
+      "system_prompt_hint": "You are a social media researcher."
+    },
+    {
+      "name": "social_media_agent",
+      "reachable": true,
+      "role": "Social Media Agent",
+      "description": "Social Media Agent",
+      "system_prompt_hint": "You are a social media content creation expert. You will be given a trend or topic to research, and you will need to generate a post and an image for the post."
+    }
+  ],
+  "tools": [
+    {
+      "name": "web_search",
+      "purpose": "web_search",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "research_agent",
+      "purpose": "Research current trends and topics for Social Media",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    },
+    {
+      "name": "generate_image",
+      "purpose": "generate_image",
+      "side_effects": "read",
+      "binding": {
+        "module": "agent_runtime.live_runtime_backends",
+        "callable": "_generic_backend"
+      }
+    }
+  ],
+  "permissions": {
+    "allow": [
+      {
+        "agent": "research_agent",
+        "tool": "web_search"
+      },
+      {
+        "agent": "social_media_agent",
+        "tool": "generate_image"
+      },
+      {
+        "agent": "social_media_agent",
+        "tool": "research_agent"
+      }
+    ],
+    "restrict": [
+      {
+        "agent": "research_agent",
+        "tool": "generate_image"
+      },
+      {
+        "agent": "research_agent",
+        "tool": "research_agent"
+      },
+      {
+        "agent": "social_media_agent",
+        "tool": "web_search"
+      }
+    ]
+  },
+  "delegations": [
+    {
+      "from": "social_media_agent",
+      "to": "research_agent",
+      "trigger": "as_tool"
+    }
+  ]
+}
