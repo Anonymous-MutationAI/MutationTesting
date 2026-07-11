@@ -17,8 +17,6 @@ Sibling package of ``agentcov``. Operates on the same schema-v3 manifest:
   non-equivalent mutants; the interesting numbers come from running
   K-Outcome/K-Safety against under-specified suites).
 
-This package is intentionally LLM-free: every operator, the equivalence
-filter, and K-Struct are pure functions over the parsed graph.
 """
 
 from __future__ import annotations
