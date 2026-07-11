@@ -14,12 +14,6 @@ from .live_runtime_backends import LocalRuntimeState, ensure_tool_backends
 
 DEFAULT_MODEL = os.getenv("OPENAI_MODEL", "gpt-4.1-mini")
 
-# (1) Disable trace uploads: the SDK posts traces to OpenAI by default, which
-#     on a flaky network throws "Connection reset by peer" and contends for
-#     connections. We do not use traces, so turn them off.
-# (2) Bound every model request with a SHORT timeout + few retries so a flaky
-#     connection fails fast and the sweep moves on, rather than dragging each
-#     call through minutes of retries.
 try:
     from agents import set_default_openai_client, set_tracing_disabled
     from openai import AsyncOpenAI
