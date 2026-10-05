@@ -42,14 +42,12 @@ against the published values — printing `PASS` only if they all match.
 ```
 mutation-testing-replication/
 ├── reproduce.sh              # driver: --verify (default) | --live
-├── reproduce_tables.py       # offline verifier (stdlib only; Tables II–VI + counts)
 ├── benchmarks/               # the 10 schema-v3 workflow manifests (paper inputs)
 ├── src/
 │   ├── agentcov/             # manifest parser, coordination graph, obligation extractor
 │   ├── agentmut/             # 14 mutation operators, suite builders, kill criteria, generator
 │   └── agent_runtime/        # OpenAI Agents SDK execution layer (LIVE re-run only)
 ├── run_live_mutation.py      # the live sweep that produced the paper's numbers
-├── aggregate_live_mutation.py
 ├── suites/                   # cached realized prompts, one per benchmark (for faithful re-run)
 ├── results/                  # canonical raw per-(operator,suite,criterion) results — the paper's data
 ├── provenance.json           # seed, model, git commit, per-benchmark manifest SHA-256
