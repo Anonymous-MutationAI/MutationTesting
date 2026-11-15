@@ -1,0 +1,69 @@
+=== T1: executed pool and live-killable denominators (raw | noise-adjusted) ===
+Operator       Fam  Total          K-Struct         K-Outcome          K-Safety
+Del-Rem        F1      40       37 | 36           38 | 36            0 | 0     
+Del-Red        F1      96       94 | 94           94 | 93            0 | 0     
+Del-Inv        F1      36       35 | 35           36 | 35            0 | 0     
+Del-Add        F1     120      113 | 113         114 | 113           0 | 0     
+Tool-Rem       F2      63       63 | 61           63 | 61            0 | 0     
+Tool-Red       F2     157      157 | 155         157 | 150          63 | 63    
+Tool-Fault     F2      80       40 | 32           58 | 50            0 | 0     
+Tool-SigMut    F2      45       45 | 45           45 | 45            0 | 0     
+Res-Relax      F3     126      124 | 123         124 | 122         115 | 115   
+Res-Tighten    F3      63       63 | 60           63 | 59            0 | 0     
+Res-Rem        F3     126       92 | 84          102 | 93            0 | 0     
+Ag-Rem         F4      38       38 | 38           38 | 38            0 | 0     
+Ag-Swap        F4      47       42 | 40           45 | 42            0 | 0     
+Ag-PromptDrop  F4      39       29 | 28           30 | 28            0 | 0     
+TOTAL                1076      972 | 944        1007 | 965         178 | 178   
+
+=== T2: K-Struct MS per family ===
+Suite           F1      F2      F3      F4  Overall
+T-Dev*       0.731   0.928   0.609   0.670    0.751
+T-Rand*      0.452   0.610   0.409   0.532    0.498
+T-E2E*       0.552   0.600   0.473   0.642    0.555
+T-Struct     1.000   1.000   1.000   1.000    1.000
+
+=== T3: MS per suite per criterion (raw / noise-adjusted), 95% Wilson CI on raw ===
+  T-Dev*    K-Struct: 0.751 [0.72,0.78] / 0.719 | K-Outcome: 0.742 [0.71,0.77] / 0.714 | K-Safety: 0.573 [0.50,0.64] / 0.573
+  T-Rand*   K-Struct: 0.498 [0.47,0.53] / 0.431 | K-Outcome: 0.524 [0.49,0.56] / 0.395 | K-Safety: 0.376 [0.31,0.45] / 0.376
+  T-E2E*    K-Struct: 0.555 [0.52,0.59] / 0.476 | K-Outcome: 0.548 [0.52,0.58] / 0.478 | K-Safety: 0.500 [0.43,0.57] / 0.500
+  T-Struct  K-Struct: 1.000 [1.00,1.00] / 1.000 | K-Outcome: 1.000 [1.00,1.00] / 1.000 | K-Safety: 1.000 [0.98,1.00] / 1.000
+
+=== T4: K-Outcome MS per operator (raw / noise-adjusted) ===
+Operator                 T-Dev*         T-Rand*          T-E2E*        T-Struct
+Del-Rem           0.842 / 0.694   0.553 / 0.389   0.579 / 0.333   1.000 / 1.000
+Del-Red           0.787 / 0.710   0.543 / 0.323   0.532 / 0.344   1.000 / 1.000
+Del-Inv           0.889 / 0.857   0.667 / 0.571   0.750 / 0.657   1.000 / 1.000
+Del-Add           0.579 / 0.540   0.526 / 0.389   0.500 / 0.451   1.000 / 1.000
+Tool-Rem          0.937 / 0.934   0.603 / 0.393   0.619 / 0.492   1.000 / 1.000
+Tool-Red          0.962 / 0.933   0.669 / 0.547   0.618 / 0.487   1.000 / 1.000
+Tool-Fault        0.707 / 0.760   0.121 / 0.080   0.207 / 0.240   1.000 / 1.000
+Tool-SigMut       1.000 / 0.978   0.867 / 0.622   0.911 / 0.867   1.000 / 1.000
+Res-Relax         0.621 / 0.598   0.484 / 0.377   0.581 / 0.566   1.000 / 1.000
+Res-Tighten       0.968 / 0.949   0.619 / 0.407   0.667 / 0.576   1.000 / 1.000
+Res-Rem           0.333 / 0.280   0.216 / 0.118   0.206 / 0.172   1.000 / 1.000
+Ag-Rem            1.000 / 1.000   0.763 / 0.711   1.000 / 1.000   1.000 / 1.000
+Ag-Swap           0.511 / 0.500   0.444 / 0.405   0.489 / 0.500   1.000 / 1.000
+Ag-PromptDrop     0.467 / 0.500   0.433 / 0.357   0.400 / 0.393   1.000 / 1.000
+
+=== C: original-vs-original control (false-kill rate per obligation) ===
+  K-Struct   30/403 = 0.074  [0.053,0.104]
+  K-Outcome  51/403 = 0.127  [0.098,0.163]
+  K-Safety   0/403 = 0.000  [-0.000,0.009]
+  K-Struct by obligation kind: delegate 2/41, reach 5/49, restrict_tool 17/248, use_tool 6/65
+
+=== V: distribution of differing pairs per (mutant, obligation) ===
+  K-Struct   0/3:9471  1/3:1998  2/3:1345  3/3:3797
+  K-Outcome  0/3:8052  1/3:2818  2/3:1779  3/3:3962
+  K-Safety   0/3:15858  1/3:58  2/3:47  3/3:648
+
+=== S: size-matched subsets of T-Struct (size = |T-Dev*| per benchmark) ===
+  K-Struct   T-Dev* 0.751 | random mean 0.757 [0.682,0.814] | coverage-greedy 0.784
+  K-Outcome  T-Dev* 0.742 | random mean 0.769 [0.689,0.820] | coverage-greedy 0.793
+  K-Safety   T-Dev* 0.573 | random mean 0.664 [0.573,0.775] | coverage-greedy 0.725
+  sizes: autopitch=13, deep_research_clone=4, oai_customer_service=5, oai_financial_research=14, oai_message_filter=4, oai_research_bot=8, octagon_vc_agents=24, social_media_agent_system=5, value_investment=28, ydmitry_deep_research=9
+
+=== E: run statistics ===
+  {"calls": 6789}
+  agent executions logged (use this number in the paper): 52251
+  mutant runs hitting max_turns: 573

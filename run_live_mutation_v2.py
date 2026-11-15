@@ -365,11 +365,9 @@ def main() -> int:
                   f"calls={stats['calls']}", flush=True)
         log.close()
 
-    stats_path = out_dir / "run_stats.json"
-    prev = json.load(stats_path.open()) if stats_path.exists() else {}
-    for k, v in stats.items():
-        prev[k] = prev.get(k, 0) + v
-    json.dump(prev, stats_path.open("w"), indent=2)
+    tag = "_".join(benches) if len(benches) <= 3 else f"{len(benches)}benches"
+    stats_path = out_dir / f"run_stats_{tag}_{os.getpid()}_{int(time.time())}.json"
+    json.dump(dict(stats), stats_path.open("w"), indent=2)
     print(f"\nrun stats: {dict(stats)}\nlogs in {out_dir}/  ->  python3 analyze_v2.py {out_dir}")
     return 0
 
