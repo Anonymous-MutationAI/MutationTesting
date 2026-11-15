@@ -264,10 +264,21 @@ def main():
             print(f"  {K:<10} agreement {agree}/{n} = {agree/n if n else float('nan'):.3f}")
 
     # ---- E stats -----------------------------------------------------------
-    sp = Path(a.log_dir) / "run_stats.json"
-    if sp.exists():
-        print("\n=== E: run statistics ===")
-        print("  " + json.dumps(json.load(sp.open())))
+    print("\n=== E: run statistics ===")
+    agg = Counter()
+    for sp in Path(a.log_dir).glob("run_stats*.json"):
+        agg.update(json.load(sp.open()))
+    if agg:
+        print("  " + json.dumps(dict(agg)))
+    n_exec = 0
+    for p in Path(a.log_dir).glob("*.jsonl"):
+        for line in p.open():
+            r = json.loads(line)
+            if r["type"] in ("orig", "control"):
+                n_exec += sum(1 for x in r["runs"] if x is not None)
+            elif r["type"] == "mutant":
+                n_exec += sum(1 for q in r["per_obl"] for x in q.get("runs", []) if x is not None)
+    print(f"  agent executions logged (use this number in the paper): {n_exec}")
     mt = sum(1 for d in benches.values() for m in d["mutants"] for p in m["per_obl"]
              for r in p.get("runs", []) if r and r.get("max_turns"))
     print(f"  mutant runs hitting max_turns: {mt}")

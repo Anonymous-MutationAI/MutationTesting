@@ -114,6 +114,48 @@ new prompts would change the tests and the scores. The realized prompts, their
 `suites/`, so the realization is fully auditable. A standalone prompt-realizer
 for regenerating `suites/` from the manifests may be added in a later revision.
 
+## Revised sweep (v2) — the results in the revised paper
+
+The revised paper reports a second sweep that fixes several issues raised in
+review. Compared with the original driver (`run_live_mutation.py`), v2:
+
+- runs an **original-versus-original control** on every obligation and reports
+  the false-kill (noise) rate, plus noise-adjusted scores;
+- **retries infrastructure errors** (timeouts, rate limits) instead of counting
+  them as kills;
+- **skips runtime-identical mutants** (8 placeholder-hint `Ag-PromptDrop` /
+  `Ag-Swap` mutants), leaving 1,076 executed mutants;
+- **logs every run per obligation** (`results/v2/*.jsonl`), so all tables,
+  size-matched suites and the audit are computed offline.
+
+Totals: 1,076 mutants, 52,251 agent executions (`gpt-4.1-mini`, seed
+`20260605`, `k=3`).
+
+```
+# reproduce every v2 number from the logs (no API key needed)
+python3 analyze_v2.py results/v2                 # Tables III–VI, control, size-matched suites
+python3 analyze_v2.py results/v2 --exclude-op Tool-SigMut
+python3 make_heatmap_v2.py "$PWD" figs/heatmap_ms_strict.pdf   # the heatmap figure
+python3 audit_v2.py score results/v2 --audit audit/       # equivalence audit + verdict validation
+
+# re-run the sweep live (needs OPENAI_API_KEY; resumable)
+python3 run_live_mutation_v2.py --dry-run --out /tmp/test # pipeline check, no API calls
+python3 run_live_mutation_v2.py --out results/v2_rerun
+python3 repair_v2.py results/v2_rerun                     # list runs that failed for infrastructure reasons
+```
+
+| File | Purpose |
+|---|---|
+| `run_live_mutation_v2.py` | v2 sweep driver (control, retries, per-run logs) |
+| `analyze_v2.py` | all v2 tables, noise-adjusted scores, size-matched suites |
+| `repair_v2.py` | finds and removes log records with failed runs so a resume redoes them |
+| `dedup.py` | removes duplicate log records left by an overlapping resume |
+| `audit_v2.py`, `merge_audit.py` | manual audit: export sheets, merge two raters, score |
+| `make_heatmap_v2.py` | regenerates `figs/heatmap_ms_strict.pdf` |
+| `results/v2/` | per-run logs of the v2 sweep |
+| `audit/` | the two raters' labels (`rater1_*`, `rater2_*`), agreed labels (`mutants.csv`, `verdicts.csv`), disagreements and their resolution |
+| `analysis.txt` | output of `analyze_v2.py results/v2` |
+
 ## Notes
 
 - The 10 manifests match the SHA-256 fingerprints in `provenance.json` — they

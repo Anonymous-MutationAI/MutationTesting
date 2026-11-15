@@ -1,0 +1,181 @@
+mutant_id,operator,agents_changed,instructions_BEFORE,instructions_AFTER
+ydmitry_deep_research:0,Ag-PromptDrop,research_orchestrator,[research_orchestrator] You are a research orchestrator. Your primary role is to analyze the user's request and delegate the task to the most appropriate specialized agent.,[research_orchestrator] (empty)
+ydmitry_deep_research:2,Ag-PromptDrop,sequential_search_research_agent,[sequential_search_research_agent] You are an intelligent sequential search and research agent. Your role is to perform comprehensive research by conducting multiple strategic web searches when needed.,[sequential_search_research_agent] (empty)
+ydmitry_deep_research:7,Ag-Swap,clarification_agent_with_handoff / sequential_search_research_agent,"[clarification_agent_with_handoff] # System context
+---
+[sequential_search_research_agent] You are an intelligent sequential search and research agent. Your role is to perform comprehensive research by conducting multiple strategic web searches when needed.","[clarification_agent_with_handoff] You are an intelligent sequential search and research agent. Your role is to perform comprehensive research by conducting multiple strategic web searches when needed.
+---
+[sequential_search_research_agent] # System context"
+ydmitry_deep_research:8,Ag-Swap,clarification_agent_with_handoff / sequential_search_research_agent_2,"[clarification_agent_with_handoff] # System context
+---
+[sequential_search_research_agent_2] You are an intelligent sequential search and research agent. Your role is to perform comprehensive research by conducting multiple strategic web searches when needed.","[clarification_agent_with_handoff] You are an intelligent sequential search and research agent. Your role is to perform comprehensive research by conducting multiple strategic web searches when needed.
+---
+[sequential_search_research_agent_2] # System context"
+oai_financial_research:0,Ag-PromptDrop,financialresearchmanager,"[financialresearchmanager] Coordinate planning, web search, sub-analyst writeups, and verification.",[financialresearchmanager] (empty)
+oai_financial_research:1,Ag-PromptDrop,financialplanneragent,"[financialplanneragent] You are a financial research planner. Given a request for financial analysis, produce a set of web searches to gather the context needed. Aim for recent headlines, earnings calls or 10‑K snippets, analyst commentary, and industry background",[financialplanneragent] (empty)
+oai_financial_research:2,Ag-PromptDrop,financialsearchagent,"[financialsearchagent] You are a research assistant specializing in financial topics. Given a search term, use web search to retrieve up‑to‑date context and produce a short summary of at most 300 words. Focus on key numbers, events, or quotes that will be useful",[financialsearchagent] (empty)
+oai_financial_research:6,Ag-PromptDrop,verificationagent,"[verificationagent] You are a meticulous auditor. You have been handed a financial analysis report. Your job is to verify the report is internally consistent, clearly sourced, and makes no unsupported claims. Point out any issues or uncertainties.",[verificationagent] (empty)
+oai_financial_research:13,Ag-Swap,financialplanneragent / financialsearchagent,"[financialplanneragent] You are a financial research planner. Given a request for financial analysis, produce a set of web searches to gather the context needed. Aim for recent headlines, earnings calls or 10‑K snippets, analyst commentary, and industry background
+---
+[financialsearchagent] You are a research assistant specializing in financial topics. Given a search term, use web search to retrieve up‑to‑date context and produce a short summary of at most 300 words. Focus on key numbers, events, or quotes that will be useful","[financialplanneragent] You are a research assistant specializing in financial topics. Given a search term, use web search to retrieve up‑to‑date context and produce a short summary of at most 300 words. Focus on key numbers, events, or quotes that will be useful
+---
+[financialsearchagent] You are a financial research planner. Given a request for financial analysis, produce a set of web searches to gather the context needed. Aim for recent headlines, earnings calls or 10‑K snippets, analyst commentary, and industry background"
+oai_financial_research:14,Ag-Swap,financialplanneragent / financialwriteragent,"[financialplanneragent] You are a financial research planner. Given a request for financial analysis, produce a set of web searches to gather the context needed. Aim for recent headlines, earnings calls or 10‑K snippets, analyst commentary, and industry background
+---
+[financialwriteragent] You are a senior financial analyst. You will be provided with the original query and a set of raw search summaries. Your task is to synthesize these into a long‑form markdown report (at least several paragraphs) including a short executive","[financialplanneragent] You are a senior financial analyst. You will be provided with the original query and a set of raw search summaries. Your task is to synthesize these into a long‑form markdown report (at least several paragraphs) including a short executive
+---
+[financialwriteragent] You are a financial research planner. Given a request for financial analysis, produce a set of web searches to gather the context needed. Aim for recent headlines, earnings calls or 10‑K snippets, analyst commentary, and industry background"
+oai_financial_research:18,Ag-Swap,financialsearchagent / financialwriteragent,"[financialsearchagent] You are a research assistant specializing in financial topics. Given a search term, use web search to retrieve up‑to‑date context and produce a short summary of at most 300 words. Focus on key numbers, events, or quotes that will be useful
+---
+[financialwriteragent] You are a senior financial analyst. You will be provided with the original query and a set of raw search summaries. Your task is to synthesize these into a long‑form markdown report (at least several paragraphs) including a short executive","[financialsearchagent] You are a senior financial analyst. You will be provided with the original query and a set of raw search summaries. Your task is to synthesize these into a long‑form markdown report (at least several paragraphs) including a short executive
+---
+[financialwriteragent] You are a research assistant specializing in financial topics. Given a search term, use web search to retrieve up‑to‑date context and produce a short summary of at most 300 words. Focus on key numbers, events, or quotes that will be useful"
+oai_financial_research:19,Ag-Swap,financialsearchagent / fundamentalsanalystagent,"[financialsearchagent] You are a research assistant specializing in financial topics. Given a search term, use web search to retrieve up‑to‑date context and produce a short summary of at most 300 words. Focus on key numbers, events, or quotes that will be useful
+---
+[fundamentalsanalystagent] You are a financial analyst focused on company fundamentals such as revenue, profit, margins and growth trajectory. Given a collection of web (and optional file) search results about a company, write a concise analysis of its recent financi","[financialsearchagent] You are a financial analyst focused on company fundamentals such as revenue, profit, margins and growth trajectory. Given a collection of web (and optional file) search results about a company, write a concise analysis of its recent financi
+---
+[fundamentalsanalystagent] You are a research assistant specializing in financial topics. Given a search term, use web search to retrieve up‑to‑date context and produce a short summary of at most 300 words. Focus on key numbers, events, or quotes that will be useful"
+oai_financial_research:21,Ag-Swap,financialsearchagent / verificationagent,"[financialsearchagent] You are a research assistant specializing in financial topics. Given a search term, use web search to retrieve up‑to‑date context and produce a short summary of at most 300 words. Focus on key numbers, events, or quotes that will be useful
+---
+[verificationagent] You are a meticulous auditor. You have been handed a financial analysis report. Your job is to verify the report is internally consistent, clearly sourced, and makes no unsupported claims. Point out any issues or uncertainties.","[financialsearchagent] You are a meticulous auditor. You have been handed a financial analysis report. Your job is to verify the report is internally consistent, clearly sourced, and makes no unsupported claims. Point out any issues or uncertainties.
+---
+[verificationagent] You are a research assistant specializing in financial topics. Given a search term, use web search to retrieve up‑to‑date context and produce a short summary of at most 300 words. Focus on key numbers, events, or quotes that will be useful"
+oai_financial_research:23,Ag-Swap,financialwriteragent / riskanalystagent,"[financialwriteragent] You are a senior financial analyst. You will be provided with the original query and a set of raw search summaries. Your task is to synthesize these into a long‑form markdown report (at least several paragraphs) including a short executive
+---
+[riskanalystagent] You are a risk analyst looking for potential red flags in a company's outlook. Given background research, produce a short analysis of risks such as competitive threats, regulatory issues, supply chain problems, or slowing growth. Keep it un","[financialwriteragent] You are a risk analyst looking for potential red flags in a company's outlook. Given background research, produce a short analysis of risks such as competitive threats, regulatory issues, supply chain problems, or slowing growth. Keep it un
+---
+[riskanalystagent] You are a senior financial analyst. You will be provided with the original query and a set of raw search summaries. Your task is to synthesize these into a long‑form markdown report (at least several paragraphs) including a short executive"
+oai_financial_research:25,Ag-Swap,fundamentalsanalystagent / riskanalystagent,"[fundamentalsanalystagent] You are a financial analyst focused on company fundamentals such as revenue, profit, margins and growth trajectory. Given a collection of web (and optional file) search results about a company, write a concise analysis of its recent financi
+---
+[riskanalystagent] You are a risk analyst looking for potential red flags in a company's outlook. Given background research, produce a short analysis of risks such as competitive threats, regulatory issues, supply chain problems, or slowing growth. Keep it un","[fundamentalsanalystagent] You are a risk analyst looking for potential red flags in a company's outlook. Given background research, produce a short analysis of risks such as competitive threats, regulatory issues, supply chain problems, or slowing growth. Keep it un
+---
+[riskanalystagent] You are a financial analyst focused on company fundamentals such as revenue, profit, margins and growth trajectory. Given a collection of web (and optional file) search results about a company, write a concise analysis of its recent financi"
+oai_financial_research:26,Ag-Swap,fundamentalsanalystagent / verificationagent,"[fundamentalsanalystagent] You are a financial analyst focused on company fundamentals such as revenue, profit, margins and growth trajectory. Given a collection of web (and optional file) search results about a company, write a concise analysis of its recent financi
+---
+[verificationagent] You are a meticulous auditor. You have been handed a financial analysis report. Your job is to verify the report is internally consistent, clearly sourced, and makes no unsupported claims. Point out any issues or uncertainties.","[fundamentalsanalystagent] You are a meticulous auditor. You have been handed a financial analysis report. Your job is to verify the report is internally consistent, clearly sourced, and makes no unsupported claims. Point out any issues or uncertainties.
+---
+[verificationagent] You are a financial analyst focused on company fundamentals such as revenue, profit, margins and growth trajectory. Given a collection of web (and optional file) search results about a company, write a concise analysis of its recent financi"
+oai_financial_research:27,Ag-Swap,riskanalystagent / verificationagent,"[riskanalystagent] You are a risk analyst looking for potential red flags in a company's outlook. Given background research, produce a short analysis of risks such as competitive threats, regulatory issues, supply chain problems, or slowing growth. Keep it un
+---
+[verificationagent] You are a meticulous auditor. You have been handed a financial analysis report. Your job is to verify the report is internally consistent, clearly sourced, and makes no unsupported claims. Point out any issues or uncertainties.","[riskanalystagent] You are a meticulous auditor. You have been handed a financial analysis report. Your job is to verify the report is internally consistent, clearly sourced, and makes no unsupported claims. Point out any issues or uncertainties.
+---
+[verificationagent] You are a risk analyst looking for potential red flags in a company's outlook. Given background research, produce a short analysis of risks such as competitive threats, regulatory issues, supply chain problems, or slowing growth. Keep it un"
+autopitch:1,Ag-PromptDrop,email_subject_writer,[email_subject_writer] You can write a subject for a cold sales email. You are given a message and you need to write a subject for an email that is likely to get a response.,[email_subject_writer] (empty)
+autopitch:3,Ag-PromptDrop,sales_manager,[sales_manager] You are a Sales Manager at ComplAI. Your goal is to find the single best cold sales email using the sales_agent tools.,[sales_manager] (empty)
+autopitch:4,Ag-PromptDrop,professional_sales_agent,"[professional_sales_agent] You are a sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write professional, serious cold emails.",[professional_sales_agent] (empty)
+autopitch:5,Ag-PromptDrop,engaging_sales_agent,"[engaging_sales_agent] You are a humorous, engaging sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write witty, engaging cold emails that are likely to get a response.",[engaging_sales_agent] (empty)
+autopitch:6,Ag-PromptDrop,busy_sales_agent,"[busy_sales_agent] You are a busy sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write concise, to the point cold emails.",[busy_sales_agent] (empty)
+autopitch:13,Ag-Swap,email_manager / busy_sales_agent,"[email_manager] You are an email formatter and sender. You receive the body of an email to be sent. You first use the subject_writer tool to write a subject for the email, then use the html_converter tool to convert the body to HTML. Finally, you use the s
+---
+[busy_sales_agent] You are a busy sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write concise, to the point cold emails.","[email_manager] You are a busy sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write concise, to the point cold emails.
+---
+[busy_sales_agent] You are an email formatter and sender. You receive the body of an email to be sent. You first use the subject_writer tool to write a subject for the email, then use the html_converter tool to convert the body to HTML. Finally, you use the s"
+autopitch:14,Ag-Swap,email_subject_writer / busy_sales_agent,"[email_subject_writer] You can write a subject for a cold sales email. You are given a message and you need to write a subject for an email that is likely to get a response.
+---
+[busy_sales_agent] You are a busy sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write concise, to the point cold emails.","[email_subject_writer] You are a busy sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write concise, to the point cold emails.
+---
+[busy_sales_agent] You can write a subject for a cold sales email. You are given a message and you need to write a subject for an email that is likely to get a response."
+autopitch:16,Ag-Swap,html_email_body_converter / busy_sales_agent,"[html_email_body_converter] You can convert a text email body to an HTML email body. You are given a text email body which might have some markdown and you need to convert it to an HTML email body with simple, clear, compelling layout and design.
+---
+[busy_sales_agent] You are a busy sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write concise, to the point cold emails.","[html_email_body_converter] You are a busy sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write concise, to the point cold emails.
+---
+[busy_sales_agent] You can convert a text email body to an HTML email body. You are given a text email body which might have some markdown and you need to convert it to an HTML email body with simple, clear, compelling layout and design."
+autopitch:17,Ag-Swap,professional_sales_agent / busy_sales_agent,"[professional_sales_agent] You are a sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write professional, serious cold emails.
+---
+[busy_sales_agent] You are a busy sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write concise, to the point cold emails.","[professional_sales_agent] You are a busy sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write concise, to the point cold emails.
+---
+[busy_sales_agent] You are a sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write professional, serious cold emails."
+autopitch:20,Ag-Swap,email_manager / html_email_body_converter,"[email_manager] You are an email formatter and sender. You receive the body of an email to be sent. You first use the subject_writer tool to write a subject for the email, then use the html_converter tool to convert the body to HTML. Finally, you use the s
+---
+[html_email_body_converter] You can convert a text email body to an HTML email body. You are given a text email body which might have some markdown and you need to convert it to an HTML email body with simple, clear, compelling layout and design.","[email_manager] You can convert a text email body to an HTML email body. You are given a text email body which might have some markdown and you need to convert it to an HTML email body with simple, clear, compelling layout and design.
+---
+[html_email_body_converter] You are an email formatter and sender. You receive the body of an email to be sent. You first use the subject_writer tool to write a subject for the email, then use the html_converter tool to convert the body to HTML. Finally, you use the s"
+autopitch:21,Ag-Swap,email_manager / professional_sales_agent,"[email_manager] You are an email formatter and sender. You receive the body of an email to be sent. You first use the subject_writer tool to write a subject for the email, then use the html_converter tool to convert the body to HTML. Finally, you use the s
+---
+[professional_sales_agent] You are a sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write professional, serious cold emails.","[email_manager] You are a sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write professional, serious cold emails.
+---
+[professional_sales_agent] You are an email formatter and sender. You receive the body of an email to be sent. You first use the subject_writer tool to write a subject for the email, then use the html_converter tool to convert the body to HTML. Finally, you use the s"
+autopitch:23,Ag-Swap,email_subject_writer / html_email_body_converter,"[email_subject_writer] You can write a subject for a cold sales email. You are given a message and you need to write a subject for an email that is likely to get a response.
+---
+[html_email_body_converter] You can convert a text email body to an HTML email body. You are given a text email body which might have some markdown and you need to convert it to an HTML email body with simple, clear, compelling layout and design.","[email_subject_writer] You can convert a text email body to an HTML email body. You are given a text email body which might have some markdown and you need to convert it to an HTML email body with simple, clear, compelling layout and design.
+---
+[html_email_body_converter] You can write a subject for a cold sales email. You are given a message and you need to write a subject for an email that is likely to get a response."
+autopitch:24,Ag-Swap,email_subject_writer / professional_sales_agent,"[email_subject_writer] You can write a subject for a cold sales email. You are given a message and you need to write a subject for an email that is likely to get a response.
+---
+[professional_sales_agent] You are a sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write professional, serious cold emails.","[email_subject_writer] You are a sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write professional, serious cold emails.
+---
+[professional_sales_agent] You can write a subject for a cold sales email. You are given a message and you need to write a subject for an email that is likely to get a response."
+autopitch:26,Ag-Swap,professional_sales_agent / engaging_sales_agent,"[professional_sales_agent] You are a sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write professional, serious cold emails.
+---
+[engaging_sales_agent] You are a humorous, engaging sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write witty, engaging cold emails that are likely to get a response.","[professional_sales_agent] You are a humorous, engaging sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write witty, engaging cold emails that are likely to get a response.
+---
+[engaging_sales_agent] You are a sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write professional, serious cold emails."
+autopitch:27,Ag-Swap,html_email_body_converter / professional_sales_agent,"[html_email_body_converter] You can convert a text email body to an HTML email body. You are given a text email body which might have some markdown and you need to convert it to an HTML email body with simple, clear, compelling layout and design.
+---
+[professional_sales_agent] You are a sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write professional, serious cold emails.","[html_email_body_converter] You are a sales agent working for ComplAI, a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. You write professional, serious cold emails.
+---
+[professional_sales_agent] You can convert a text email body to an HTML email body. You are given a text email body which might have some markdown and you need to convert it to an HTML email body with simple, clear, compelling layout and design."
+octagon_vc_agents:2,Ag-PromptDrop,octagon_transcripts_agent,[octagon_transcripts_agent] You are a transcripts agent that can get transcripts data.,[octagon_transcripts_agent] (empty)
+octagon_vc_agents:3,Ag-PromptDrop,octagon_financials_agent,[octagon_financials_agent] You are a financials agent that can get financials data.,[octagon_financials_agent] (empty)
+octagon_vc_agents:4,Ag-PromptDrop,octagon_sec_agent,[octagon_sec_agent] You are a SEC agent that can get SEC data.,[octagon_sec_agent] (empty)
+octagon_vc_agents:5,Ag-PromptDrop,octagon_deals_agent,[octagon_deals_agent] You are a deals agent that can get deals data.,[octagon_deals_agent] (empty)
+octagon_vc_agents:6,Ag-PromptDrop,alfred_lin,[alfred_lin] Today's date is 2026-05-03.,[alfred_lin] (empty)
+octagon_vc_agents:7,Ag-PromptDrop,octagon_funding_agent,[octagon_funding_agent] You are a funding agent that can get funding data.,[octagon_funding_agent] (empty)
+octagon_vc_agents:8,Ag-PromptDrop,octagon_debts_agent,[octagon_debts_agent] You are a debts agent that can get debts data.,[octagon_debts_agent] (empty)
+octagon_vc_agents:9,Ag-PromptDrop,octagon_stock_data_agent,[octagon_stock_data_agent] You are a stock agent that can get stock data.,[octagon_stock_data_agent] (empty)
+octagon_vc_agents:21,Ag-Swap,octagon_sec_agent / octagon_transcripts_agent,"[octagon_sec_agent] You are a SEC agent that can get SEC data.
+---
+[octagon_transcripts_agent] You are a transcripts agent that can get transcripts data.","[octagon_sec_agent] You are a transcripts agent that can get transcripts data.
+---
+[octagon_transcripts_agent] You are a SEC agent that can get SEC data."
+octagon_vc_agents:22,Ag-Swap,octagon_debts_agent / web_search_agent,"[octagon_debts_agent] You are a debts agent that can get debts data.
+---
+[web_search_agent] You are a web search agent that can get web search data. Focus on reliable sources, such as news articles, SEC filings, and company press releases and most recent information. Today's date is 2026-05-03.","[octagon_debts_agent] You are a web search agent that can get web search data. Focus on reliable sources, such as news articles, SEC filings, and company press releases and most recent information. Today's date is 2026-05-03.
+---
+[web_search_agent] You are a debts agent that can get debts data."
+octagon_vc_agents:24,Ag-Swap,octagon_investors_agent / octagon_debts_agent,"[octagon_investors_agent] You are a investors agent that can get investors data.
+---
+[octagon_debts_agent] You are a debts agent that can get debts data.","[octagon_investors_agent] You are a debts agent that can get debts data.
+---
+[octagon_debts_agent] You are a investors agent that can get investors data."
+octagon_vc_agents:25,Ag-Swap,octagon_stock_data_agent / octagon_deals_agent,"[octagon_stock_data_agent] You are a stock agent that can get stock data.
+---
+[octagon_deals_agent] You are a deals agent that can get deals data.","[octagon_stock_data_agent] You are a deals agent that can get deals data.
+---
+[octagon_deals_agent] You are a stock agent that can get stock data."
+octagon_vc_agents:26,Ag-Swap,octagon_transcripts_agent / octagon_scraper_agent,"[octagon_transcripts_agent] You are a transcripts agent that can get transcripts data.
+---
+[octagon_scraper_agent] Always return the markdown of a website URL","[octagon_transcripts_agent] Always return the markdown of a website URL
+---
+[octagon_scraper_agent] You are a transcripts agent that can get transcripts data."
+octagon_vc_agents:28,Ag-Swap,octagon_companies_agent / octagon_investors_agent,"[octagon_companies_agent] You are a company agent that can get company data.
+---
+[octagon_investors_agent] You are a investors agent that can get investors data.","[octagon_companies_agent] You are a investors agent that can get investors data.
+---
+[octagon_investors_agent] You are a company agent that can get company data."
+octagon_vc_agents:29,Ag-Swap,octagon_stock_data_agent / octagon_debts_agent,"[octagon_stock_data_agent] You are a stock agent that can get stock data.
+---
+[octagon_debts_agent] You are a debts agent that can get debts data.","[octagon_stock_data_agent] You are a debts agent that can get debts data.
+---
+[octagon_debts_agent] You are a stock agent that can get stock data."
+oai_research_bot:0,Ag-PromptDrop,planneragent,"[planneragent] You are a helpful research assistant. Given a query, come up with a set of web searches to perform to best answer the query. Output between 5 and 20 terms to query for.",[planneragent] (empty)
+oai_research_bot:1,Ag-PromptDrop,researchmanager,"[researchmanager] Coordinate planning, web search, and report writing.",[researchmanager] (empty)
+oai_research_bot:2,Ag-PromptDrop,search_agent,"[search_agent] You are a research assistant. Given a search term, you search the web for that term and produce a concise summary of the results. The summary must be 2-3 paragraphs and less than 300 words. Capture the main points. Write succinctly, no need",[search_agent] (empty)
+oai_research_bot:3,Ag-PromptDrop,writeragent,"[writeragent] You are a senior researcher tasked with writing a cohesive report for a research query. You will be provided with the original query, and some initial research done by a research assistant.",[writeragent] (empty)
+oai_research_bot:8,Ag-Swap,planneragent / writeragent,"[planneragent] You are a helpful research assistant. Given a query, come up with a set of web searches to perform to best answer the query. Output between 5 and 20 terms to query for.
+---
+[writeragent] You are a senior researcher tasked with writing a cohesive report for a research query. You will be provided with the original query, and some initial research done by a research assistant.","[planneragent] You are a senior researcher tasked with writing a cohesive report for a research query. You will be provided with the original query, and some initial research done by a research assistant.
+---
+[writeragent] You are a helpful research assistant. Given a query, come up with a set of web searches to perform to best answer the query. Output between 5 and 20 terms to query for."
+deep_research_clone:0,Ag-PromptDrop,deep_reporter_agent,"[deep_reporter_agent] You are DeepResearch-Report Generating Agent v1.1, a master-level long-form report generating specialist charged with producing an exhaustive report combining information from all the sources.",[deep_reporter_agent] (empty)
+deep_research_clone:1,Ag-PromptDrop,search_execution_agent,"[search_execution_agent] You are a search execution agent, an elite information-scouting assistant.",[search_execution_agent] (empty)
+deep_research_clone:2,Ag-PromptDrop,todo_agent,"[todo_agent] You are amazing to-do creator, an elite information-scouting assistant.",[todo_agent] (empty)
+deep_research_clone:5,Ag-Swap,search_execution_agent / todo_agent,"[search_execution_agent] You are a search execution agent, an elite information-scouting assistant.
+---
+[todo_agent] You are amazing to-do creator, an elite information-scouting assistant.","[search_execution_agent] You are amazing to-do creator, an elite information-scouting assistant.
+---
+[todo_agent] You are a search execution agent, an elite information-scouting assistant."
+social_media_agent_system:0,Ag-PromptDrop,research_agent,[research_agent] You are a social media researcher.,[research_agent] (empty)
+social_media_agent_system:1,Ag-PromptDrop,social_media_agent,"[social_media_agent] You are a social media content creation expert. You will be given a trend or topic to research, and you will need to generate a post and an image for the post.",[social_media_agent] (empty)
+oai_message_filter:1,Ag-PromptDrop,assistant_2,"[assistant_2] Be a helpful assistant. If the user speaks Spanish, handoff to the Spanish assistant.",[assistant_2] (empty)
+oai_message_filter:2,Ag-PromptDrop,spanish_assistant,[spanish_assistant] You only speak Spanish and are extremely concise.,[spanish_assistant] (empty)
