@@ -10,6 +10,16 @@ and figure.
 You need Python 3.9 or newer. Every number in the paper is computed from the
 logged runs, so you can check them without calling any model.
 
+The quickest check is one command. It prints the main tables and then compares
+every reported number with the value recomputed from the logs, printing PASS or
+FAIL for each (exit status 1 if any check fails):
+
+```
+bash reproduce.sh                                 # or: python3 verify_paper.py
+```
+
+The individual scripts are:
+
 ```
 python3 analyze_v2.py results/v2                  # main tables and size-matched suites
 python3 analyze_control_combined.py               # noise control and noise-adjusted scores
@@ -29,7 +39,7 @@ python3 make_heatmap_v2.py "$PWD" figs/heatmap_ms_strict.pdf
 
 | Folder or file | Contents |
 |---|---|
-| `benchmarks/` | the ten workflow specifications used in the study |
+| `benchmarks/` | the ten workflow specifications used in the study (`SHA256SUMS` lists their hashes) |
 | `src/agentcov/` | turns a specification into a coordination graph and its test obligations |
 | `src/agentmut/` | the 14 mutation operators, the four test suites, and the kill criteria |
 | `src/agent_runtime/` | runs a workflow through the OpenAI Agents SDK |
@@ -101,13 +111,15 @@ varies from run to run.
 
 | Script | Purpose |
 |---|---|
+| `reproduce.sh` | runs the offline checks (`--verify`, default) or the full live re-run (`--live`) |
+| `verify_paper.py` | checks every reported number against the logs |
 | `run_live_mutation_v2.py` | runs the experiment and logs every run |
 | `run_control_extra.py` | runs extra noise controls on the unmodified workflows |
 | `analyze_v2.py` | main tables and size-matched suites |
 | `analyze_control_combined.py` | combines the noise controls and computes noise-adjusted scores |
 | `repair_v2.py` | finds runs that failed for technical reasons so they can be redone |
 | `dedup.py` | removes duplicate records if two runs overlapped |
-| `audit_v2.py`, `merge_audit.py` | create the audit sheets, merge two raters, and score them |
+| `audit_v2.py`, `merge_audit.py` | create the audit sheets, merge two raters, and score them (agreement, equivalence, verdict precision and class-weighted recall) |
 | `make_heatmap_v2.py` | draws the heatmap figure |
 
 `reproduce.py`, `run_live_mutation.py` and `results/*.json` belong to an earlier
