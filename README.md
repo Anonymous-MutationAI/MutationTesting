@@ -24,12 +24,13 @@ The individual scripts are:
 python3 analyze_v2.py results/v2                  # main tables, tests, size-matched suites
 python3 analyze_v2.py results/v2 --legacy         # the same under the first-submission scoring
 python3 sensitivity_v2.py results/v2              # effect of each scoring rule, test-retest check
-python3 analyze_control_combined.py               # noise control and noise-adjusted scores
+python3 analyze_control_combined.py               # all three noise controls, noise-adjusted scores (--legacy too)
 python3 audit_v2.py score results/v2 --audit audit/   # equivalence audit and verdict check
 ```
 
 Each command prints its results to the screen. Saved outputs: `analysis.txt`,
-`analysis_legacy.txt` and `sensitivity.txt`.
+`analysis_legacy.txt`, `analysis_control.txt`, `analysis_control_legacy.txt`
+and `sensitivity.txt`.
 
 ## How mutants are scored
 
@@ -70,10 +71,11 @@ python3 make_heatmap_v2.py "$PWD" figs/heatmap_ms_strict.pdf
 | `src/agent_runtime/` | runs a workflow through the OpenAI Agents SDK |
 | `suites/` | the test prompts, one file per workflow |
 | `results/v2/` | every logged run of the main experiment |
-| `results/v2_control/` | two extra noise-control runs of the unmodified workflows |
+| `results/v2_control/` | noise-control replicates 2 and 3 of the unmodified workflows (2,418 runs, 2026-11-15) |
 | `audit/` | both raters' labels, their disagreements, and the agreed labels |
 | `figs/` | the heatmap figure |
 | `paper_values.json` | every number reported in the paper, checked by `verify_paper.py` |
+| `provenance_v2.json` | settings and dates of the main experiment and the extra noise controls (`provenance.json` describes the pilot) |
 
 ## Running the experiment again (needs an OpenAI API key)
 
@@ -126,6 +128,7 @@ varies from run to run.
 ## Settings used in the paper
 
 - Model: `gpt-4.1-mini`, with the SDK's default sampling settings and at most 6 turns
+- Main experiment run 2026-10-05 to 2026-10-13; extra noise controls 2026-11-15 (Python 3.11)
 - Seed: `20260605`
 - Each test runs 3 times on the original and 3 times on the mutant; a mutant is
   killed when most of the paired runs differ

@@ -993,12 +993,6 @@
    "K-Struct": 7.4,
    "K-Outcome": 12.7,
    "K-Safety": 0.0
-  },
-  "control_rep1_noisy_incident_obligation_pct": {
-   "T-Dev*": 35.0,
-   "T-Rand*": 17.2,
-   "T-E2E*": 18.8,
-   "T-Struct": 60.9
   }
  },
  "audit": {
@@ -1020,10 +1014,110 @@
   "verdict_accuracy_weighted": 0.88
  },
  "noise_three_replicates": {
-  "_note": "Needs results/v2_control/ and analyze_control_combined.py; fill in after recomputing with the revised rules.",
-  "noise_adjusted_ms": null,
-  "size_matched_noise_adjusted": null,
-  "noisy_obligations_pct": null,
-  "killable_after_adjustment": null
+  "noisy_obligations_pct": {
+   "K-Struct": {
+    "replicates": [
+     7.4,
+     15.4,
+     14.9
+    ],
+    "union": 21.6,
+    "union_count": 87
+   },
+   "K-Outcome": {
+    "replicates": [
+     12.7,
+     22.1,
+     19.6
+    ],
+    "union": 30.3,
+    "union_count": 122
+   }
+  },
+  "noise_exposure_pct_kstruct": {
+   "rep1": {
+    "T-Dev*": 34.9,
+    "T-Rand*": 17.0,
+    "T-E2E*": 18.7,
+    "T-Struct": 60.7
+   },
+   "rep2": {
+    "T-Dev*": 44.6,
+    "T-Rand*": 21.4,
+    "T-E2E*": 39.0,
+    "T-Struct": 69.6
+   },
+   "rep3": {
+    "T-Dev*": 37.8,
+    "T-Rand*": 23.1,
+    "T-E2E*": 32.2,
+    "T-Struct": 80.0
+   },
+   "union": {
+    "T-Dev*": 50.0,
+    "T-Rand*": 32.0,
+    "T-E2E*": 39.0,
+    "T-Struct": 84.6
+   }
+  },
+  "noise_adjusted_ms": {
+   "K-Struct": {
+    "T-Dev*": 0.617,
+    "T-Rand*": 0.34,
+    "T-E2E*": 0.381,
+    "T-Struct": 1.0
+   },
+   "K-Outcome": {
+    "T-Dev*": 0.595,
+    "T-Rand*": 0.301,
+    "T-E2E*": 0.352,
+    "T-Struct": 1.0
+   },
+   "K-Safety": {
+    "T-Dev*": 0.573,
+    "T-Rand*": 0.376,
+    "T-E2E*": 0.5,
+    "T-Struct": 1.0
+   }
+  },
+  "killable_after_adjustment": {
+   "K-Struct": 721,
+   "K-Outcome": 721,
+   "K-Safety": 178
+  },
+  "res_rem_noise_adjusted_koutcome": {
+   "T-Dev*": 0.125,
+   "T-Rand*": 0.089,
+   "T-E2E*": 0.036
+  },
+  "size_matched_noise_adjusted": {
+   "K-Struct": {
+    "t_dev": 0.617,
+    "random_mean": 0.647,
+    "random_range": [
+     0.548,
+     0.724
+    ],
+    "greedy": 0.546
+   },
+   "K-Outcome": {
+    "t_dev": 0.595,
+    "random_mean": 0.621,
+    "random_range": [
+     0.517,
+     0.705
+    ],
+    "greedy": 0.527
+   },
+   "K-Safety": {
+    "t_dev": 0.573,
+    "random_mean": 0.664,
+    "random_range": [
+     0.573,
+     0.775
+    ],
+    "greedy": 0.725
+   }
+  }
  }
 }

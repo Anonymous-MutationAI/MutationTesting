@@ -9,8 +9,8 @@ section. This script recomputes each one from benchmarks/, the logs and the
 audit sheets (using the pool and kill rules in src/agentmut/rules.py), prints
 PASS or FAIL per value, and exits with status 1 if any check fails. It needs
 only the Python standard library and makes no API calls. Values that depend on
-the two extra noise-control replicates are skipped while results/v2_control/
-is absent.
+the two extra noise-control replicates are read from results/v2_control/ and
+skipped if that folder is absent.
 """
 from __future__ import annotations
 
@@ -226,16 +226,6 @@ def compute_noise(B, results):
         v = [c["fires"].get(K) for d in B.values() for c in d["control"].values()]
         v = [x for x in v if x is not None]
         ctrl[K] = r(100 * sum(map(bool, v)) / len(v), 1)
-    n_scored = sum(len(d["mutants"]) for d in B.values())
-    exposure = {}
-    for s in BASE_SUITES:
-        hit = 0
-        for d in B.values():
-            S = set(d["meta"]["suites"][s])
-            for m in d["mutants"]:
-                hit += any(d["control"].get(tuple(o), {}).get("fires", {}).get("K-Struct")
-                           for o in m["incident"] if tuple(o) in S)
-        exposure[s] = r(100 * hit / n_scored, 1)
     return {
         "executions_logged": n_exec,
         "executions_of_duplicates": n_dup,
@@ -246,8 +236,52 @@ def compute_noise(B, results):
                                           for p in m["per_obl"] if "structural_fail" in p),
         "kstruct_pairs_differing_pct": [r(100 * dist[i] / sum(dist.values()), 1) for i in range(4)],
         "control_rep1_fire_pct": ctrl,
-        "control_rep1_noisy_incident_obligation_pct": exposure,
     }
+
+
+def compute_noise_three_replicates(B, control_dir):
+    """All three control replicates (analyze_control_combined.py logic)."""
+    import analyze_control_combined as acc
+    reps = acc.load_replicates(B, control_dir)
+    comb = acc.union_control(reps)
+    suite = lambda s: (lambda b: set(B[b]["meta"]["suites"][s]))  # noqa: E731
+    per_obl = {}
+    for K in ("K-Struct", "K-Outcome"):
+        row = []
+        for i in range(3):
+            v = [fl[i].get(K) for ob in reps.values() for fl in ob.values() if len(fl) > i]
+            row.append(r(100 * sum(map(bool, v)) / len(v), 1))
+        u = [c["fires"][K] for ob in comb.values() for c in ob.values()]
+        per_obl[K] = {"replicates": row, "union": r(100 * sum(u) / len(u), 1), "union_count": sum(u)}
+    expo = {f"rep{i + 1}": {s: r(100 * acc.exposure(B, acc.single_control(reps, i), s, "K-Struct"), 1)
+                            for s in BASE_SUITES} for i in range(3)}
+    expo["union"] = {s: r(100 * acc.exposure(B, comb, s, "K-Struct"), 1) for s in BASE_SUITES}
+    adj, killable = {}, {}
+    for K in CRITERIA:
+        vals = {s: acc.score(B, comb, suite(s), K, True) for s in BASE_SUITES}
+        adj[K] = {s: r(kd / kb) for s, (kd, kb) in vals.items()}
+        killable[K] = vals["T-Struct"][1]
+    resrem = {}
+    for s in BASELINES:
+        kd, kb = acc.score(B, comb, suite(s), "K-Outcome", True, {"Res-Rem"})
+        resrem[s] = r(kd / kb)
+    sizes = {b: len(d["meta"]["suites"]["T-Dev*"]) for b, d in B.items()}
+    rng = random.Random(SEED)
+    sm = {}
+    for K in CRITERIA:
+        draws = []
+        for _ in range(100):
+            pick = {b: set(rng.sample(sorted(d["meta"]["suites"]["T-Struct"]), sizes[b])) for b, d in B.items()}
+            kd, kb = acc.score(B, comb, lambda b: pick[b], K, True)
+            draws.append(kd / kb)
+        draws.sort()
+        g = {b: coverage_greedy(d["meta"]["suites"]["T-Struct"], sizes[b]) for b, d in B.items()}
+        gkd, gkb = acc.score(B, comb, lambda b: g[b], K, True)
+        sm[K] = {"t_dev": adj[K]["T-Dev*"], "random_mean": r(sum(draws) / len(draws)),
+                 "random_range": [r(draws[2]), r(draws[97])], "greedy": r(gkd / gkb)}
+    return {"noisy_obligations_pct": per_obl, "noise_exposure_pct_kstruct": expo,
+            "noise_adjusted_ms": adj, "killable_after_adjustment": killable,
+            "res_rem_noise_adjusted_koutcome": resrem, "size_matched_noise_adjusted": sm}
 
 
 def compute_audit(B, audit):
@@ -328,20 +362,15 @@ def main():
     }
     if (Path(a.audit) / "mutants.csv").exists():
         computed["audit"] = compute_audit(B, Path(a.audit))
+    control_dir = results.parent / f"{results.name}_control"
+    if control_dir.is_dir():
+        computed["noise_three_replicates"] = compute_noise_three_replicates(B, control_dir)
 
     counts = Counter()
     for group, exp in expected.items():
         if group.startswith("_"):
             continue
         print(f"\n--- {group}")
-        if group == "noise_three_replicates":
-            ctrl = results.parent / f"{results.name}_control"
-            if not ctrl.is_dir() or not (ROOT / "analyze_control_combined.py").exists():
-                for k in exp:
-                    if not k.startswith("_"):
-                        counts["skip"] += 1
-                        print(f"  SKIP  {k}: needs {ctrl.name}/ and analyze_control_combined.py")
-                continue
         if group not in computed:
             counts["skip"] += 1
             print(f"  SKIP  {group}: inputs not found")
