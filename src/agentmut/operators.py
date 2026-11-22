@@ -5,41 +5,39 @@ manifest is never mutated in place; each variant is produced via a deep
 copy. Operators are deterministic and total: given the same manifest, the
 same list is returned in the same order.
 
-Operator catalogue (12):
+Operator catalogue (14):
 
   Family F1 — Delegation faults
     Del-Rem   : drop one delegation edge
-    Del-Red   : redirect (parent, *) to a different existing reachable child
+    Del-Red   : redirect (parent, child) to a different reachable child
     Del-Inv   : invert direction of one edge (parent <-> child swap)
     Del-Add   : add a delegation edge that did not previously exist
 
   Family F2 — Tool wiring faults
     Tool-Rem  : drop one allow edge
-    Tool-Red  : redirect an allow edge to a different existing tool
-    Tool-Fault: do not change the graph; mark a tool as fault-injected
-                (consumed by the runtime adapter; K-Struct treats Tool-Fault
-                as non-structural and the equivalence filter will mark it
-                equivalent under K-Struct)
-    Tool-SigMut: rename one tool symbol to a near-synonym
-                (graph-equivalent but exercises the realizer/runtime
-                binding; K-Struct will not kill — equivalent under K-Struct)
+    Tool-Red  : redirect an allow edge to a different tool (drops the
+                matching restrict entry so allow and restrict stay disjoint)
+    Tool-Fault: keep the wiring; the runtime returns an injected error or a
+                malformed payload for one tool (sub-modes fail:error and
+                fail:malformed). Graph-equivalent: only execution can kill it.
+    Tool-SigMut: rename one tool symbol (t -> t_v2)
 
   Family F3 — Restriction faults
     Res-Relax  : move one restrict edge into allow
     Res-Tighten: move one allow edge into restrict
-    Res-Rem    : drop one restrict edge (silently revoked restriction)
+    Res-Rem    : drop one restrict edge (the tool stays uncallable; the
+                 agent's denied-tool list and denial-probe response change)
 
   Family F4 — Agent / instruction faults
-    Ag-Rem        : drop one non-entry reachable agent
-    Ag-Swap       : swap the names of two non-entry reachable agents
+    Ag-Rem        : drop one non-entry reachable agent and its edges
+    Ag-Swap       : swap the system_prompt_hint of two non-entry reachable agents
     Ag-PromptDrop : clear the system_prompt_hint of one reachable agent
-                    (graph-equivalent under K-Struct)
 
-Operators that produce graph-equivalent mutants (Tool-Fault, Tool-SigMut,
-Ag-PromptDrop) are still emitted: they are intended to be killed by
-K-Outcome and K-Safety, not by K-Struct. The equivalence filter applied
-under K-Struct will mark them equivalent and the runner will record the
-distinction.
+Ag-Swap, Ag-PromptDrop and Tool-Fault leave the obligation set unchanged and
+can only be killed by execution. Del-Red and Tool-Red can yield a mutant whose
+runtime behaviour equals a Del-Rem or Tool-Rem mutant (redirecting to a target
+the agent already has); agentmut.rules.drop_runtime_duplicates removes these
+before scoring.
 """
 
 from __future__ import annotations
@@ -301,19 +299,11 @@ def _op_ag_rem(m: Manifest) -> list[tuple[Manifest, str]]:
 
 
 def _op_ag_swap(m: Manifest) -> list[tuple[Manifest, str]]:
-    """Swap the ``system_prompt_hint`` of two reachable agents.
+    """Swap the ``system_prompt_hint`` of two non-entry reachable agents.
 
-    This is a *graph-equivalent* mutation by construction: it changes
-    only the instruction text of two agents and leaves the manifest's
-    obligation set untouched. The deterministic trace simulator
-    (Section IV.B) cannot witness this perturbation because the
-    simulator does not model prompt-mediated routing; under
-    K-Struct/K-Outcome/K-Safety the operator therefore reports as
-    ``n/a`` (no killable mutants) on every suite. It is included in the
-    catalogue so that a future live-LLM runtime adapter can detect it.
-
-    To keep the mutant non-identity, pairs whose ``system_prompt_hint``
-    fields are equal (including both empty) are skipped.
+    Graph-equivalent by construction: only the instruction text of two agents
+    changes, so the obligation set is untouched and only execution can kill
+    the mutant. Pairs with equal hints (including both empty) are skipped.
     """
     out = []
     entry = m["system"]["entry_agent"]

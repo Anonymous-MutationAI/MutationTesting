@@ -14,13 +14,16 @@ case "${1:---verify}" in
     # Prints the main tables, then checks every reported number against the logs.
     "$PY" "$HERE/analyze_v2.py" "$HERE/results/v2"
     echo
+    "$PY" "$HERE/analyze_control_combined.py" --results "$HERE/results/v2" --control "$HERE/results/v2_control"
+    echo
     exec "$PY" "$HERE/verify_paper.py" --results "$HERE/results/v2" --audit "$HERE/audit"
     ;;
   --live)
     : "${OPENAI_API_KEY:?set OPENAI_API_KEY to run the live sweep}"
     OUT="$HERE/results/v2_rerun"
-    echo "Live sweep: 1,076 mutants, about 52,000 agent executions with gpt-4.1-mini."
+    echo "Live sweep: 940 mutants and about 46,000 agent executions, plus 2,418 control runs, with gpt-4.1-mini."
     "$PY" "$HERE/run_live_mutation_v2.py" --out "$OUT"
+    "$PY" "$HERE/run_control_extra.py" --reps 2 --src "$OUT" --out "${OUT}_control"
     "$PY" "$HERE/repair_v2.py" "$OUT"
     "$PY" "$HERE/analyze_v2.py" "$OUT"
     echo
