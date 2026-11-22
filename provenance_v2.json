@@ -1,0 +1,15 @@
+{
+  "description": "Settings of the main experiment (results/v2) and the extra noise controls (results/v2_control). provenance.json describes the earlier pilot run.",
+  "code": "the scripts in this repository (commit 7de500dafde0e10ed4d57546d0df2beec534ac7f and later)",
+  "model": "gpt-4.1-mini",
+  "sdk": "openai-agents (see requirements.txt)",
+  "python": "3.11",
+  "seed": 20260605,
+  "runs_per_test": 3,
+  "max_turns": 6,
+  "max_per_op": 50,
+  "octagon_cap": 10,
+  "main_experiment_dates": "2026-10-05 to 2026-10-13",
+  "extra_control_dates": "2026-11-15",
+  "executions": {"main": 52251, "extra_control": 2418}
+}
