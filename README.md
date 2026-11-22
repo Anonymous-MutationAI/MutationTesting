@@ -1,164 +1,114 @@
-# Replication Package — *Mutation Testing for Multi-Agent Systems*
+# Mutation Testing for Multi-Agent Systems: Replication Package
 
-Self-contained artifact for the paper. It reproduces every table exactly from
-the committed inputs and results, with a single command, no API key, and no
-third-party dependencies.
+This package contains everything needed to reproduce the results in the paper:
+the ten workflow specifications, the mutation operators, every logged agent run,
+the manual audit labels, and the scripts that turn them into the paper's tables
+and figure.
 
-```
-python3 reproduce.py       # regenerate & verify Tables II–VI  (offline, ~seconds)
-```
+## Quick start (no API key needed)
 
-(`bash reproduce.sh` is an optional wrapper around the same thing, for those who
-prefer it.)
-
-## Setup
-
-**Offline verification** (`python3 reproduce.py`) needs only **Python 3.9+** —
-no virtual environment and no `pip install`. It imports only the standard
-library and the bundled `src/agentcov` and `src/agentmut`.
-
-Check your Python:
+You need Python 3.9 or newer. Every number in the paper is computed from the
+logged runs, so you can check them without calling any model.
 
 ```
-python3 --version        # 3.9 or newer
+python3 analyze_v2.py results/v2                  # main tables and size-matched suites
+python3 analyze_control_combined.py               # noise control and noise-adjusted scores
+python3 audit_v2.py score results/v2 --audit audit/   # equivalence audit and verdict check
 ```
 
-**Live re-run** (`--live`) additionally needs the OpenAI Agents SDK. Create an
-isolated environment and install the pinned dependencies:
+Each command prints its results to the screen. The output of the first one is
+also saved in `analysis.txt`.
+
+To redraw the heatmap figure (needs `matplotlib`):
 
 ```
-python3 -m venv .venv
-source .venv/bin/activate            # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-export OPENAI_API_KEY=sk-...          # Windows: set OPENAI_API_KEY=sk-...
+python3 make_heatmap_v2.py "$PWD" figs/heatmap_ms_strict.pdf
 ```
 
-This recomputes the benchmark inventory and the full mutant set **from the
-source manifests**, aggregates the committed live results, and checks every cell
-against the published values — printing `PASS` only if they all match.
+## What is in the package
 
-## What's inside
-
-```
-mutation-testing-replication/
-├── reproduce.sh              # driver: --verify (default) | --live
-├── benchmarks/               # the 10 schema-v3 workflow manifests (paper inputs)
-├── src/
-│   ├── agentcov/             # manifest parser, coordination graph, obligation extractor
-│   ├── agentmut/             # 14 mutation operators, suite builders, kill criteria, generator
-│   └── agent_runtime/        # OpenAI Agents SDK execution layer (LIVE re-run only)
-├── run_live_mutation.py      # the live sweep that produced the paper's numbers
-├── suites/                   # cached realized prompts, one per benchmark (for faithful re-run)
-├── results/                  # canonical raw per-(operator,suite,criterion) results — the paper's data
-├── provenance.json           # seed, model, git commit, per-benchmark manifest SHA-256
-└── requirements.txt          # deps for --live only
-```
-
-## Tier 1 — Offline verification (no API key, no dependencies)
-
-```
-python3 reproduce.py              # or, with bash: bash reproduce.sh
-```
-
-| Regenerated | Paper element | Source |
-|---|---|---|
-| Benchmark inventory (49 / 47 / 65 / 248 / 41 / 403) | Table II | `benchmarks/` via `agentcov` |
-| First-order mutant count (1,873) | §III-B | `benchmarks/` via `agentmut` |
-| Executed pool + live-killable denominators (1,084 / 983 / 1,010 / 177) | Table III | `results/` |
-| K-Struct MS_strict per family (T-Dev⋆ 0.717 …) | Table IV | `results/` |
-| MS_strict per suite × criterion (K-Safety T-Dev⋆ 0.559 …) | Table V | `results/` |
-| K-Outcome MS_strict per operator | Table VI | `results/` |
-| Live agent executions (29,601) | §IV | `results/` |
-
-`--csv out/` also dumps each table as CSV.
-
-## Tier 2 — Full live re-run (needs `OPENAI_API_KEY`)
-
-After completing the live-re-run setup above (venv + `requirements.txt` +
-`OPENAI_API_KEY`):
-
-```
-python3 reproduce.py --live        # or: bash reproduce.sh --live
-```
-
-Configuration is fixed for parity with the paper: seed `20260605`,
-`MAX_PER_OP=50` (10 for `octagon_vc_agents`), `k=3` repeats with per-test
-majority vote, `gpt-4.1-mini` as the agent model. A full 10-benchmark sweep is
-~1,084 mutants and ~30k executions (hours; non-trivial API cost).
-
-**What `--live` regenerates, step by step** (all from `benchmarks/` — nothing in
-`results/` is read):
-
-1. normalize each manifest into a coordination graph and extract obligations
-   (`src/agentcov`);
-2. generate all first-order mutants and cap per operator (`src/agentmut` →
-   1,873 generated, 1,084 executed);
-3. build the four suites by obligation selection (`src/agentmut.build_suites`);
-4. execute every (spec, test) pair against the original and each mutant through
-   the OpenAI Agents SDK, `k=3` with per-test majority vote
-   (`src/agent_runtime`), and score K-Struct / K-Outcome / K-Safety;
-5. write fresh per-benchmark results to `results/live_rerun/`;
-6. `reproduce.py` then aggregates and checks them against the paper.
-
-Because agent execution is stochastic, a fresh run reproduces the paper up to
-the residual flaky-kill rate, not byte-for-byte — the offline tier is the
-exact-match check.
-
-**Prompt realization (reused, not regenerated).** Each obligation is turned into
-one natural-language user prompt by an LLM prompt-realizer. Those prompts are
-provided in `suites/*.suite.json` (realized once with `gpt-4.1-mini`) and the
-sweep reuses them, so a re-run tests the *same* prompts and stays comparable to
-the paper. Regenerating the prompts is intentionally **not** part of the re-run:
-new prompts would change the tests and the scores. The realized prompts, their
-`objective_id`, target agent, model, and seed hash are all recorded in
-`suites/`, so the realization is fully auditable. A standalone prompt-realizer
-for regenerating `suites/` from the manifests may be added in a later revision.
-
-## Revised sweep (v2) — the results in the revised paper
-
-The revised paper reports a second sweep that fixes several issues raised in
-review. Compared with the original driver (`run_live_mutation.py`), v2:
-
-- runs an **original-versus-original control** on every obligation and reports
-  the false-kill (noise) rate, plus noise-adjusted scores;
-- **retries infrastructure errors** (timeouts, rate limits) instead of counting
-  them as kills;
-- **skips runtime-identical mutants** (8 placeholder-hint `Ag-PromptDrop` /
-  `Ag-Swap` mutants), leaving 1,076 executed mutants;
-- **logs every run per obligation** (`results/v2/*.jsonl`), so all tables,
-  size-matched suites and the audit are computed offline.
-
-Totals: 1,076 mutants, 52,251 agent executions (`gpt-4.1-mini`, seed
-`20260605`, `k=3`).
-
-```
-# reproduce every v2 number from the logs (no API key needed)
-python3 analyze_v2.py results/v2                 # Tables III–VI, control, size-matched suites
-python3 analyze_v2.py results/v2 --exclude-op Tool-SigMut
-python3 make_heatmap_v2.py "$PWD" figs/heatmap_ms_strict.pdf   # the heatmap figure
-python3 audit_v2.py score results/v2 --audit audit/       # equivalence audit + verdict validation
-
-# re-run the sweep live (needs OPENAI_API_KEY; resumable)
-python3 run_live_mutation_v2.py --dry-run --out /tmp/test # pipeline check, no API calls
-python3 run_live_mutation_v2.py --out results/v2_rerun
-python3 repair_v2.py results/v2_rerun                     # list runs that failed for infrastructure reasons
-```
-
-| File | Purpose |
+| Folder or file | Contents |
 |---|---|
-| `run_live_mutation_v2.py` | v2 sweep driver (control, retries, per-run logs) |
-| `analyze_v2.py` | all v2 tables, noise-adjusted scores, size-matched suites |
-| `repair_v2.py` | finds and removes log records with failed runs so a resume redoes them |
-| `dedup.py` | removes duplicate log records left by an overlapping resume |
-| `audit_v2.py`, `merge_audit.py` | manual audit: export sheets, merge two raters, score |
-| `make_heatmap_v2.py` | regenerates `figs/heatmap_ms_strict.pdf` |
-| `results/v2/` | per-run logs of the v2 sweep |
-| `audit/` | the two raters' labels (`rater1_*`, `rater2_*`), agreed labels (`mutants.csv`, `verdicts.csv`), disagreements and their resolution |
-| `analysis.txt` | output of `analyze_v2.py results/v2` |
+| `benchmarks/` | the ten workflow specifications used in the study |
+| `src/agentcov/` | turns a specification into a coordination graph and its test obligations |
+| `src/agentmut/` | the 14 mutation operators, the four test suites, and the kill criteria |
+| `src/agent_runtime/` | runs a workflow through the OpenAI Agents SDK |
+| `suites/` | the test prompts, one file per workflow |
+| `results/v2/` | every logged run of the main experiment |
+| `results/v2_control/` | two extra noise-control runs of the unmodified workflows |
+| `audit/` | both raters' labels, their disagreements, and the agreed labels |
+| `figs/` | the heatmap figure |
 
-## Notes
+## Running the experiment again (needs an OpenAI API key)
 
-- The 10 manifests match the SHA-256 fingerprints in `provenance.json` — they
-  are the byte-exact inputs behind the paper.
-- `agentmut` and `agentcov` are pure Python (no third-party deps); the offline
-  verifier imports only them and the standard library.
+This repeats the full experiment: 1,076 mutants and about 52,000 agent
+executions with `gpt-4.1-mini`. It takes several hours and costs real API
+credit. Results will differ slightly from the paper, because model output
+varies from run to run.
+
+1. Install the dependencies and set your key:
+
+   ```
+   python3 -m venv .venv
+   source .venv/bin/activate          # Windows: .venv\Scripts\activate
+   pip install -r requirements.txt
+   export OPENAI_API_KEY=your-key     # Windows: set OPENAI_API_KEY=your-key
+   ```
+
+2. Check that everything works without calling the model:
+
+   ```
+   python3 run_live_mutation_v2.py --dry-run --out /tmp/test
+   ```
+
+3. Run the experiment and the extra noise controls:
+
+   ```
+   python3 run_live_mutation_v2.py --out results/v2_rerun
+   python3 run_control_extra.py --reps 2 --src results/v2_rerun --out results/v2_rerun_control
+   ```
+
+   Both commands can be stopped and started again; they continue where they
+   left off.
+
+4. If some calls failed (for example because of rate limits), find and redo them:
+
+   ```
+   python3 repair_v2.py results/v2_rerun          # list failed runs
+   python3 repair_v2.py results/v2_rerun --fix    # remove them, then rerun step 3
+   ```
+
+5. Analyze the new runs:
+
+   ```
+   python3 analyze_v2.py results/v2_rerun
+   ```
+
+   `analyze_control_combined.py` reads `results/v2` and `results/v2_control`;
+   to use it on a new run, copy the new folders over those two.
+
+## Settings used in the paper
+
+- Model: `gpt-4.1-mini`, with the SDK's default sampling settings and at most 6 turns
+- Seed: `20260605`
+- Each test runs 3 times on the original and 3 times on the mutant; a mutant is
+  killed when most of the paired runs differ
+- At most 50 mutants per operator and workflow (10 for `octagon_vc_agents`)
+- The noise control runs every test 3 times on the unmodified workflow, three
+  separate times
+
+## Helper scripts
+
+| Script | Purpose |
+|---|---|
+| `run_live_mutation_v2.py` | runs the experiment and logs every run |
+| `run_control_extra.py` | runs extra noise controls on the unmodified workflows |
+| `analyze_v2.py` | main tables and size-matched suites |
+| `analyze_control_combined.py` | combines the noise controls and computes noise-adjusted scores |
+| `repair_v2.py` | finds runs that failed for technical reasons so they can be redone |
+| `dedup.py` | removes duplicate records if two runs overlapped |
+| `audit_v2.py`, `merge_audit.py` | create the audit sheets, merge two raters, and score them |
+| `make_heatmap_v2.py` | draws the heatmap figure |
+
+`reproduce.py`, `run_live_mutation.py` and `results/*.json` belong to an earlier
+pilot run and are not used for the numbers in the paper.
