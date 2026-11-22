@@ -1,34 +1,4 @@
 #!/usr/bin/env python3
-"""Revised live mutation sweep (v2) addressing the ICSE 2027 reviews.
-
-Changes relative to run_live_mutation.py (v1, the submitted paper):
-
-  1. Original-vs-original CONTROL (A1, B): every obligation is executed k extra
-     times on the UNMUTATED spec and scored exactly like a mutant, giving the
-     false-kill (noise) rate per criterion and per obligation.
-  2. Infrastructure errors are RETRIED, never counted as kills (v1 counted any
-     mutant-side exception as a K-Struct + K-Outcome kill).
-     MaxTurnsExceeded is treated as a behavioural outcome (verdict = fail),
-     with the partial trace kept.
-  3. Runtime-identical mutants are SKIPPED: Ag-PromptDrop / Ag-Swap mutants
-     whose effective instructions equal the original (placeholder hint
-     '# System context' is ignored by the adapter). --drop-sigmut removes
-     Tool-SigMut entirely.
-  4. Per-obligation, per-run LOGGING to JSONL, so flaky-kill distributions,
-     noise-adjusted scores, size-matched suites and audits can all be computed
-     offline by analyze_v2.py without re-running agents.
-  5. --subsample N for the k=10 stability check; --dry-run uses a stochastic
-     fake executor to test the pipeline without an API key.
-
-Kill rule (unchanged from v1, now documented): mutant run i is compared with
-cached original run i; a criterion fires on an obligation when a strict
-majority of the k pairs differ.
-
-Usage:
-  export OPENAI_API_KEY=sk-...
-  python3 run_live_mutation_v2.py --benchmarks oai_customer_service --out logs/
-  python3 analyze_v2.py logs/
-"""
 from __future__ import annotations
 
 import argparse
