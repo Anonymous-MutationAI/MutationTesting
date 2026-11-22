@@ -1,7 +1,9 @@
-# Dependencies for the LIVE re-run only (reproduce.sh --live).
-# The offline verification (reproduce.sh --verify / reproduce_tables.py) needs
-# NOTHING beyond the Python standard library.
+# The offline checks (reproduce.sh --verify, verify_paper.py, analyze_v2.py,
+# audit_v2.py) need only the Python standard library.
+
+# Live re-run (reproduce.sh --live, run_live_mutation_v2.py)
 openai-agents>=0.0.13
 eval-type-backport>=0.2.0
-dspy-ai>=2.5.0
-python-dotenv>=1.0.0
+
+# Optional: redraw the heatmap (make_heatmap_v2.py)
+matplotlib>=3.7

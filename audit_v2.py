@@ -181,10 +181,58 @@ def score(a):
             fn += pred == "ok" and gold == "fail"; tn += pred == "ok" and gold == "ok"
         prec = tp / (tp + fp) if tp + fp else float("nan")
         rec = tp / (tp + fn) if tp + fn else float("nan")
-        print(f"\n=== Verdict classifier: {tp+fp+fn+tn} responses, rater kappa = {k2:.2f}")
-        print(f"  precision {prec:.3f}  recall {rec:.3f}  (TP={tp} FP={fp} FN={fn} TN={tn})")
-        print("  note: the sample is balanced on the prediction, so precision is unbiased "
-              "but recall is over-estimated; report both with this caveat or weight by class size.")
+        print(f"\n=== Verdict classifier: {tp+fp+fn+tn} responses, rater kappa = {k2:.2f} (n={n2})")
+        print(f"  sample (balanced on the prediction): precision {prec:.3f}  recall {rec:.3f}  "
+              f"(TP={tp} FP={fp} FN={fn} TN={tn})")
+        # The sample has equally many predicted-fail and predicted-ok responses, so
+        # recall and accuracy are re-weighted by each class's share of all distinct
+        # mutant responses (the population the sample was drawn from in export()).
+        texts = {r["text"] for d in benches.values() for m in d["mutants"] for p in m["per_obl"]
+                 for r in p.get("runs", []) if r and not r.get("max_turns")}
+        n_fail = sum(1 for t in texts if _refused(t))
+        wf, wo = n_fail / len(texts), 1 - n_fail / len(texts)
+        ptp, ptn = wf * tp / (tp + fp), wo * tn / (fn + tn)
+        pfn = wo * fn / (fn + tn)
+        print(f"  population of {len(texts)} distinct responses ({n_fail} predicted fail): "
+              f"precision {prec:.3f}  recall {ptp / (ptp + pfn):.3f}  accuracy {ptp + ptn:.3f}")
+
+    # --- Tool-Fault mutants whose faulted tool is never called ----------------
+    # A Tool-Fault mutant behaves like the original on every run that does not
+    # call the faulted tool, so it is undetermined rather than shown equivalent
+    # when no run reaches the tool.
+    unex = set()
+    for b, d in benches.items():
+        for m in d["mutants"]:
+            if m["operator"] == "Tool-Fault":
+                tool = m["target"].split("@")[0]
+                if not any(tool in (r.get("tools") or []) for p in m["per_obl"]
+                           for r in p.get("runs", []) if r):
+                    unex.add(f"{b}:{m['idx']}")
+    n_tf = sum(1 for d in benches.values() for m in d["mutants"] if m["operator"] == "Tool-Fault")
+    sampled_tf_eq = {m for m in eq_ids if first[m]["operator"] == "Tool-Fault"}
+    print(f"\n=== Tool-Fault mutants that never call the faulted tool: {len(unex)}/{n_tf}")
+    print(f"  of the {len(sampled_tf_eq)} sampled Tool-Fault mutants labelled 'eq', "
+          f"{len(sampled_tf_eq & unex)} never call the faulted tool")
+    for label, excl in (("audited-equivalent non-Tool-Fault mutants",
+                         {m for m in eq_ids if first[m]["operator"] != "Tool-Fault"}),
+                        ("Tool-Fault mutants that never call the faulted tool", unex)):
+        worst = 0.0
+        for s in BASE_SUITES:
+            for K in CRITERIA[:2]:
+                vals = []
+                for ex in (set(), excl):
+                    kd = kb = 0
+                    for b, d in benches.items():
+                        S = set(d["meta"]["suites"][s])
+                        for m in d["mutants"]:
+                            if f"{b}:{m['idx']}" in ex:
+                                continue
+                            w = witnesses(m, K)
+                            if w:
+                                kb += 1; kd += bool(w & S)
+                    vals.append(kd / kb if kb else float("nan"))
+                worst = max(worst, abs(vals[1] - vals[0]))
+        print(f"  excluding {len(excl)} {label}: max change in K-Struct/K-Outcome MS = {worst:.4f}")
 
 
 def main():
