@@ -20,9 +20,12 @@ from run_live_mutation import (  # noqa: E402  (reuse v1 helpers unchanged)
     LiveTest, incident_obligations, template_for, to_live_manifest, _refused,
 )
 from agentmut import build_suites, generate_mutants, cap_per_operator  # noqa: E402
+from agentmut.rules import (  # noqa: E402  (pool and kill rules shared with analyze_v2.py)
+    PLACEHOLDER_HINTS, drop_runtime_duplicates, fault_reached, faulted_tool, majority,
+    well_formedness_violations,
+)
 
 CRITERIA = ["K-Struct", "K-Outcome", "K-Safety"]
-PLACEHOLDER_HINTS = {"", "# System context"}
 INFRA_MARKERS = ("Timeout", "RateLimit", "Connection", "InternalServer",
                  "APIError", "APIStatus", "ServiceUnavailable", "Overloaded")
 
@@ -69,10 +72,6 @@ def kills(o_sum: dict, m_sum: dict, restrict_pairs: set) -> dict:
     outcome = struct or (verdict_fail(m_sum) and not verdict_fail(o_sum))
     safety = any(tuple(p) in restrict_pairs for p in m_sum["pairs"])
     return {"K-Struct": struct, "K-Outcome": outcome, "K-Safety": safety}
-
-
-def majority(votes):
-    return sum(1 for v in votes if v) * 2 > len(votes)
 
 
 # ---------------------------------------------------------------------------
@@ -218,7 +217,12 @@ def main() -> int:
                 stats["skipped_runtime_identical"] += 1; continue
             if args.drop_sigmut and mu.operator == "Tool-SigMut":
                 stats["skipped_sigmut"] += 1; continue
+            if well_formedness_violations(mu.manifest):
+                stats["ill_formed"] += 1; continue
             keep.append((i, mu))
+        # one mutant per runtime specification (agentmut.rules)
+        keep, dups = drop_runtime_duplicates(keep)
+        stats["skipped_runtime_duplicate"] += len(dups)
         if args.subsample and len(keep) > args.subsample:
             keep = sorted(random.Random(args.seed + 1).sample(keep, args.subsample))
 
@@ -244,6 +248,7 @@ def main() -> int:
                   "suites": {s: [list(o) for o in obs] for s, obs in suites.items()},
                   "restrict_pairs": sorted(map(list, restrict_pairs)),
                   "n_generated_capped": len(mutants), "n_scored": len(keep),
+                  "n_runtime_duplicates": len(dups), "rules": "agentmut.rules",
                   "drop_sigmut": args.drop_sigmut})
 
         realized = {}
@@ -266,7 +271,10 @@ def main() -> int:
                 emit({"type": "orig", "obl": list(o), "runs": runs})
             return orig_cache[o]
 
-        def score_against_orig(o, runs):
+        def score_against_orig(o, runs, tool=None):
+            """Pair mutant run i with original run i. For a Tool-Fault mutant
+            (tool set), a pair votes for a kill only if the mutant run calls
+            the faulted tool (reachability, agentmut.rules)."""
             o_runs = orig_runs(o)
             votes = {K: [] for K in CRITERIA}
             for i, mr in enumerate(runs):
@@ -274,8 +282,9 @@ def main() -> int:
                 if mr is None or orr is None:
                     continue
                 kk = kills(orr, mr, restrict_pairs)
+                reached = fault_reached(tool, mr)
                 for K in CRITERIA:
-                    votes[K].append(kk[K])
+                    votes[K].append(kk[K] and reached)
             return votes
 
         print(f"\n=== {bench}: {len(keep)} mutants scored "
@@ -309,8 +318,9 @@ def main() -> int:
                 if t is None:
                     continue
                 if t.target_agent not in mut_agents:
+                    # not executable; logged, but not a kill (agentmut.rules)
                     per_obl.append({"obl": list(o), "structural_fail": "target_removed",
-                                    "fires": {"K-Struct": True, "K-Outcome": True, "K-Safety": False}})
+                                    "fires": {"K-Struct": False, "K-Outcome": False, "K-Safety": False}})
                     continue
                 if not args.dry_run:
                     _set_faults(faults)
@@ -318,12 +328,12 @@ def main() -> int:
                     mruns = [execute(live_mut, t) for _ in range(args.k)]
                 except LookupError:
                     per_obl.append({"obl": list(o), "structural_fail": "target_unreachable",
-                                    "fires": {"K-Struct": True, "K-Outcome": True, "K-Safety": False}})
+                                    "fires": {"K-Struct": False, "K-Outcome": False, "K-Safety": False}})
                     continue
                 finally:
                     if not args.dry_run:
                         _set_faults({})
-                votes = score_against_orig(o, mruns)
+                votes = score_against_orig(o, mruns, faulted_tool(mu.operator, mu.target))
                 per_obl.append({"obl": list(o), "runs": mruns, "votes": votes,
                                 "fires": {K: (majority(v) if v else None) for K, v in votes.items()}})
             emit({"type": "mutant", "idx": idx, "operator": mu.operator,
@@ -343,7 +353,10 @@ def main() -> int:
 
 
 # ---------------------------------------------------------------------------
-# Live tool backends (same behaviour as v1: real local binding or injected fault)
+# Live tool backends. Every benchmark tool is bound to
+# agent_runtime.live_runtime_backends._generic_backend, which takes no
+# arguments and returns a fixed acknowledgement; Tool-Fault replaces that
+# response with an injected error or malformed payload.
 # ---------------------------------------------------------------------------
 _FAULTS: dict = {}
 _BINDINGS: dict = {}
@@ -369,10 +382,8 @@ def _register_tools(manifest):
     for t in manifest.get("tools", []):
         b = t.get("binding") or {}
         if t["name"] not in _BINDINGS and b.get("module") and b.get("callable"):
-            try:
-                _BINDINGS[t["name"]] = getattr(importlib.import_module(b["module"]), b["callable"])
-            except Exception:  # noqa: BLE001
-                _BINDINGS[t["name"]] = None
+            # fail loudly: a missing binding must not silently change tool behaviour
+            _BINDINGS[t["name"]] = getattr(importlib.import_module(b["module"]), b["callable"])
         TOOL_BACKENDS[t["name"]] = _backend
 
 

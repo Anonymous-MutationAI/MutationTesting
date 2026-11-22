@@ -45,7 +45,9 @@ def _fmt_run(r):
 
 
 def export(a):
-    benches = load(Path(a.log_dir), set())
+    # the sheets were drawn from the full logged pool, before runtime duplicates
+    # were removed; legacy=True reproduces exactly that sample
+    benches = load(Path(a.log_dir), set(), legacy=True)
     out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
     rng = random.Random(SEED)
 
@@ -187,8 +189,10 @@ def score(a):
         # The sample has equally many predicted-fail and predicted-ok responses, so
         # recall and accuracy are re-weighted by each class's share of all distinct
         # mutant responses (the population the sample was drawn from in export()).
-        texts = {r["text"] for d in benches.values() for m in d["mutants"] for p in m["per_obl"]
-                 for r in p.get("runs", []) if r and not r.get("max_turns")}
+        # the population the sample was drawn from: every logged mutant response,
+        # including those of runtime-duplicate mutants
+        texts = {r["text"] for d in benches.values() for m in d["mutants"] + d["duplicates"]
+                 for p in m["per_obl"] for r in p.get("runs", []) if r and not r.get("max_turns")}
         n_fail = sum(1 for t in texts if _refused(t))
         wf, wo = n_fail / len(texts), 1 - n_fail / len(texts)
         ptp, ptn = wf * tp / (tp + fp), wo * tn / (fn + tn)

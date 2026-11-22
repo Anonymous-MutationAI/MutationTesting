@@ -10,12 +10,19 @@ Produces every number the revision needs:
   V   per-obligation vote distribution (0..k of k pairs differ)  (new Sec. flaky)
   S   size-matched random subsets of T-Struct + coverage-greedy  (RQ1, reviewer A)
   K   k=3 vs k agreement when logs were produced with k>3        (new Sec. flaky)
+  P   paired tests (Cochran's Q, exact McNemar with Holm correction) and
+      benchmark-level bootstrap intervals
+  B   per-benchmark K-Struct MS and macro averages
   E   error / skip statistics                                    (threats)
+
+Pool and kill rules (runtime duplicates, executed witnesses only, Tool-Fault
+reachability) come from src/agentmut/rules.py; --legacy reproduces the
+numbers of the first submission.
 
 Noise-adjusted scoring: an obligation may witness a kill under K only if the
 control did NOT fire on that obligation under K (the original is stable there).
 
-Usage: python3 analyze_v2.py LOG_DIR [--exclude-op Tool-SigMut] [--draws 100] [--csv OUT]
+Usage: python3 analyze_v2.py LOG_DIR [--legacy] [--exclude-op Tool-SigMut] [--draws 100] [--csv OUT]
 """
 from __future__ import annotations
 
@@ -30,7 +37,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(ROOT / "src"))
-from agentmut import OPERATOR_FAMILIES  # noqa: E402
+from agentmut import OPERATOR_FAMILIES, generate_mutants  # noqa: E402
+from agentmut.rules import drop_runtime_duplicates, rescore_obligation, rescored_votes  # noqa: E402
 
 CRITERIA = ["K-Struct", "K-Outcome", "K-Safety"]
 BASE_SUITES = ["T-Dev*", "T-Rand*", "T-E2E*", "T-Struct"]
@@ -38,7 +46,14 @@ FAM = {op: fam.split("_")[0] for fam, ops in OPERATOR_FAMILIES.items() for op in
 OPS = [op for ops in OPERATOR_FAMILIES.values() for op in ops]
 
 
-def load(log_dir: Path, exclude: set):
+def load(log_dir: Path, exclude: set, legacy: bool = False):
+    """Load the logs of one sweep and apply the pool and kill rules of agentmut.rules.
+
+    legacy=True keeps every logged mutant and the logged kill decisions, which
+    reproduces the numbers of the first submission. Otherwise runtime-duplicate
+    mutants are moved to d["duplicates"] and each obligation's "fires" is
+    recomputed (the logged decision is kept as "fires_logged").
+    """
     benches = {}
     for p in sorted(log_dir.glob("*.jsonl")):
         meta, control, mutants = None, {}, []
@@ -52,8 +67,28 @@ def load(log_dir: Path, exclude: set):
                 mutants.append(r)
         if meta:
             meta["suites"] = {s: [tuple(o) for o in v] for s, v in meta["suites"].items()}
-            benches[p.stem] = {"meta": meta, "control": control, "mutants": mutants}
+            duplicates = []
+            if not legacy:
+                mutants, duplicates = _apply_rules(p.stem, mutants)
+            benches[p.stem] = {"meta": meta, "control": control, "mutants": mutants,
+                               "duplicates": duplicates}
     return benches
+
+
+def _apply_rules(bench: str, mutants: list):
+    manifest_path = ROOT / "benchmarks" / f"{bench}.json"
+    by_key = {(mu.operator, str(mu.target)): mu
+              for mu in generate_mutants(json.load(manifest_path.open()), bench)}
+    kept, dropped = drop_runtime_duplicates(
+        [(r["idx"], by_key[(r["operator"], r["target"])]) for r in mutants])
+    keep_idx = {i for i, _ in kept}
+    out, dup = [], []
+    for r in mutants:
+        for p in r["per_obl"]:
+            p["fires_logged"] = p["fires"]
+            p["fires"] = rescore_obligation(r, p)
+        (out if r["idx"] in keep_idx else dup).append(r)
+    return out, dup
 
 
 def witnesses(mut, K, control=None, adjusted=False):
@@ -95,6 +130,72 @@ def wilson(k, n, z=1.96):
     return c - h, c + h
 
 
+def kill_rows(benches, K):
+    """One row per K-killable mutant: (benchmark, {suite: killed})."""
+    rows = []
+    for b, d in benches.items():
+        suites = {s: set(d["meta"]["suites"][s]) for s in BASE_SUITES}
+        for m in d["mutants"]:
+            w = witnesses(m, K)
+            if w:
+                rows.append((b, {s: bool(w & suites[s]) for s in BASE_SUITES}))
+    return rows
+
+
+def ms_rows(rows, s):
+    return sum(r[s] for _, r in rows) / len(rows) if rows else float("nan")
+
+
+def cochran_q(rows, suites):
+    """Cochran's Q for k related binary samples (df = k - 1); p-value exact for df = 2."""
+    k = len(suites)
+    X = [[int(r[s]) for s in suites] for _, r in rows]
+    C = [sum(x[j] for x in X) for j in range(k)]
+    R = [sum(x) for x in X]
+    N = sum(R)
+    den = k * N - sum(r * r for r in R)
+    if den == 0:
+        return float("nan"), float("nan")
+    q = (k - 1) * (k * sum(c * c for c in C) - N * N) / den
+    return q, (math.exp(-q / 2) if k == 3 else float("nan"))
+
+
+def mcnemar_exact(b01, b10):
+    n = b01 + b10
+    if n == 0:
+        return 1.0
+    return min(1.0, 2 * sum(math.comb(n, i) for i in range(min(b01, b10) + 1)) / 2 ** n)
+
+
+def holm(ps):
+    order = sorted(range(len(ps)), key=lambda i: ps[i])
+    adj, run = [0.0] * len(ps), 0.0
+    for rank, i in enumerate(order):
+        run = max(run, min(1.0, (len(ps) - rank) * ps[i]))
+        adj[i] = run
+    return adj
+
+
+def cluster_boot(rows, stat, reps=2000, seed=20260605):
+    """Percentile interval from resampling whole benchmarks with replacement."""
+    by = defaultdict(list)
+    for b, r in rows:
+        by[b].append((b, r))
+    keys = sorted(by)
+    rng = random.Random(seed)
+    vals = sorted(stat([x for b in (rng.choice(keys) for _ in keys) for x in by[b]])
+                  for _ in range(reps))
+    return vals[int(0.025 * reps)], vals[int(0.975 * reps) - 1]
+
+
+def fmt_p(p):
+    if p != p:
+        return "n/a"
+    if p < 1e-300:
+        return "<1e-300"
+    return f"{p:.1e}" if p < 1e-3 else f"{p:.3f}"
+
+
 def fmt(kd, kb):
     return f"{kd/kb:.3f}" if kb else " n/a "
 
@@ -128,8 +229,16 @@ def main():
     ap.add_argument("--draws", type=int, default=100)
     ap.add_argument("--match", default="T-Dev*", help="baseline whose size to match")
     ap.add_argument("--csv", default=None)
+    ap.add_argument("--legacy", action="store_true",
+                    help="first-submission rules: keep runtime duplicates, count structural "
+                         "failures as kills, no Tool-Fault reachability condition")
     a = ap.parse_args()
-    benches = load(Path(a.log_dir), set(a.exclude_op))
+    benches = load(Path(a.log_dir), set(a.exclude_op), legacy=a.legacy)
+    print(f"rules: {'legacy (first submission)' if a.legacy else 'revised (agentmut.rules)'}")
+    if not a.legacy:
+        nd = sum(len(d["duplicates"]) for d in benches.values())
+        print(f"runtime-duplicate mutants excluded: {nd} "
+              f"({dict(Counter(m['operator'] for d in benches.values() for m in d['duplicates']))})")
     if not benches:
         sys.exit("no logs found")
     rows = []
@@ -173,7 +282,7 @@ def main():
             kd, kb = score(benches, suite(s), K)
             jd, jb = score(benches, suite(s), K, adjusted=True)
             lo, hi = wilson(kd, kb)
-            parts.append(f"{K}: {fmt(kd,kb)} [{lo:.2f},{hi:.2f}] / {fmt(jd,jb)}")
+            parts.append(f"{K}: {fmt(kd,kb)} [{lo:.3f},{hi:.3f}] / {fmt(jd,jb)}")
             rows.append({"table": "T3", "suite": s, "criterion": K, "killed": kd,
                          "killable": kb, "ms": kd / kb if kb else None,
                          "killed_adj": jd, "killable_adj": jb, "ms_adj": jd / jb if jb else None})
@@ -187,6 +296,42 @@ def main():
             print(f"{op:<15}" + "".join(
                 f"{fmt(*score(benches, suite(s), 'K-Outcome', ops={op})) + ' / ' + fmt(*score(benches, suite(s), 'K-Outcome', adjusted=True, ops={op})):>16}"
                 for s in BASE_SUITES))
+
+    # ---- P paired tests and benchmark-level intervals -----------------------
+    print("\n=== P: paired tests across the three baselines, and benchmark-level intervals ===")
+    nested = all(set(d["meta"]["suites"]["T-E2E*"]) <= set(d["meta"]["suites"]["T-Dev*"])
+                 for d in benches.values())
+    print(f"  T-E2E* obligations are a subset of T-Dev* on every benchmark: {nested}")
+    base3 = BASE_SUITES[:3]
+    for K in CRITERIA:
+        krows = kill_rows(benches, K)
+        q, pq = cochran_q(krows, base3)
+        print(f"  {K}: n={len(krows)}, Cochran's Q(2) = {q:.1f}, p = {fmt_p(pq)}")
+        prs = [("T-Dev*", "T-Rand*"), ("T-Dev*", "T-E2E*"), ("T-E2E*", "T-Rand*")]
+        disc = [(sum(1 for _, r in krows if r[x] and not r[y]),
+                 sum(1 for _, r in krows if r[y] and not r[x])) for x, y in prs]
+        adj = holm([mcnemar_exact(*d_) for d_ in disc])
+        for (x, y), d_, pa in zip(prs, disc, adj):
+            note = "  (nested suites: a difference is guaranteed)" if (x, y) == ("T-Dev*", "T-E2E*") and nested else ""
+            boot = cluster_boot(krows, lambda smp, x=x, y=y: ms_rows(smp, x) - ms_rows(smp, y))
+            print(f"    {x} vs {y}: discordant {d_[0]}/{d_[1]}, exact McNemar (Holm) p = {fmt_p(pa)}; "
+                  f"difference {ms_rows(krows, x) - ms_rows(krows, y):+.3f}, "
+                  f"benchmark-bootstrap 95% CI [{boot[0]:+.3f}, {boot[1]:+.3f}]{note}")
+        for s in BASE_SUITES:
+            boot = cluster_boot(krows, lambda smp, s=s: ms_rows(smp, s))
+            print(f"    {s:<9} MS {ms_rows(krows, s):.3f}, benchmark-bootstrap 95% CI [{boot[0]:.3f}, {boot[1]:.3f}]")
+
+    print("\n=== B: per-benchmark K-Struct MS ===")
+    krows = kill_rows(benches, "K-Struct")
+    by = defaultdict(list)
+    for b, r in krows:
+        by[b].append((b, r))
+    print(f"  {'benchmark':<27}{'n':>5}" + "".join(f"{s:>10}" for s in base3))
+    for b in sorted(by):
+        print(f"  {b:<27}{len(by[b]):>5}" + "".join(f"{ms_rows(by[b], s):>10.3f}" for s in base3))
+    print(f"  {'macro average':<27}{'':>5}" + "".join(
+        f"{sum(ms_rows(by[b], s) for b in by) / len(by):>10.3f}" for s in base3))
+    print(f"  {'pooled':<27}{len(krows):>5}" + "".join(f"{ms_rows(krows, s):>10.3f}" for s in base3))
 
     # ---- C control false-kill rate ------------------------------------------
     print("\n=== C: original-vs-original control (false-kill rate per obligation) ===")
@@ -217,7 +362,8 @@ def main():
             for m in d["mutants"]:
                 for p in m["per_obl"]:
                     if "votes" in p and p["votes"][K]:
-                        dist[(sum(p["votes"][K]), len(p["votes"][K]))] += 1
+                        v = p["votes"][K] if a.legacy else rescored_votes(m, p)[K]
+                        dist[(sum(v), len(v))] += 1
         print(f"  {K:<10} " + "  ".join(f"{x}/{n}:{c}" for (x, n), c in sorted(dist.items())))
 
     # ---- S size-matched suites ----------------------------------------------
@@ -279,6 +425,13 @@ def main():
             elif r["type"] == "mutant":
                 n_exec += sum(1 for q in r["per_obl"] for x in q.get("runs", []) if x is not None)
     print(f"  agent executions logged (use this number in the paper): {n_exec}")
+    if not a.legacy:
+        n_dup = sum(1 for d in benches.values() for m in d["duplicates"] for q in m["per_obl"]
+                    for x in q.get("runs", []) if x is not None)
+        print(f"  of which runs of excluded runtime-duplicate mutants: {n_dup}")
+        n_struct = sum(1 for d in benches.values() for m in d["mutants"] for q in m["per_obl"]
+                       if "structural_fail" in q)
+        print(f"  obligations not executable because the target agent was removed: {n_struct}")
     mt = sum(1 for d in benches.values() for m in d["mutants"] for p in m["per_obl"]
              for r in p.get("runs", []) if r and r.get("max_turns"))
     print(f"  mutant runs hitting max_turns: {mt}")

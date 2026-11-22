@@ -1,0 +1,40 @@
+=== R: runtime-duplicate mutants as a test-retest check (legacy logs) ===
+  136 redundant mutants in 75 groups; operators involved: {'Del-Red': 56, 'Del-Rem': 30, 'Tool-Red': 80, 'Tool-Rem': 45}
+  K-Struct   same baseline kill decision 594/657 = 0.904; same decision per shared obligation 3331/3613 = 0.922
+  K-Outcome  same baseline kill decision 584/657 = 0.889; same decision per shared obligation 3247/3613 = 0.899
+
+=== V: MS of the baselines (killable mutants per criterion in n) ===
+rules                                        n    Struct Dev   Struct Rand    Struct E2E   Outcome Dev  Outcome Rand   Outcome E2E    Safety Dev   Safety Rand    Safety E2E
+legacy (first submission)         972/1007/178         0.751         0.498         0.555         0.742         0.524         0.548         0.573         0.376         0.500
++ duplicates removed               836/871/178         0.724         0.477         0.560         0.714         0.502         0.551         0.573         0.376         0.500
++ executed witnesses only         970/1005/178         0.743         0.486         0.534         0.734         0.514         0.529         0.573         0.376         0.500
++ Tool-Fault reachability          957/988/178         0.760         0.505         0.563         0.753         0.532         0.559         0.573         0.376         0.500
+revised (all three rules)          819/850/178         0.724         0.470         0.546         0.718         0.499         0.541         0.573         0.376         0.500
+revised + first-replicate adj.     798/822/178         0.687         0.415         0.466         0.685         0.372         0.467         0.573         0.376         0.500
+
+=== O: per-operator K-Struct MS, legacy -> revised (T-Dev* / T-Rand* / T-E2E*) ===
+  Del-Rem        0.86 / 0.38 / 0.57 (n=37)    -> 0.86 / 0.38 / 0.57 (n=37)
+  Del-Red        0.79 / 0.39 / 0.52 (n=94)    -> 0.66 / 0.34 / 0.50 (n=38)
+  Del-Inv        0.91 / 0.69 / 0.77 (n=35)    -> 0.91 / 0.69 / 0.77 (n=35)
+  Del-Add        0.58 / 0.45 / 0.50 (n=113)   -> 0.58 / 0.45 / 0.50 (n=113)
+  Tool-Rem       0.94 / 0.59 / 0.62 (n=63)    -> 0.94 / 0.59 / 0.62 (n=63)
+  Tool-Red       0.96 / 0.67 / 0.62 (n=157)   -> 0.97 / 0.57 / 0.73 (n=77)
+  Tool-Fault     0.70 / 0.12 / 0.17 (n=40)    -> 1.00 / 0.16 / 0.28 (n=25)
+  Tool-SigMut    1.00 / 0.87 / 0.89 (n=45)    -> 1.00 / 0.87 / 0.89 (n=45)
+  Res-Relax      0.62 / 0.46 / 0.58 (n=124)   -> 0.62 / 0.46 / 0.58 (n=124)
+  Res-Tighten    0.97 / 0.62 / 0.65 (n=63)    -> 0.97 / 0.62 / 0.65 (n=63)
+  Res-Rem        0.35 / 0.20 / 0.21 (n=92)    -> 0.35 / 0.20 / 0.21 (n=92)
+  Ag-Rem         1.00 / 0.74 / 1.00 (n=38)    -> 0.81 / 0.42 / 0.47 (n=36)
+  Ag-Swap        0.52 / 0.40 / 0.50 (n=42)    -> 0.52 / 0.40 / 0.50 (n=42)
+  Ag-PromptDrop  0.45 / 0.45 / 0.38 (n=29)    -> 0.45 / 0.45 / 0.38 (n=29)
+
+=== S: size-matched random subsets of T-Struct (|T-Dev*| per benchmark, 100 draws each) ===
+  [legacy (first submission)] K-Struct   T-Dev* 0.751 | random mean 0.757 [0.682, 0.814] | draws below T-Dev*: 39/100
+  [legacy (first submission)] K-Outcome  T-Dev* 0.742 | random mean 0.768 [0.701, 0.821] | draws below T-Dev*: 22/100
+  [legacy (first submission)] K-Safety   T-Dev* 0.573 | random mean 0.670 [0.567, 0.742] | draws below T-Dev*: 3/100
+  [revised (all three rules)] K-Struct   T-Dev* 0.724 | random mean 0.743 [0.675, 0.795] | draws below T-Dev*: 30/100
+  [revised (all three rules)] K-Outcome  T-Dev* 0.718 | random mean 0.753 [0.691, 0.804] | draws below T-Dev*: 15/100
+  [revised (all three rules)] K-Safety   T-Dev* 0.573 | random mean 0.670 [0.567, 0.742] | draws below T-Dev*: 3/100
+  [revised + first-replicate adj.] K-Struct   T-Dev* 0.687 | random mean 0.701 [0.612, 0.772] | draws below T-Dev*: 28/100
+  [revised + first-replicate adj.] K-Outcome  T-Dev* 0.685 | random mean 0.694 [0.611, 0.776] | draws below T-Dev*: 37/100
+  [revised + first-replicate adj.] K-Safety   T-Dev* 0.573 | random mean 0.670 [0.567, 0.742] | draws below T-Dev*: 3/100
