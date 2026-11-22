@@ -147,6 +147,17 @@ class LocalRuntimeState:
         return result
 
 
+def _generic_backend(state: LocalRuntimeState, tool_name: str, agent_name: str) -> str:
+    """Backend bound to every benchmark tool in the study.
+
+    Tools take no arguments and return a fixed acknowledgement, so a run's
+    observable behaviour depends only on which agent calls which tool and on
+    the delegations it takes. This is the response every tool call received in
+    the reported runs.
+    """
+    return f"ok: tool '{tool_name}' executed by agent '{agent_name}'."
+
+
 def _search_backend(state: LocalRuntimeState, tool_name: str, agent_name: str) -> str:
     corpus = state.read_json("search_corpus.json")
     top = [{"doc": key, "snippet": value} for key, value in sorted(corpus.items())[:3]]

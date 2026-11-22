@@ -7,15 +7,13 @@ Sibling package of ``agentcov``. Operates on the same schema-v3 manifest:
   Tool-Rem / Tool-Red / Tool-Fault / Tool-SigMut (tool faults)
   Res-Relax / Res-Tighten / Res-Rem            (restriction faults)
   Ag-Rem / Ag-Swap / Ag-PromptDrop             (agent / instruction faults)
-* ``equivalence`` — static + heuristic equivalent-mutant filter
-* ``kill_struct`` — structural kill criterion K-Struct: a mutant is killed
-  if its obligation set (under agentcov.extract_objectives) differs from
-  the original's set. No LLM execution required.
-* ``runner`` — generate mutants for one manifest and score them under
-  K-Struct against an arbitrary deterministic test suite (the structural
-  suite has full coverage by construction, so K-Struct kills 100% of
-  non-equivalent mutants; the interesting numbers come from running
-  K-Outcome/K-Safety against under-specified suites).
+* ``rules`` — pool and kill rules shared by the live runner and the offline
+  analysis: runtime-duplicate removal, executed witnesses only, and the
+  Tool-Fault reachability condition.
+* ``suites`` — the four test suites (T-Dev*, T-Rand*, T-E2E*, T-Struct).
+* ``equivalence``, ``kill_struct``, ``kill_runtime``, ``simulator``,
+  ``scoring`` — manifest-level helpers from the pilot; the reported numbers
+  come from run_live_mutation_v2.py and analyze_v2.py.
 
 """
 

@@ -1,50 +1,94 @@
+rules: revised (agentmut.rules)
+runtime-duplicate mutants excluded: 136 ({'Del-Red': 56, 'Tool-Red': 80})
 === T1: executed pool and live-killable denominators (raw | noise-adjusted) ===
 Operator       Fam  Total          K-Struct         K-Outcome          K-Safety
 Del-Rem        F1      40       37 | 36           38 | 36            0 | 0     
-Del-Red        F1      96       94 | 94           94 | 93            0 | 0     
+Del-Red        F1      40       38 | 38           38 | 38            0 | 0     
 Del-Inv        F1      36       35 | 35           36 | 35            0 | 0     
 Del-Add        F1     120      113 | 113         114 | 113           0 | 0     
 Tool-Rem       F2      63       63 | 61           63 | 61            0 | 0     
-Tool-Red       F2     157      157 | 155         157 | 150          63 | 63    
-Tool-Fault     F2      80       40 | 32           58 | 50            0 | 0     
+Tool-Red       F2      77       77 | 77           77 | 77           63 | 63    
+Tool-Fault     F2      80       25 | 23           39 | 38            0 | 0     
 Tool-SigMut    F2      45       45 | 45           45 | 45            0 | 0     
 Res-Relax      F3     126      124 | 123         124 | 122         115 | 115   
 Res-Tighten    F3      63       63 | 60           63 | 59            0 | 0     
 Res-Rem        F3     126       92 | 84          102 | 93            0 | 0     
-Ag-Rem         F4      38       38 | 38           38 | 38            0 | 0     
+Ag-Rem         F4      38       36 | 35           36 | 35            0 | 0     
 Ag-Swap        F4      47       42 | 40           45 | 42            0 | 0     
 Ag-PromptDrop  F4      39       29 | 28           30 | 28            0 | 0     
-TOTAL                1076      972 | 944        1007 | 965         178 | 178   
+TOTAL                 940      819 | 798         850 | 822         178 | 178   
 
 === T2: K-Struct MS per family ===
 Suite           F1      F2      F3      F4  Overall
-T-Dev*       0.731   0.928   0.609   0.670    0.751
-T-Rand*      0.452   0.610   0.409   0.532    0.498
-T-E2E*       0.552   0.600   0.473   0.642    0.555
+T-Dev*       0.695   0.971   0.609   0.598    0.724
+T-Rand*      0.457   0.590   0.409   0.421    0.470
+T-E2E*       0.556   0.676   0.473   0.458    0.546
 T-Struct     1.000   1.000   1.000   1.000    1.000
 
 === T3: MS per suite per criterion (raw / noise-adjusted), 95% Wilson CI on raw ===
-  T-Dev*    K-Struct: 0.751 [0.72,0.78] / 0.719 | K-Outcome: 0.742 [0.71,0.77] / 0.714 | K-Safety: 0.573 [0.50,0.64] / 0.573
-  T-Rand*   K-Struct: 0.498 [0.47,0.53] / 0.431 | K-Outcome: 0.524 [0.49,0.56] / 0.395 | K-Safety: 0.376 [0.31,0.45] / 0.376
-  T-E2E*    K-Struct: 0.555 [0.52,0.59] / 0.476 | K-Outcome: 0.548 [0.52,0.58] / 0.478 | K-Safety: 0.500 [0.43,0.57] / 0.500
-  T-Struct  K-Struct: 1.000 [1.00,1.00] / 1.000 | K-Outcome: 1.000 [1.00,1.00] / 1.000 | K-Safety: 1.000 [0.98,1.00] / 1.000
+  T-Dev*    K-Struct: 0.724 [0.692,0.754] / 0.687 | K-Outcome: 0.718 [0.686,0.747] / 0.685 | K-Safety: 0.573 [0.500,0.643] / 0.573
+  T-Rand*   K-Struct: 0.470 [0.436,0.504] / 0.415 | K-Outcome: 0.499 [0.465,0.532] / 0.372 | K-Safety: 0.376 [0.309,0.449] / 0.376
+  T-E2E*    K-Struct: 0.546 [0.512,0.580] / 0.466 | K-Outcome: 0.541 [0.508,0.574] / 0.467 | K-Safety: 0.500 [0.427,0.573] / 0.500
+  T-Struct  K-Struct: 1.000 [0.995,1.000] / 1.000 | K-Outcome: 1.000 [0.996,1.000] / 1.000 | K-Safety: 1.000 [0.979,1.000] / 1.000
 
 === T4: K-Outcome MS per operator (raw / noise-adjusted) ===
 Operator                 T-Dev*         T-Rand*          T-E2E*        T-Struct
 Del-Rem           0.842 / 0.694   0.553 / 0.389   0.579 / 0.333   1.000 / 1.000
-Del-Red           0.787 / 0.710   0.543 / 0.323   0.532 / 0.344   1.000 / 1.000
+Del-Red           0.658 / 0.632   0.553 / 0.289   0.500 / 0.316   1.000 / 1.000
 Del-Inv           0.889 / 0.857   0.667 / 0.571   0.750 / 0.657   1.000 / 1.000
 Del-Add           0.579 / 0.540   0.526 / 0.389   0.500 / 0.451   1.000 / 1.000
 Tool-Rem          0.937 / 0.934   0.603 / 0.393   0.619 / 0.492   1.000 / 1.000
-Tool-Red          0.962 / 0.933   0.669 / 0.547   0.618 / 0.487   1.000 / 1.000
-Tool-Fault        0.707 / 0.760   0.121 / 0.080   0.207 / 0.240   1.000 / 1.000
+Tool-Red          0.974 / 0.922   0.571 / 0.558   0.727 / 0.584   1.000 / 1.000
+Tool-Fault        0.974 / 0.974   0.128 / 0.079   0.308 / 0.316   1.000 / 1.000
 Tool-SigMut       1.000 / 0.978   0.867 / 0.622   0.911 / 0.867   1.000 / 1.000
 Res-Relax         0.621 / 0.598   0.484 / 0.377   0.581 / 0.566   1.000 / 1.000
 Res-Tighten       0.968 / 0.949   0.619 / 0.407   0.667 / 0.576   1.000 / 1.000
 Res-Rem           0.333 / 0.280   0.216 / 0.118   0.206 / 0.172   1.000 / 1.000
-Ag-Rem            1.000 / 1.000   0.763 / 0.711   1.000 / 1.000   1.000 / 1.000
+Ag-Rem            0.806 / 0.686   0.500 / 0.314   0.500 / 0.257   1.000 / 1.000
 Ag-Swap           0.511 / 0.500   0.444 / 0.405   0.489 / 0.500   1.000 / 1.000
 Ag-PromptDrop     0.467 / 0.500   0.433 / 0.357   0.400 / 0.393   1.000 / 1.000
+
+=== P: paired tests across the three baselines, and benchmark-level intervals ===
+  T-E2E* obligations are a subset of T-Dev* on every benchmark: True
+  K-Struct: n=819, Cochran's Q(2) = 164.9, p = 1.6e-36
+    T-Dev* vs T-Rand*: discordant 270/62, exact McNemar (Holm) p = 8.8e-32; difference +0.254, benchmark-bootstrap 95% CI [+0.188, +0.346]
+    T-Dev* vs T-E2E*: discordant 146/0, exact McNemar (Holm) p = 6.7e-44; difference +0.178, benchmark-bootstrap 95% CI [+0.076, +0.313]  (nested suites: a difference is guaranteed)
+    T-E2E* vs T-Rand*: discordant 207/145, exact McNemar (Holm) p = 0.001; difference +0.076, benchmark-bootstrap 95% CI [+0.003, +0.181]
+    T-Dev*    MS 0.724, benchmark-bootstrap 95% CI [0.625, 0.806]
+    T-Rand*   MS 0.470, benchmark-bootstrap 95% CI [0.392, 0.533]
+    T-E2E*    MS 0.546, benchmark-bootstrap 95% CI [0.454, 0.640]
+    T-Struct  MS 1.000, benchmark-bootstrap 95% CI [1.000, 1.000]
+  K-Outcome: n=850, Cochran's Q(2) = 136.4, p = 2.4e-30
+    T-Dev* vs T-Rand*: discordant 263/77, exact McNemar (Holm) p = 1.3e-24; difference +0.219, benchmark-bootstrap 95% CI [+0.105, +0.347]
+    T-Dev* vs T-E2E*: discordant 150/0, exact McNemar (Holm) p = 4.2e-45; difference +0.176, benchmark-bootstrap 95% CI [+0.075, +0.314]  (nested suites: a difference is guaranteed)
+    T-E2E* vs T-Rand*: discordant 201/165, exact McNemar (Holm) p = 0.067; difference +0.042, benchmark-bootstrap 95% CI [-0.048, +0.185]
+    T-Dev*    MS 0.718, benchmark-bootstrap 95% CI [0.611, 0.803]
+    T-Rand*   MS 0.499, benchmark-bootstrap 95% CI [0.402, 0.584]
+    T-E2E*    MS 0.541, benchmark-bootstrap 95% CI [0.438, 0.646]
+    T-Struct  MS 1.000, benchmark-bootstrap 95% CI [1.000, 1.000]
+  K-Safety: n=178, Cochran's Q(2) = 20.4, p = 3.7e-05
+    T-Dev* vs T-Rand*: discordant 61/26, exact McNemar (Holm) p = 6.7e-04; difference +0.197, benchmark-bootstrap 95% CI [+0.028, +0.329]
+    T-Dev* vs T-E2E*: discordant 13/0, exact McNemar (Holm) p = 6.7e-04; difference +0.073, benchmark-bootstrap 95% CI [+0.026, +0.133]  (nested suites: a difference is guaranteed)
+    T-E2E* vs T-Rand*: discordant 53/31, exact McNemar (Holm) p = 0.021; difference +0.124, benchmark-bootstrap 95% CI [-0.087, +0.293]
+    T-Dev*    MS 0.573, benchmark-bootstrap 95% CI [0.366, 0.687]
+    T-Rand*   MS 0.376, benchmark-bootstrap 95% CI [0.263, 0.477]
+    T-E2E*    MS 0.500, benchmark-bootstrap 95% CI [0.243, 0.647]
+    T-Struct  MS 1.000, benchmark-bootstrap 95% CI [1.000, 1.000]
+
+=== B: per-benchmark K-Struct MS ===
+  benchmark                      n    T-Dev*   T-Rand*    T-E2E*
+  autopitch                    183     0.574     0.415     0.432
+  deep_research_clone           15     0.533     0.000     0.533
+  oai_customer_service          23     0.652     0.261     0.652
+  oai_financial_research       223     0.758     0.498     0.619
+  oai_message_filter            14     0.571     0.071     0.571
+  oai_research_bot              59     0.746     0.441     0.695
+  octagon_vc_agents            116     0.810     0.655     0.647
+  social_media_agent_system     19     0.737     0.474     0.737
+  value_investment             119     0.891     0.462     0.345
+  ydmitry_deep_research         48     0.625     0.521     0.583
+  macro average                        0.690     0.380     0.581
+  pooled                       819     0.724     0.470     0.546
 
 === C: original-vs-original control (false-kill rate per obligation) ===
   K-Struct   30/403 = 0.074  [0.053,0.104]
@@ -53,17 +97,19 @@ Ag-PromptDrop     0.467 / 0.500   0.433 / 0.357   0.400 / 0.393   1.000 / 1.000
   K-Struct by obligation kind: delegate 2/41, reach 5/49, restrict_tool 17/248, use_tool 6/65
 
 === V: distribution of differing pairs per (mutant, obligation) ===
-  K-Struct   0/3:9471  1/3:1998  2/3:1345  3/3:3797
-  K-Outcome  0/3:8052  1/3:2818  2/3:1779  3/3:3962
-  K-Safety   0/3:15858  1/3:58  2/3:47  3/3:648
+  K-Struct   0/3:8304  1/3:1640  2/3:1138  3/3:3334
+  K-Outcome  0/3:7115  1/3:2322  2/3:1499  3/3:3480
+  K-Safety   0/3:13663  1/3:58  2/3:47  3/3:648
 
 === S: size-matched subsets of T-Struct (size = |T-Dev*| per benchmark) ===
-  K-Struct   T-Dev* 0.751 | random mean 0.757 [0.682,0.814] | coverage-greedy 0.784
-  K-Outcome  T-Dev* 0.742 | random mean 0.769 [0.689,0.820] | coverage-greedy 0.793
+  K-Struct   T-Dev* 0.724 | random mean 0.743 [0.675,0.795] | coverage-greedy 0.773
+  K-Outcome  T-Dev* 0.718 | random mean 0.754 [0.675,0.806] | coverage-greedy 0.775
   K-Safety   T-Dev* 0.573 | random mean 0.664 [0.573,0.775] | coverage-greedy 0.725
   sizes: autopitch=13, deep_research_clone=4, oai_customer_service=5, oai_financial_research=14, oai_message_filter=4, oai_research_bot=8, octagon_vc_agents=24, social_media_agent_system=5, value_investment=28, ydmitry_deep_research=9
 
 === E: run statistics ===
   {"calls": 6789}
   agent executions logged (use this number in the paper): 52251
-  mutant runs hitting max_turns: 573
+  of which runs of excluded runtime-duplicate mutants: 6585
+  obligations not executable because the target agent was removed: 300
+  mutant runs hitting max_turns: 467
